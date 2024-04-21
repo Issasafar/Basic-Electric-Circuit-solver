@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/issa/CLionProjects/untitled/cmake-build-debug"
+			"value" : "/home/issa/CLionProjects/DemoProjects/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -543,7 +543,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/issa/CLionProjects/untitled/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/home/issa/CLionProjects/DemoProjects/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -603,7 +603,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/issa/CLionProjects/untitled"
+			"value" : "/home/issa/CLionProjects/DemoProjects"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -843,7 +843,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "untitled"
+			"value" : "DemoProject"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1126,6 +1126,42 @@
 			"value" : "FALSE"
 		},
 		{
+			"name" : "DemoProject_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/issa/CLionProjects/DemoProjects/cmake-build-debug"
+		},
+		{
+			"name" : "DemoProject_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "DemoProject_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/issa/CLionProjects/DemoProjects"
+		},
+		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
 			"properties" : 
 			[
@@ -1147,7 +1183,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/issa/CLionProjects/untitled/cmake-build-debug"
+			"value" : "/home/issa/CLionProjects/DemoProjects/cmake-build-debug"
 		},
 		{
 			"name" : "untitled_IS_TOP_LEVEL",
@@ -1171,7 +1207,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/issa/CLionProjects/untitled"
+			"value" : "/home/issa/CLionProjects/DemoProjects"
 		}
 	],
 	"kind" : "cache",

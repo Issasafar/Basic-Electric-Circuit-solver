@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.25)
-project(untitled)
+project(DemoProject)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(untitled main.cpp)
+add_executable(untitled main.cpp Node.cpp Node.h Complex.cpp Resistance.cpp Resistance.h)
