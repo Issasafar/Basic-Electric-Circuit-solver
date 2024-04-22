@@ -3,20 +3,35 @@
 //
 
 #include "Resistance.h"
+#include <iostream>
+
+using namespace std;
 
 Resistance::Resistance() : r{0} {}
 
 Resistance::Resistance(double val) : r{val} {}
 
-Resistance::Resistance(double val, Node right, Node left) : r{val}, rightNd{right}, leftNd{left} {}
+Resistance::Resistance(double val, Node& right, Node& left) : r{val}, rightNd{&right}, leftNd{&left} {
+    rightNd->addConnection();
+    leftNd->addConnection();
+}
 
-void Resistance::leftNode(Node left) { leftNd = left; }
 
-void Resistance::rightNode(Node right) { rightNd = right; }
+void Resistance::leftNode(Node left) {
+    leftNd->removeConnection();
+    leftNd = &left;
+    left.addConnection();
+}
 
-Node Resistance::rightNode() { return rightNd; }
+void Resistance::rightNode(Node right) {
+    leftNd->removeConnection();
+    rightNd = &right;
+    right.removeConnection();
+}
 
-Node Resistance::leftNode() { return leftNd; }
+Node Resistance::rightNode() { return *rightNd; }
+
+Node Resistance::leftNode() { return *leftNd; }
 
 double Resistance::value() const { return r; }
 

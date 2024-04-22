@@ -9,13 +9,16 @@
 class Node {
 private:
     int v;
+    int c = 0;
 public:
     Node();
 
     explicit Node(int val);
 
+    void addConnection();
+    void removeConnection();
     void value(int val);
-
+    int connectionsCount();
     [[nodiscard]] int value() const;
 };
 

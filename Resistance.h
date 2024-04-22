@@ -9,12 +9,12 @@
 class Resistance {
 private:
     double r;
-    Node rightNd;
-    Node leftNd;
+    Node* rightNd;
+    Node* leftNd;
 public:
     Resistance();
     Resistance(double val);
-    Resistance(double val, Node right, Node left);
+    Resistance(double val, Node& right, Node& left);
 
     double value() const;
     Node rightNode();

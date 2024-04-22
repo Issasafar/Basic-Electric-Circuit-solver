@@ -13,6 +13,15 @@ void Node::value(int val) { v = val; }
 int Node::value() const {
     return v;
 }
+int Node::connectionsCount() {
+    return c;
+}
+void Node::addConnection() {
+    ++c;
+}
+void Node::removeConnection() {
+    --c;
+}
 
 
 
