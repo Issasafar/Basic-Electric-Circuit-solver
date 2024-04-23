@@ -738,8 +738,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/home/issa/CLionProjects/untitled/cmake-build-debug",
-		"source" : "/home/issa/CLionProjects/untitled"
+		"build" : "/home/issa/CLionProjects/DemoProjects/cmake-build-debug",
+		"source" : "/home/issa/CLionProjects/DemoProjects"
 	},
 	"version" : 
 	{
