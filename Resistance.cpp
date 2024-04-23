@@ -11,27 +11,27 @@ Resistance::Resistance() : r{0} {}
 
 Resistance::Resistance(double val) : r{val} {}
 
-Resistance::Resistance(double val, Node& right, Node& left) : r{val}, rightNd{&right}, leftNd{&left} {
-    rightNd->addConnection();
-    leftNd->addConnection();
+Resistance::Resistance(double val, Node& start, Node& end) : r{val}, startNd{&start}, endNd{&end} {
+    startNd->addConnection();
+    endNd->addConnection();
 }
 
 
-void Resistance::leftNode(Node left) {
-    leftNd->removeConnection();
-    leftNd = &left;
+void Resistance::endNode(Node left) {
+    endNd->removeConnection();
+    endNd = &left;
     left.addConnection();
 }
 
-void Resistance::rightNode(Node right) {
-    leftNd->removeConnection();
-    rightNd = &right;
-    right.removeConnection();
+void Resistance::startNode(Node start) {
+    startNd->removeConnection();
+    startNd = &start;
+    start.removeConnection();
 }
 
-Node Resistance::rightNode() { return *rightNd; }
+Node &Resistance::startNode() { return *startNd; }
 
-Node Resistance::leftNode() { return *leftNd; }
+Node &Resistance::endNode() { return *endNd; }
 
 double Resistance::value() const { return r; }
 

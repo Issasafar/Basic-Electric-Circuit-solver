@@ -9,19 +9,19 @@
 class Resistance {
 private:
     double r;
-    Node* rightNd;
-    Node* leftNd;
+    Node* startNd;
+    Node* endNd;
 public:
     Resistance();
     Resistance(double val);
-    Resistance(double val, Node& right, Node& left);
+    Resistance(double val, Node& start, Node& end);
 
     double value() const;
-    Node rightNode();
-    Node leftNode();
+    Node &startNode();
+    Node &endNode();
 
-    void rightNode(Node r);
-    void leftNode(Node l);
+    void startNode(Node r);
+    void endNode(Node l);
 };
 
 

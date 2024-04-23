@@ -52,7 +52,8 @@
 				0,
 				1,
 				3,
-				4
+				4,
+				6
 			]
 		}
 	],
@@ -88,7 +89,8 @@
 				0,
 				1,
 				3,
-				4
+				4,
+				6
 			]
 		},
 		{
@@ -96,7 +98,8 @@
 			"sourceIndexes" : 
 			[
 				2,
-				5
+				5,
+				7
 			]
 		}
 	],
@@ -134,6 +137,17 @@
 		{
 			"backtrace" : 1,
 			"path" : "Resistance.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Branch.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Branch.h",
 			"sourceGroupIndex" : 1
 		}
 	],
