@@ -19,7 +19,7 @@ int main() {
     cout << r1.startNode().connectionsCount()<<endl;
     Resistance r3 = Resistance(8, ground, node2);
     Resistance r4 = Resistance(77, node2, node1);
-    vector<Resistance> vector1{r1, r2};
+    vector<Resistance> vector1{r3, r4};
     Branch b1 = Branch(ground, node1, vector1);
     cout << "printing the values of resistors in the branch" << endl;
     for (Resistance r: b1.branchResistors()) {
