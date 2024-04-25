@@ -61,12 +61,6 @@ build CMakeFiles/untitled.dir/Node.cpp.o: CXX_COMPILER__untitled_Debug /home/iss
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir
 
-build CMakeFiles/untitled.dir/Complex.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/Complex.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Complex.cpp.o.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
-
 build CMakeFiles/untitled.dir/Resistance.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/Resistance.cpp || cmake_object_order_depends_target_untitled
   DEP_FILE = CMakeFiles/untitled.dir/Resistance.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
@@ -87,7 +81,7 @@ build CMakeFiles/untitled.dir/Branch.cpp.o: CXX_COMPILER__untitled_Debug /home/i
 #############################################
 # Link the executable untitled
 
-build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/Node.cpp.o CMakeFiles/untitled.dir/Complex.cpp.o CMakeFiles/untitled.dir/Resistance.cpp.o CMakeFiles/untitled.dir/Branch.cpp.o
+build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/Node.cpp.o CMakeFiles/untitled.dir/Resistance.cpp.o CMakeFiles/untitled.dir/Branch.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/untitled.dir
   POST_BUILD = :
