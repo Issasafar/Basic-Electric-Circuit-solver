@@ -18,4 +18,5 @@ jobs:
             #تحديث_للكود
             #مساهمة
             تمت الإضافة/التعديل على كود المشروع: ${{ github.repository }} من قبل "${{ github.actor }}". التفاصيل: [${{ github.sha }}@${{ github.ref }}]
-            الرابط: https://github.com/Issasafar/Control_2_project
+            الرابط: https://github.com/Issasafar/Basic-Electric-Circuit-solver
+
