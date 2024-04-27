@@ -1,5 +1,5 @@
 name: tg-notify
-on: [push, pull_request]
+on: [ push, pull_request ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,4 +19,9 @@ jobs:
             #مساهمة
             تمت الإضافة/التعديل على كود المشروع: ${{ github.repository }} من قبل "${{ github.actor }}". التفاصيل: [${{ github.sha }}@${{ github.ref }}]
             الرابط: https://github.com/Issasafar/Basic-Electric-Circuit-solver
+      - uses: yanzay/notify-telegram@v0.1.0
+        with:
+          chat: ${{ secrets.TELEGRAM_GROUP_ID}} # user id or channel name secret
+          token: ${{ secrets.TELEGRAM_TOKEN }} # token secret
+          status: ${{ job.status }} # do not modify this line
 
