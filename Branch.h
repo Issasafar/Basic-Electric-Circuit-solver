@@ -1,36 +1,26 @@
 //
-// Created by issa on 23/04/24.
+// Created by issa on 27/04/24.
 //
 
 #ifndef DEMOPROJECT_BRANCH_H
 #define DEMOPROJECT_BRANCH_H
 
 
-#include "Node.h"
-#include "Resistance.h"
 #include <vector>
+#include "Component.h"
 
-class Branch {
+class Branch : public Component {
 private:
-    Node *staringNd;
-    Node *endingNd;
-    std::vector<Resistance> v;
+    std::vector<Component> vec;
 public:
-    Branch(Node &startNode, Node &endNode);
+    Branch();
 
-    Branch(Node &startNode, Node &endNode, std::vector<Resistance> resistances);
+    explicit Branch(std::vector<Component> components);
 
-    std::vector<Resistance> branchResistors();
+    std::vector<Component> components();
 
-    void addResistor(Resistance resistance);
-
-    void startingNode(Node &node);
-
-    void endingNode(Node &node);
-
-    Node &startingNode();
-
-    Node &endingNode();
+    void addComponent(Component component);
+    Component toComponent();
 };
 
 

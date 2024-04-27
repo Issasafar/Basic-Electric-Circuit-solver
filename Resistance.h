@@ -5,23 +5,16 @@
 #ifndef UNTITLED_RESISTANCE_H
 #define UNTITLED_RESISTANCE_H
 #include "Node.h"
+#include "Component.h"
 
-class Resistance {
-private:
-    double r;
-    Node* startNd;
-    Node* endNd;
+class Resistance : public Component {
 public:
     Resistance();
     Resistance(double val);
     Resistance(double val, Node& start, Node& end);
 
-    double value() const;
-    Node &startNode();
-    Node &endNode();
+    double resistance() const;
 
-    void startNode(Node r);
-    void endNode(Node l);
 };
 
 
