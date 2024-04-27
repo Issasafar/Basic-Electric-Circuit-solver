@@ -1,3 +1,0 @@
-/home/issa/CLionProjects/DemoProjects/cmake-build-debug/CMakeFiles/untitled.dir
-/home/issa/CLionProjects/DemoProjects/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/issa/CLionProjects/DemoProjects/cmake-build-debug/CMakeFiles/rebuild_cache.dir
