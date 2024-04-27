@@ -1,88 +1,32 @@
 #include <iostream>
 #include <cmath>
+#include "Resistance.h"
+#include "Node.h"
+#include "Branch.h"
 
 using namespace std;
 
-class Complex {
-private:
-    float real, imag, angle, radius;
-public:
-    string toString() {
-        return "real= " + to_string(this->real) + ", imag = " +
-               to_string(this->imag) +
-               ", radius = " + to_string(this->radius) + ", angle = " +
-               to_string(this->angle);
-    }
-
-    Complex() {}
-
-    Complex operator+(Complex &other) {
-        Complex result;
-        result.real = this->real + other.real;
-        result.imag = this->imag + other.imag;
-        result.cartesianToPolar();
-        return result;
-    }
-    //TODO() overload other operators here :)
-
-    void polarToCartesian() {
-        this->real = this->radius * cos(angle);
-        this->imag = this->radius * sin(angle);
-    }
-
-    void cartesianToPolar() {
-        this->radius = sqrt(pow(real, 2) + pow(imag, 2));
-    }
-
-    Complex(float arg1, float arg2, bool isPolar) {
-        if (!isPolar) {
-            this->real = arg1;
-            this->imag = arg2;
-            cartesianToPolar();
-        } else {
-            this->radius = arg1;
-            this->angle = arg2;
-            polarToCartesian();
-        }
-    }
-
-    float getReal() const {
-        return real;
-    }
-
-    void setReal(float real) {
-        Complex::real = real;
-    }
-
-    float getImag() const {
-        return imag;
-    }
-
-    void setImag(float imag) {
-        Complex::imag = imag;
-    }
-
-    float getAngle() const {
-        return angle;
-    }
-
-    void setAngle(float angle) {
-        Complex::angle = angle;
-    }
-
-    float getRadius() const {
-        return radius;
-    }
-
-    void setRadius(float radius) {
-        Complex::radius = radius;
-    }
-};
-
 int main() {
-    Complex complex1 = Complex(1, 2, false);
-    Complex complex2 = Complex(-1, -5, false);
-    Complex complex3 = complex1 + complex2;
-    cout << complex3.toString();
+    Node node1 = Node(9);
+    Node node2 = Node(1);
+    Node ground = Node();
+    Resistance r1 = Resistance(19, node1, node2);
+    Resistance r2 = Resistance(8, r1.startNode(), node2);
+    cout << r1.startNode().value() << endl;
+    cout << r2.value() << endl;
+    cout << node2.connectionsCount() << endl;
+    cout << ground.connectionsCount() << endl;
+    cout << r1.startNode().connectionsCount()<<endl;
+    Resistance r3 = Resistance(8, ground, node2);
+    Resistance r4 = Resistance(77, node2, node1);
+    vector<Resistance> vector1{r3, r4};
+    Branch b1 = Branch(ground, node1, vector1);
+    cout << "printing the values of resistors in the branch" << endl;
+    for (Resistance r: b1.branchResistors()) {
+        cout << r.value() << endl;
+    }
+    cout << "printing the starting and ending node of the branch" << endl;
+    cout << b1.startingNode().connectionsCount() << endl;
+    cout << b1.endingNode().connectionsCount() << endl;
     return 0;
 }
