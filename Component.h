@@ -16,10 +16,13 @@ protected:
     Node* startNd{};
     Node* endNd{};
 public:
-    Component();
     virtual ~Component();
-
+    Component();
     Component(Node &start, Node &end);
+    void operator+();
+    void operator-();
+    void operator/();
+    void operator*();
     Node &startNode();
     Node &endNode();
 

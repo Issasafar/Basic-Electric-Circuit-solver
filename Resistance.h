@@ -14,7 +14,6 @@ public:
     Resistance(double val, Node& start, Node& end);
 
     double resistance() const;
-
 };
 
 
