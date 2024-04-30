@@ -4,6 +4,7 @@
 #include "Node.h"
 #include "VoltageSource.h"
 #include "CurrentSource.h"
+#include "Component.h"
 
 using namespace std;
 
@@ -25,8 +26,13 @@ int main() {
         cout << "r1 is a resistor" << endl;
     }
     VoltageSource v1 = VoltageSource(10, 19);
+    VoltageSource v2 = VoltageSource(9, 8);
     CurrentSource c1 = CurrentSource(20, 90);
     cout << v1.resistance() << endl;
     cout << c1.current() << endl;
+    Component comp1 = Component(9, node2, node2);
+    Component comp2 = Component(2, node1, node2);
+    Component val = v1 + c1;
+    cout<<"the val value is "<<val.resistance()<<endl;
     return 0;
 }

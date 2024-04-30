@@ -23,7 +23,10 @@ public:
     Component(double resistance, Node& start, Node& end);
     template<class T>
     typename std::enable_if<std::is_base_of<Component, T>::value, Component>::type
-     operator+(T &other);
+    operator+(T &other){
+        return Component(r + other.r, startNode(), *other.endNd);
+    }
+
 //    void operator-();
 //    void operator/();
 //    void operator*();

@@ -27,9 +27,3 @@ double Component::current() const{return c;}
 void Component::voltage(double val){v = val;}
 void Component::resistance(double val) {r = val;}
 void Component::current(double val) {c = val;}
-
-template<class T>
-typename std::enable_if<std::is_base_of<Component, T>::value, Component>::type
-Component::operator+(T &other) {
-
-}
