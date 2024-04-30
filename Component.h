@@ -6,6 +6,7 @@
 #define DEMOPROJECT_COMPONENT_H
 
 
+#include <type_traits>
 #include "Node.h"
 
 class Component {
@@ -19,10 +20,13 @@ public:
     virtual ~Component();
     Component();
     Component(Node &start, Node &end);
-    void operator+();
-    void operator-();
-    void operator/();
-    void operator*();
+
+    template<class T>
+    typename std::enable_if<std::is_base_of<Component, T>::value, Component>::type
+     operator+(T &other);
+//    void operator-();
+//    void operator/();
+//    void operator*();
     Node &startNode();
     Node &endNode();
 

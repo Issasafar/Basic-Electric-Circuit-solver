@@ -19,8 +19,8 @@ int main() {
     Branch b = Branch();
     branch = &b;
     vector<Component> vector1 {*r1,r2,r3,r4,*branch};
-    if (dynamic_cast<Resistance*>(branch) != nullptr) {
-        cout<<"branch is a branch"<<endl;
+    if (dynamic_cast<Resistance*>(r1) != nullptr) {
+        cout<<"r1 is a resistor"<<endl;
     }
     return 0;
 }
