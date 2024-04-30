@@ -1,7 +1,7 @@
 # ninja log v5
 0	268	1713720307142490215	CMakeFiles/untitled.dir/Complex.cpp.o	28326cc50efaa2ac
 0	233	1714461497535783048	CMakeFiles/untitled.dir/main.cpp.o	157f21dbfffb0ed2
-0	37	1714470418972341032	build.ninja	66ae3689c7a5316f
+0	37	1714470668230777899	build.ninja	66ae3689c7a5316f
 0	70	1714224059740446001	CMakeFiles/untitled.dir/Node.cpp.o	962a8a747a975070
 1	44	1714461257345080296	CMakeFiles/untitled.dir/Resistance.cpp.o	5286cafb66fbf0f5
 1	44	1714461257345080296	CMakeFiles/untitled.dir/Component.cpp.o	4b23694c14ea175e
