@@ -20,7 +20,7 @@ public:
     virtual ~Component();
     Component();
     Component(Node &start, Node &end);
-
+    Component(double resistance, Node& start, Node& end);
     template<class T>
     typename std::enable_if<std::is_base_of<Component, T>::value, Component>::type
      operator+(T &other);

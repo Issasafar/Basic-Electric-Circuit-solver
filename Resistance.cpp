@@ -9,13 +9,5 @@ Resistance::Resistance() : Component()  {}
 
 Resistance::Resistance(double val)  : Component() {r = val;}
 
-Resistance::Resistance(double val, Node& start, Node& end) : Component(start,end){
-    r = val;
-    startNd->addConnection();
-    endNd->addConnection();
-}
-
+Resistance::Resistance(double val, Node &start, Node &end) : Component(val, start, end){}
 double Resistance::resistance() const { return r; }
-void Resistance::printValue() {std::cout<<"hello world";}
-
-
