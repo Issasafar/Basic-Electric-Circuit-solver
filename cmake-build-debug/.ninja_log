@@ -1,9 +1,22 @@
 # ninja log v5
 0	268	1713720307142490215	CMakeFiles/untitled.dir/Complex.cpp.o	28326cc50efaa2ac
 1	236	1714237786391009538	CMakeFiles/untitled.dir/main.cpp.o	157f21dbfffb0ed2
-0	37	1714471001638037297	build.ninja	66ae3689c7a5316f
+0	37	1714539587895645460	build.ninja	66ae3689c7a5316f
 0	70	1714224059740446001	CMakeFiles/untitled.dir/Node.cpp.o	962a8a747a975070
 1	21	1714236945301829115	CMakeFiles/untitled.dir/Resistance.cpp.o	5286cafb66fbf0f5
 2	21	1714236945301829115	CMakeFiles/untitled.dir/Component.cpp.o	4b23694c14ea175e
 236	315	1714237786471013075	untitled	8268ed328635239b
 2	109	1714236945389833006	CMakeFiles/untitled.dir/Branch.cpp.o	c901593e331c2d4b
+2	16	1714539599219536253	CMakeFiles/untitled.dir/test.cpp.o	374d3c2360afdb49
+1	20	1714539599223536214	CMakeFiles/untitled.dir/Node.cpp.o	962a8a747a975070
+1	21	1714539599227536176	CMakeFiles/untitled.dir/Resistance.cpp.o	5286cafb66fbf0f5
+2	23	1714539599227536176	CMakeFiles/untitled.dir/Component.cpp.o	4b23694c14ea175e
+2	115	1714539599319535289	CMakeFiles/untitled.dir/Branch.cpp.o	c901593e331c2d4b
+0	236	1714539599439534132	CMakeFiles/untitled.dir/main.cpp.o	157f21dbfffb0ed2
+236	314	1714539599515533399	untitled	bf18b9a706d48ce4
+1	237	1714539637951162902	CMakeFiles/untitled.dir/main.cpp.o	157f21dbfffb0ed2
+237	314	1714539638027162170	untitled	bf18b9a706d48ce4
+0	21	1714539667550877699	CMakeFiles/untitled.dir/Component.cpp.o	4b23694c14ea175e
+21	95	1714539667622877005	untitled	bf18b9a706d48ce4
+0	232	1714539677122785485	CMakeFiles/untitled.dir/main.cpp.o	157f21dbfffb0ed2
+232	309	1714539677202784714	untitled	bf18b9a706d48ce4

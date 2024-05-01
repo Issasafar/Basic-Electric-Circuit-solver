@@ -15,7 +15,7 @@ void Component::endNode(Node left) {
 void Component::startNode(Node start) {
     startNd->removeConnection();
     startNd = &start;
-    start.removeConnection();
+    start.addConnection();
 }
 
 Node &Component::startNode() { return *startNd; }

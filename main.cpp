@@ -22,5 +22,6 @@ int main() {
     if (dynamic_cast<Resistance*>(branch) != nullptr) {
         cout<<"branch is a branch"<<endl;
     }
+    cout<<node2.connectionsCount();
     return 0;
 }
