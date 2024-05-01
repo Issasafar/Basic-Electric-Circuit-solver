@@ -22,7 +22,7 @@ public:
 
     Component();
 
-    Component(double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node>end);
+    Component(double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end);
 
     template<class T>
     typename std::enable_if<std::is_base_of<Component, T>::value, Component>::type
@@ -37,9 +37,9 @@ public:
 
     std::shared_ptr<Node> endNode();
 
-    void startNode(Node r);
+    void startNode(const std::shared_ptr<Node> &r);
 
-    void endNode(Node l);
+    void endNode(std::shared_ptr<Node> &l);
 
     double resistance() const;
 

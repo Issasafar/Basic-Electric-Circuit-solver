@@ -11,24 +11,26 @@ Component::~Component() = default;
 Component::Component() : r{0}, v{0}, c{0} {}
 
 
-Component::Component(double resistance, std::shared_ptr<Node> start,std::shared_ptr<Node> end) : startNd{std::move(start)},
-                                                                  endNd{std::move(end)}, r{resistance},
-                                                                  v{0},
-                                                                  c{0} {
+Component::Component(double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end) : startNd{
+        std::move(start)},
+                                                                                                  endNd{std::move(end)},
+                                                                                                  r{resistance},
+                                                                                                  v{0},
+                                                                                                  c{0} {
     startNd->addConnection();
     endNd->addConnection();
 }
 
-void Component::endNode(Node end) {
+void Component::endNode(std::shared_ptr<Node> &end) {
     endNd->removeConnection();
-    end.addConnection();
-    endNd = std::make_shared<Node>(end);
+    end->addConnection();
+    endNd = end;
 }
 
-void Component::startNode(Node start) {
+void Component::startNode(const std::shared_ptr<Node> &start) {
     startNd->removeConnection();
-    start.addConnection();
-    startNd = std::make_shared<Node>(start);
+    start->addConnection();
+    startNd = start;
 }
 
 std::shared_ptr<Node> Component::startNode() { return startNd; }
