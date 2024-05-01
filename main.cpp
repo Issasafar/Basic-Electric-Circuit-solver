@@ -9,7 +9,7 @@
 using namespace std;
 
 int main() {
-    Node node1 = Node(9);
+    Node node1 =  Node(9);
     Node node2 = Node(1);
     Node ground = Node();
     Component *r1;
@@ -34,5 +34,6 @@ int main() {
     Component comp2 = Component(2, node1, node2);
     Component val = v1 + c1;
     cout<<"the val value is "<<val.resistance()<<endl;
+    cout<<"node1 connections count: "<<r2.startNode().connectionsCount()<<endl;
     return 0;
 }

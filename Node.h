@@ -18,7 +18,7 @@ public:
     void addConnection();
     void removeConnection();
     void value(int val);
-    int connectionsCount();
+    int connectionsCount() const;
     [[nodiscard]] int value() const;
 };
 

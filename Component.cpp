@@ -6,16 +6,16 @@
 Component::~Component() = default;
 Component::Component() : r{0}, v{0}, c{0}{}
 Component::Component(double resistance,Node &start, Node &end) : startNd{&start}, endNd{&end}, r{resistance}, v{0}, c{0}{}
-void Component::endNode(Node left) {
+void Component::endNode(Node end) {
     endNd->removeConnection();
-    endNd = &left;
-    left.addConnection();
+    endNd = &end;
+    end.addConnection();
 }
 
 void Component::startNode(Node start) {
     startNd->removeConnection();
     startNd = &start;
-    start.removeConnection();
+    start.addConnection();
 }
 
 Node &Component::startNode() { return *startNd; }
