@@ -7,6 +7,7 @@
 
 
 #include <type_traits>
+#include <iostream>
 #include "Node.h"
 #include <memory>
 
@@ -23,8 +24,15 @@ public:
     Component();
 
     Component(double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end);
-
     template<class T>
+    typename std::enable_if<std::is_base_of<Component, T>::value, Component>::type
+    operator+=(T other) {
+        if (typeid(other) == typeid(*this)) {
+            std::cout<<"they are of same type"<<std::endl;
+        }
+        return Component(r + other.r, startNode(), other.endNode());
+    }
+   template<class T>
     typename std::enable_if<std::is_base_of<Component, T>::value, Component>::type
     operator+(T &other) {
         return Component(r + other.r, startNode(), other.endNode());
