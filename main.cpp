@@ -25,15 +25,22 @@ int main() {
     if (dynamic_cast<Resistance *>(r1) != nullptr) {
         cout << "r1 is a resistor" << endl;
     }
-    VoltageSource v1 = VoltageSource(10, 19);
+    Node vn { 99 };
+    Node ve {8};
+    Node cn { 90 };
+    Node ce {7};
+
+    VoltageSource v1 = VoltageSource(10, 19,vn, ve);
     VoltageSource v2 = VoltageSource(9, 8);
-    CurrentSource c1 = CurrentSource(20, 90);
+    CurrentSource c1 = CurrentSource(20, 90, cn, ce);
     cout << v1.resistance() << endl;
     cout << c1.current() << endl;
     Component comp1 = Component(9, node2, node2);
     Component comp2 = Component(2, node1, node2);
-    Component val = v1 + c1;
+    Component val = v1 + c1 ;
     cout<<"the val value is "<<val.resistance()<<endl;
     cout<<"node1 connections count: "<<r2.startNode().connectionsCount()<<endl;
+    cout<<v1.startNode().connectionsCount()<<endl;
+    cout<<"val connection start count is : "<<val.startNode().connectionsCount()<<" with value of: "<<val.startNode().value()<<endl;
     return 0;
 }
