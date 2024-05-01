@@ -4,5 +4,5 @@
 
 #include "VoltageSource.h"
 VoltageSource::VoltageSource(): Component() {}
-VoltageSource::VoltageSource(double val, double resistance, Node &start, Node &end) : Component(resistance, start, end){c = val;}
+VoltageSource::VoltageSource(double val, double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end) : Component(resistance, start, end){c = val;}
 VoltageSource::VoltageSource(double val, double resistance){c = val; r = resistance;}

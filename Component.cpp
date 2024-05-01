@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <utility>
 #include "Component.h"
 
 Component::~Component() = default;
@@ -10,27 +11,29 @@ Component::~Component() = default;
 Component::Component() : r{0}, v{0}, c{0} {}
 
 
-Component::Component(double resistance, Node &start, Node &end) : startNd{&start}, endNd{&end}, r{resistance}, v{0},
+Component::Component(double resistance, std::shared_ptr<Node> start,std::shared_ptr<Node> end) : startNd{std::move(start)},
+                                                                  endNd{std::move(end)}, r{resistance},
+                                                                  v{0},
                                                                   c{0} {
-    start.addConnection();
-    end.addConnection();
+    startNd->addConnection();
+    endNd->addConnection();
 }
 
 void Component::endNode(Node end) {
     endNd->removeConnection();
-    endNd = &end;
     end.addConnection();
+    endNd = std::make_shared<Node>(end);
 }
 
 void Component::startNode(Node start) {
     startNd->removeConnection();
-    startNd = &start;
     start.addConnection();
+    startNd = std::make_shared<Node>(start);
 }
 
-Node &Component::startNode() { return *startNd; }
+std::shared_ptr<Node> Component::startNode() { return startNd; }
 
-Node &Component::endNode() { return *endNd; }
+std::shared_ptr<Node> Component::endNode() { return endNd; }
 
 double Component::resistance() const { return r; }
 

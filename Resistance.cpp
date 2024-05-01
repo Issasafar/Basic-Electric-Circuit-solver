@@ -9,5 +9,5 @@ Resistance::Resistance() : Component()  {}
 
 Resistance::Resistance(double val)  : Component() {r = val;}
 
-Resistance::Resistance(double val, Node &start, Node &end) : Component(val, start, end){}
+Resistance::Resistance(double val, std::shared_ptr<Node> start, std::shared_ptr<Node> end) : Component(val, start, end){}
 double Resistance::resistance() const { return r; }

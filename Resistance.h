@@ -11,7 +11,7 @@ class Resistance : public Component {
 public:
     Resistance();
     Resistance(double val);
-    Resistance(double val, Node& start, Node& end);
+    Resistance(double val, std::shared_ptr<Node> start, std::shared_ptr<Node> end);
 
     double resistance() const;
 };

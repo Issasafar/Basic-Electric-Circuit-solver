@@ -9,15 +9,17 @@
 using namespace std;
 
 int main() {
-    Node node1 =  Node(9);
-    Node node2 = Node(1);
-    Node ground = Node();
+    std::shared_ptr<Node> node1 = std::make_shared<Node>(Node(9));
+    std::shared_ptr<Node> node2 =  std::make_shared<Node>(Node(1));
+    std::shared_ptr<Node>  ground =std::make_shared<Node>( Node());
     Component *r1;
     Resistance resistance = Resistance(10, node1, node2);
     r1 = &resistance;
-    Component r2 = Resistance(20, r1->startNode(), node2);
+    Component r2 = Resistance(20, node1, node2);
     Component r3 = Resistance(30, ground, node2);
     Component r4 = Resistance(40, node2, node1);
+    cout<<"node1 connections count: "<<r2.startNode()->connectionsCount()<<endl;
+
     Component *branch;
     Branch b = Branch();
     branch = &b;
@@ -25,22 +27,21 @@ int main() {
     if (dynamic_cast<Resistance *>(r1) != nullptr) {
         cout << "r1 is a resistor" << endl;
     }
-    Node vn { 99 };
-    Node ve {8};
-    Node cn { 90 };
-    Node ce {7};
-
-    VoltageSource v1 = VoltageSource(10, 19,vn, ve);
-    VoltageSource v2 = VoltageSource(9, 8);
-    CurrentSource c1 = CurrentSource(20, 90, cn, ce);
-    cout << v1.resistance() << endl;
-    cout << c1.current() << endl;
-    Component comp1 = Component(9, node2, node2);
-    Component comp2 = Component(2, node1, node2);
-    Component val = v1 + c1 ;
-    cout<<"the val value is "<<val.resistance()<<endl;
-    cout<<"node1 connections count: "<<r2.startNode().connectionsCount()<<endl;
-    cout<<v1.startNode().connectionsCount()<<endl;
-    cout<<"val connection start count is : "<<val.startNode().connectionsCount()<<" with value of: "<<val.startNode().value()<<endl;
+//    Node vn { 99 };
+//    Node ve {8};
+//    Node cn { 90 };
+//    Node ce {7};
+//
+//    VoltageSource v1 = VoltageSource(10, 19,vn, ve);
+//    VoltageSource v2 = VoltageSource(9, 8);
+//    CurrentSource c1 = CurrentSource(20, 90, cn, ce);
+//    cout << v1.resistance() << endl;
+//    cout << c1.current() << endl;
+//    Component comp1 = Component(9, node2, node2);
+//    Component comp2 = Component(2,* node1, node2);
+//    Component val = v1 + c1 ;
+//    cout<<"the val value is "<<val.resistance()<<endl;
+//    cout<<v1.startNode()->connectionsCount()<<endl;
+//    cout<<"val connection start count is : "<<val.startNode()->connectionsCount()<<" with value of: "<<val.startNode()->value()<<endl;
     return 0;
 }
