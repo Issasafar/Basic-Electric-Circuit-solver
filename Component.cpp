@@ -21,6 +21,10 @@ Component::Component(double resistance, std::shared_ptr<Node> start, std::shared
     endNd->addConnection();
 }
 
+Component Component::add(Component *other) {
+    return {};
+}
+
 void Component::endNode(std::shared_ptr<Node> &end) {
     endNd->removeConnection();
     end->addConnection();

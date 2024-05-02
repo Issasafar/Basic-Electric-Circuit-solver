@@ -20,23 +20,23 @@ protected:
     std::shared_ptr<Node> endNd{new Node()};
 public:
     virtual ~Component();
-
+    virtual Component add(Component *other);
     Component();
 
     Component(double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end);
     template<class T>
     typename std::enable_if<std::is_base_of<Component, T>::value, Component>::type
-    operator+=(T other) {
-        if (typeid(other) == typeid(*this)) {
-            std::cout<<"they are of same type"<<std::endl;
-        }
-        return Component(r + other.r, startNode(), other.endNode());
+    operator+=(T &other) {
+        return add(dynamic_cast<Component *>(&other));
     }
-   template<class T>
+    template<class T>
     typename std::enable_if<std::is_base_of<Component, T>::value, Component>::type
-    operator+(T &other) {
-        return Component(r + other.r, startNode(), other.endNode());
-    }
+    operator+(T &other);
+//    template<class T>
+//    typename std::enable_if<std::is_base_of<Component, T>::value, Component>::type
+//    operator+(T other) {
+//        return *this += other;
+//    }
 
 //    void operator-();
 //    void operator/();

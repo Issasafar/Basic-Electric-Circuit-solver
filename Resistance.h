@@ -6,7 +6,6 @@
 #define UNTITLED_RESISTANCE_H
 #include "Node.h"
 #include "Component.h"
-
 class Resistance : public Component {
 public:
     Resistance();
@@ -14,6 +13,8 @@ public:
     Resistance(double val, std::shared_ptr<Node> start, std::shared_ptr<Node> end);
 
     double resistance() const;
+    Component add(Component *other) override;
+
 };
 
 
