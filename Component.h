@@ -18,9 +18,9 @@ protected:
     double c;
     std::shared_ptr<Node> startNd{new Node()};
     std::shared_ptr<Node> endNd{new Node()};
+    virtual Component add(Component *other);
 public:
     virtual ~Component();
-    virtual Component add(Component *other);
     Component();
 
     Component(double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end);

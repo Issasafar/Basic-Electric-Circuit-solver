@@ -38,7 +38,7 @@ int main() {
     cout << c1.current() << endl;
     Component comp1 = Component(9, node2, node2);
     Component comp2 = Component(2, node1, node2);
-    Component val = c1 + v1;
+    Component val = v2 + v1;
     cout << "the val resistance value is " << val.resistance() << endl;
     cout << v1.startNode()->connectionsCount() << endl;
     cout << "val connection start count is : " << val.startNode()->connectionsCount() << " with value of Node: "
@@ -52,7 +52,6 @@ typename std::enable_if<std::is_base_of<Component, T>::value, Component>::type
 Component::operator+(T& other) {
     if (dynamic_cast<Component *> (this) != nullptr) {
         cout << "this is a component" << endl;
-
     }
     if (dynamic_cast<VoltageSource * >(this) != nullptr) {
         cout << "this is a voltagesource" << endl;
