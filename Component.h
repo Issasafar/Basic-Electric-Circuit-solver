@@ -19,9 +19,9 @@ protected:
     std::shared_ptr<Node> startNd{new Node()};
     std::shared_ptr<Node> endNd{new Node()};
 
-    virtual Component& addEqual(Component* thisObj, Component *other);
+    virtual Component &addEqual(Component *thisObj, Component *other);
 
-    virtual Component& subtractEqual(Component *other);
+    virtual Component &subtractEqual(Component *other);
 
     virtual Component add(Component *thisObj, Component *other);
 
@@ -39,36 +39,38 @@ public:
     Component(double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end);
 
     template<class T>
-    typename std::enable_if<std::is_base_of<Component, T>::value, Component&>::type
+    typename std::enable_if<std::is_base_of<Component, T>::value, Component &>::type
     operator+=(T other) {
-        Component thisObj = *this;
-        return addEqual(&thisObj,dynamic_cast<Component *>(&other));
+        return addEqual(std::make_unique<Component>(*this).get(), dynamic_cast<Component *>(&other));
     }
 
     template<class T>
-    typename std::enable_if<std::is_base_of<Component, T>::value, Component&>::type
-    operator-=(T other){
+    typename std::enable_if<std::is_base_of<Component, T>::value, Component &>::type
+    operator-=(T other) {
         return subtractEqual(dynamic_cast<Component *>(&other));
     }
+
     template<class T>
     typename std::enable_if<std::is_base_of<Component, T>::value, Component>::type
-    operator+(T other){
-        Component thisObj = *this;
-        return add(&thisObj, dynamic_cast<Component *>(&other));
+    operator+(T other) {
+        return add(std::make_unique<Component>(*this).get(), dynamic_cast<Component *>(&other));
     }
+
     template<class T>
     typename std::enable_if<std::is_base_of<Component, T>::value, Component>::type
-    operator-(T other){
+    operator-(T other) {
         return subtract(dynamic_cast<Component *>(&other));
     }
+
     template<class T>
     typename std::enable_if<std::is_base_of<Component, T>::value, Component>::type
-    operator*(T other){
+    operator*(T other) {
         return multiply(dynamic_cast<Component *>(&other));
     }
+
     template<class T>
     typename std::enable_if<std::is_base_of<Component, T>::value, Component>::type
-    operator/(T other){
+    operator/(T other) {
         return divide(dynamic_cast<Component *>(&other));
     }
 
