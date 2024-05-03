@@ -21,9 +21,26 @@ Component::Component(double resistance, std::shared_ptr<Node> start, std::shared
     endNd->addConnection();
 }
 
-Component Component::add(Component *other) {
+Component Component::add(Component  *thisObj,Component *other) {
     return {};
 }
+Component& Component::addEqual(Component *thisObj, Component *other){
+    return *this;
+}
+Component Component::subtract(Component *other){
+    return {};
+}
+Component& Component::subtractEqual(Component *other){
+    return *this;
+}
+Component Component::multiply(Component *other){
+    return {};
+}
+Component Component::divide(Component *other){
+    return {};
+}
+
+
 
 void Component::endNode(std::shared_ptr<Node> &end) {
     endNd->removeConnection();

@@ -7,13 +7,16 @@
 #include "Node.h"
 #include "Component.h"
 class Resistance : public Component {
+private:
+    Component add(Component *thisObj, Component *other) override;
+    Component& addEqual(Component *thisObj, Component *other) override;
+    Component& subtractEqual(Component *other) override;
 public:
     Resistance();
     Resistance(double val);
     Resistance(double val, std::shared_ptr<Node> start, std::shared_ptr<Node> end);
 
     double resistance() const;
-    Component add(Component *other) override;
 
 };
 
