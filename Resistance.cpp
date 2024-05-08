@@ -4,9 +4,9 @@
 
 #include "Resistance.h"
 #include "Component.h"
-#include "VoltageSource.h"
 #include <iostream>
 #include <utility>
+#include <regex>
 
 Resistance::Resistance() : Component() {}
 
@@ -20,18 +20,13 @@ Resistance::Resistance(double val, std::shared_ptr<Node> start, std::shared_ptr<
 double Resistance::resistance() const { return r; }
 
 Component &Resistance::add_equal(Component *thisObj, Component *other) {
-
-    if (dynamic_cast<VoltageSource *>(other) != nullptr) {
-        std::cout<<"its a vsource in add resistance";
+    if (dynamic_cast<Resistance *>(other)) {
+        return Component::add_equal(thisObj, other);
+    } else {
+        std::string error_message = "Cannot add a Resistance with "+std::string(typeid(*other).name());
+        throw std::runtime_error(error_message);
     }
 
-    if (dynamic_cast<Resistance *>(other) != nullptr) {
-        std::cout<<"its a resistor in add resistance";
-    }
-
-    std::cout<<"Resistance::add_equal "<<this->resistance()<<", "<<other->resistance()<<std::endl;
-    thisObj->resistance(thisObj->resistance() +other->resistance());
-    return *thisObj;
 }
 Component &Resistance::subtract_equal(Component*thisObj,Component *other) {
     r -= other->resistance();
