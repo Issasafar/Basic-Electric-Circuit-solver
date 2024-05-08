@@ -4,6 +4,7 @@
 
 #include "Resistance.h"
 #include "Component.h"
+#include "VoltageSource.h"
 #include <iostream>
 #include <utility>
 
@@ -18,16 +19,25 @@ Resistance::Resistance(double val, std::shared_ptr<Node> start, std::shared_ptr<
 
 double Resistance::resistance() const { return r; }
 
-Component &Resistance::addEqual(Component *thisObj, Component *other) {
-    std::cout<<"Resistance::addEqual "<<this->resistance()<<", "<<other->resistance()<<std::endl;
+Component &Resistance::add_equal(Component *thisObj, Component *other) {
+
+    if (dynamic_cast<VoltageSource *>(other) != nullptr) {
+        std::cout<<"its a vsource in add resistance";
+    }
+
+    if (dynamic_cast<Resistance *>(other) != nullptr) {
+        std::cout<<"its a resistor in add resistance";
+    }
+
+    std::cout<<"Resistance::add_equal "<<this->resistance()<<", "<<other->resistance()<<std::endl;
     thisObj->resistance(thisObj->resistance() +other->resistance());
     return *thisObj;
 }
-Component &Resistance::subtractEqual(Component *other) {
+Component &Resistance::subtract_equal(Component*thisObj,Component *other) {
     r -= other->resistance();
     return *this;
 }
 Component Resistance::add(Component *thisObj,Component *other) {
     std::cout<<"Resistance::add "<<thisObj->resistance()<<", "<<other->resistance()<<std::endl;
-    return addEqual(thisObj,other);
+    return add_equal(thisObj, other);
 }

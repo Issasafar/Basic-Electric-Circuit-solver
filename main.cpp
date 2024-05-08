@@ -41,5 +41,16 @@ int main() {
     std::cout << "val connection start count is : " << val.startNode()->connectionsCount() << " with value of Node: "
          << val.startNode()->value() << std::endl;
     std::cout << "node1 connections count: " << r2.startNode()->connectionsCount() << std::endl;
+    Component cmp1 = Component(10,node2, node1);
+    Component cmp2 = Component(7, node2, node2);
+    Component cmp3 = cmp1 * cmp2;
+    std::cout<<cmp1.to_string();
+    std::cout<<cmp2.to_string();
+    std::cout<<cmp3.to_string();
+    cmp1 += cmp2;
+    std::cout<<cmp1.to_string();
+    r2 + v1;
+    r2 + r3;
     return 0;
+
 }

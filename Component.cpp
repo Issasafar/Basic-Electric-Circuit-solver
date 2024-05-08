@@ -5,6 +5,7 @@
 #include <iostream>
 #include <utility>
 #include "Component.h"
+#include "VoltageSource.h"
 
 Component::~Component() = default;
 
@@ -22,21 +23,30 @@ Component::Component(double resistance, std::shared_ptr<Node> start, std::shared
 }
 
 Component Component::add(Component  *thisObj,Component *other) {
-    return {};
+    return add_equal(thisObj, other);
 }
-Component& Component::addEqual(Component *thisObj, Component *other){
-    return *this;
+Component& Component::add_equal(Component *thisObj, Component *other){
+    thisObj->r += other->r;
+    thisObj->v += other->v;
+    thisObj->c += other->c;
+    return *thisObj;
 }
-Component Component::subtract(Component *other){
-    return {};
+Component& Component::subtract_equal(Component*thisObj, Component *other){
+    thisObj->r -= other->r;
+    thisObj->v -= other->v;
+    thisObj->c -= other->c;
+    return *thisObj;
 }
-Component& Component::subtractEqual(Component *other){
-    return *this;
+Component Component::subtract(Component*thisObj,Component *other){
+    return subtract_equal(thisObj, other);
 }
-Component Component::multiply(Component *other){
-    return {};
+Component Component::multiply(Component*thisObj,Component *other){
+    thisObj->r *= other->r;
+    thisObj->v *= other->v;
+    thisObj->c *= other->c;
+    return *thisObj;
 }
-Component Component::divide(Component *other){
+Component Component::divide(Component*thisObj,Component *other){
     return {};
 }
 
@@ -52,6 +62,9 @@ void Component::startNode(const std::shared_ptr<Node> &start) {
     startNd->removeConnection();
     start->addConnection();
     startNd = start;
+}
+std::string Component::to_string() {
+    return "Component with: R= "+ std::to_string(this->r) + ", V= "+std::to_string(this->v)+", C= "+std::to_string(this->c)+ "\n";
 }
 
 std::shared_ptr<Node> Component::startNode() { return startNd; }

@@ -9,8 +9,8 @@
 class Resistance : public Component {
 private:
     Component add(Component *thisObj, Component *other) override;
-    Component& addEqual(Component *thisObj, Component *other) override;
-    Component& subtractEqual(Component *other) override;
+    Component& add_equal(Component *thisObj, Component *other) override;
+    Component& subtract_equal(Component*thisObj,Component *other) override;
 public:
     Resistance();
     Resistance(double val);
