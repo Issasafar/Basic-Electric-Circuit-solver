@@ -6,7 +6,6 @@
 #include "CurrentSource.h"
 #include "Component.h"
 
-using namespace std;
 
 int main() {
     std::shared_ptr<Node> node1{std::make_shared<Node>(Node(9))};
@@ -22,9 +21,9 @@ int main() {
     Component *branch;
     Branch b = Branch();
     branch = &b;
-    vector<Component> vector1{*r1, r2, r3, r4, *branch};
+    std::vector<Component> vector1{*r1, r2, r3, r4, *branch};
     if (dynamic_cast<Resistance *>(r1) != nullptr) {
-        cout << "r1 is a resistor" << endl;
+        std::cout << "r1 is a resistor" << std::endl;
     }
     std::shared_ptr<Node> vn{std::make_shared<Node>(Node(99))};
     std::shared_ptr<Node> ve{std::make_shared<Node>(Node(8))};
@@ -37,10 +36,10 @@ int main() {
     Component comp1 = Component(9, node2, node2);
     Component comp2 = Component(2, node1, node2);
     Component val = r2 + r3;
-    cout<<"the values for r2 are: "<<r2.resistance()<<endl;
-    cout << "the val resistance value is " << val.resistance() << endl;
-    cout << "val connection start count is : " << val.startNode()->connectionsCount() << " with value of Node: "
-         << val.startNode()->value() << endl;
-    cout << "node1 connections count: " << r2.startNode()->connectionsCount() << endl;
+    std::cout<<"the values for r2 are: "<<r2.resistance()<<std::endl;
+    std::cout << "the val resistance value is " << val.resistance() << std::endl;
+    std::cout << "val connection start count is : " << val.startNode()->connectionsCount() << " with value of Node: "
+         << val.startNode()->value() << std::endl;
+    std::cout << "node1 connections count: " << r2.startNode()->connectionsCount() << std::endl;
     return 0;
 }
