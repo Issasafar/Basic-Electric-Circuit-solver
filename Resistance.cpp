@@ -33,7 +33,7 @@ Component &Resistance::subtract_equal(Component*thisObj,Component *other) {
     if (dynamic_cast<Resistance *>(other)) {
         return Component::subtract_equal(thisObj, other);
     } else {
-        std::string error_message = "Cannot add a "+ get_class_name() with "+std::string(typeid(*other).name());
+        std::string error_message = "Cannot add a "+ get_class_name(this)+ " with "+get_class_name(other);
         throw std::runtime_error(error_message);
     }
 }
