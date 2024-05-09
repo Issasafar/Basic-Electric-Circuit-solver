@@ -18,9 +18,6 @@ protected:
     double c;
     std::shared_ptr<Node> startNd{new Node()};
     std::shared_ptr<Node> endNd{new Node()};
-    template<typename T>
-    typename std::enable_if<std::is_base_of<Component, T>::value, std::string >::type
-    get_class_name(T object );
     virtual Component &add_equal(Component *thisObj, Component *other);
 
     virtual Component &subtract_equal(Component *thisObj, Component *other);
@@ -34,6 +31,8 @@ protected:
     virtual Component divide(Component *thisObj, Component *other);
 
 public:
+    template<typename T>
+    std::string get_class_name(T object );
     virtual ~Component();
 
     Component();

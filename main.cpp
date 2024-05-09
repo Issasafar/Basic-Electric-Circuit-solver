@@ -47,10 +47,11 @@ int main() {
     std::cout<<cmp1.to_string();
     std::cout<<cmp2.to_string();
     std::cout<<cmp3.to_string();
-    cmp1 += cmp2;
+//    cmp1 += cmp2;
     std::cout<<cmp1.to_string();
-    r2 + v1;
-    r2 + r3;
+    std::cout<<r2.get_class_name(r2);
+//    r2 + v1;
+//    r2 + r3;
 
     return 0;
 
