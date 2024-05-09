@@ -30,8 +30,12 @@ Component &Resistance::add_equal(Component *thisObj, Component *other) {
 
 }
 Component &Resistance::subtract_equal(Component*thisObj,Component *other) {
-    r -= other->resistance();
-    return *this;
+    if (dynamic_cast<Resistance *>(other)) {
+        return Component::subtract_equal(thisObj, other);
+    } else {
+        std::string error_message = "Cannot add a "+ get_class_name() with "+std::string(typeid(*other).name());
+        throw std::runtime_error(error_message);
+    }
 }
 Component Resistance::add(Component *thisObj,Component *other) {
     std::cout<<"Resistance::add "<<thisObj->resistance()<<", "<<other->resistance()<<std::endl;

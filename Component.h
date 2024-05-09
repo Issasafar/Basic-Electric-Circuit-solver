@@ -18,6 +18,8 @@ protected:
     double c;
     std::shared_ptr<Node> startNd{new Node()};
     std::shared_ptr<Node> endNd{new Node()};
+    template<typename T>
+    std::string get_class_name(T object = nullptr );
     virtual Component &add_equal(Component *thisObj, Component *other);
 
     virtual Component &subtract_equal(Component *thisObj, Component *other);
