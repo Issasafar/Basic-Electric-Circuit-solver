@@ -49,7 +49,6 @@ int main() {
     std::cout<<cmp3.to_string();
     cmp1 += cmp2;
     std::cout<<cmp1.to_string();
-    r2 + c1;
     r2 + v1;
     r2 + r3;
     return 0;

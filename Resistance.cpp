@@ -24,6 +24,7 @@ Component &Resistance::add_equal(Component *thisObj, Component *other) {
         return Component::add_equal(thisObj, other);
     } else {
         std::string error_message = "Cannot add a Resistance with "+std::string(typeid(*other).name());
+        error_message = std::regex_replace(error_message, std::regex("[0-9]+"), "");
         throw std::runtime_error(error_message);
     }
 
