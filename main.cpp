@@ -46,16 +46,18 @@ int main() {
     Component cmp1 = Component(10, node2, node1);
     Component cmp2 = Component(7, node2, node2);
     Component cmp3 = cmp1 * cmp2;
-    std::cout << cmp1.to_string();
-    std::cout << cmp2.to_string();
-    std::cout << cmp3.to_string();
+    std::cout << r2.to_string() << std::endl;
+    std::cout << v1.to_string() << std::endl;
+    std::cout << c1.to_string() << std::endl;
 //    cmp1 += cmp2;
-    std::cout << cmp1.to_string();
+    std::cout << cmp1.to_string()<<std::endl;
 //    std::cout<<cmp1.get_class_name();
-    r2 + v1;
-//    r2 + r3;
-
-
+    r2 + r3;
+    // auto  result =  r2 + r3;
+    v1 + c1;
+    Component s = static_cast<Component>(c1);
+    s = cmp2 * s;
+    std::cout << s.to_string() << std::endl;
     return 0;
 
 }

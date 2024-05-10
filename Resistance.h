@@ -6,9 +6,13 @@
 #define UNTITLED_RESISTANCE_H
 #include "Node.h"
 #include "Component.h"
+
 class Resistance : public Component {
 private:
     Component add(Component *thisObj, Component *other) override;
+    Component subtract(Component *thisObj, Component *other) override;
+    Component multiply(Component *thisObj, Component *other) override;
+    Component divide(Component *thisObj, Component *other) override;
     Component& add_equal(Component *thisObj, Component *other) override;
     Component& subtract_equal(Component*thisObj,Component *other) override;
 public:

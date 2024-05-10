@@ -1,8 +1,4 @@
 /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/local/softwares/clion-2023.1.4/bin/ninja/linux/x64/ninja -G Ninja -S /home/issa/CLionProjects/DemoProjects -B /home/issa/CLionProjects/DemoProjects/cmake-build-debug
-CMake Error at CMakeLists.txt:6:
-  Parse error.  Expected a command name, got unquoted argument with text
-  "<<<<<<<".
-
-
--- Configuring incomplete, errors occurred!
-See also "/home/issa/CLionProjects/DemoProjects/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/issa/CLionProjects/DemoProjects/cmake-build-debug

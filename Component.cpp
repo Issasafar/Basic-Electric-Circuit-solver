@@ -2,11 +2,18 @@
 // Created by issa on 27/04/24.
 //
 
-#include <iostream>
 #include <utility>
 #include <regex>
 #include "Component.h"
+#include "CircuitException.h"
 
+
+bool is_valid_operation(Component *thisObj, Component *other){
+    if (thisObj->get_class_name() == other->get_class_name()) {
+        return true;
+    }
+    return false;
+}
 Component::~Component() = default;
 
 Component::Component() : r{0}, v{0}, c{0} {}
@@ -30,6 +37,7 @@ Component Component::add(Component *thisObj, Component *other) {
 }
 
 Component &Component::add_equal(Component *thisObj, Component *other) {
+    if (!is_valid_operation(this, other)) {throw CircuitException("invalid operation add: "+this->to_string()+", "+other->to_string());}
     thisObj->r += other->r;
     thisObj->v += other->v;
     thisObj->c += other->c;
@@ -37,6 +45,7 @@ Component &Component::add_equal(Component *thisObj, Component *other) {
 }
 
 Component &Component::subtract_equal(Component *thisObj, Component *other) {
+    if (!is_valid_operation(this, other)) {throw CircuitException("invalid operation subtract: "+this->to_string()+", "+other->to_string());}
     thisObj->r -= other->r;
     thisObj->v -= other->v;
     thisObj->c -= other->c;
@@ -48,6 +57,7 @@ Component Component::subtract(Component *thisObj, Component *other) {
 }
 
 Component Component::multiply(Component *thisObj, Component *other) {
+    if (!is_valid_operation(this, other)) {throw CircuitException("invalid operation multiply: "+this->to_string()+", "+other->to_string());}
     thisObj->r *= other->r;
     thisObj->v *= other->v;
     thisObj->c *= other->c;
@@ -55,7 +65,11 @@ Component Component::multiply(Component *thisObj, Component *other) {
 }
 
 Component Component::divide(Component *thisObj, Component *other) {
-    return {};
+    if (!is_valid_operation(this, other)) {throw CircuitException("invalid operation divide: "+this->to_string()+", "+other->to_string());}
+    thisObj->r /= other->r;
+    thisObj->v /= other->v;
+    thisObj->c /= other->c;
+    return *thisObj;
 }
 
 
@@ -74,8 +88,19 @@ void Component::startNode(const std::shared_ptr<Node> &start) {
 }
 
 std::string Component::to_string() {
-    return "Component with: R= " + std::to_string(this->r) + ", V= " + std::to_string(this->v) + ", C= " +
-           std::to_string(this->c) + "\n";
+    Component* this_component { dynamic_cast<Component*>(this)};
+    std::string message = this->get_class_name()+":";
+    if (this_component->r != 0) {
+       message += " R= "+std::to_string(this_component->r);
+    }
+    if (this_component->v != 0) {
+        message += ", V= "+std::to_string(this_component->v);
+    }
+    if (this_component->c != 0) {
+        message += ", C= "+std::to_string(this_component->c);
+    }
+//    message += "\n";
+    return message;
 }
 
 std::shared_ptr<Node> Component::startNode() { return startNd; }

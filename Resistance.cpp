@@ -4,10 +4,10 @@
 
 #include "Resistance.h"
 #include "Component.h"
-#include <iostream>
 #include <utility>
-#include <regex>
 #include "CircuitException.h"
+#include "Operators.h"
+
 Resistance::Resistance() : Component() {}
 
 Resistance::Resistance(double val) : Component() { r = val; }
@@ -23,21 +23,43 @@ Component &Resistance::add_equal(Component *thisObj, Component *other) {
     if (dynamic_cast<Resistance *>(other)) {
         return Component::add_equal(thisObj, other);
     } else {
-        std::string error_message = "Cannot add a Resistance with "+std::string(typeid(*other).name());
-        error_message = std::regex_replace(error_message, std::regex("[0-9]+"), "");
-        throw std::runtime_error(error_message);
+        throw CircuitException(
+                circuit::operator_error_message(circuit::Operator::PLUS, this, other)
+        );
     }
 
 }
-Component &Resistance::subtract_equal(Component*thisObj,Component *other) {
+
+Component &Resistance::subtract_equal(Component *thisObj, Component *other) {
     if (dynamic_cast<Resistance *>(other)) {
         return Component::subtract_equal(thisObj, other);
     } else {
-        std::string error_message = "Cannot add a "+ this->get_class_name()+ " with "+other->get_class_name();
-        throw CircuitException(error_message);
+        throw CircuitException(
+                circuit::operator_error_message(circuit::Operator::MINUS, this, other)
+        );
     }
 }
-Component Resistance::add(Component *thisObj,Component *other) {
-    std::cout<<"Resistance::add "<<thisObj->resistance()<<", "<<other->resistance()<<std::endl;
+
+Component Resistance::add(Component *thisObj, Component *other) {
     return add_equal(thisObj, other);
+}
+
+Component Resistance::subtract(Component *thisObj, Component *other) {
+    return subtract_equal(thisObj, other);
+}
+
+Component Resistance::multiply(Component *thisObj, Component *other) {
+    if (dynamic_cast<Resistance *>(other)) {
+        return Component::multiply(thisObj, other);
+    } else {
+        throw CircuitException(circuit::operator_error_message(circuit::Operator::TIMES, this, other));
+    }
+}
+
+Component Resistance::divide(Component *thisObj, Component *other) {
+    if (dynamic_cast<Resistance *>(other)) {
+        return Component::divide(thisObj, other);
+    } else {
+        throw CircuitException(circuit::operator_error_message(circuit::Operator::DIVIDE, this, other));
+    }
 }
