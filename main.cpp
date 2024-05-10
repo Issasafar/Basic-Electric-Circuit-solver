@@ -5,7 +5,7 @@
 #include "VoltageSource.h"
 #include "CurrentSource.h"
 #include "Component.h"
-
+#include "Voltage.h"
 
 int main() {
     std::shared_ptr<Node> node1{std::make_shared<Node>(Node(9))};
@@ -52,12 +52,21 @@ int main() {
 //    cmp1 += cmp2;
     std::cout << cmp1.to_string()<<std::endl;
 //    std::cout<<cmp1.get_class_name();
-    r2 + r3;
+//    r2 + r3;
     // auto  result =  r2 + r3;
-    v1 + c1;
+//    v1 + c1;
     Component s = static_cast<Component>(c1);
     s = cmp2 * s;
     std::cout << s.to_string() << std::endl;
+    Voltage vv1 = Voltage(9,true);
+    std::cout<<vv1.voltage()<<std::endl;
+
+    ground->get_voltage(9);
+//    nodev.get_voltage();
+    std::shared_ptr<Node> dev = std::make_shared<Node>(Node(9, 10));
+
+    ground->get_voltage().known();
+
     return 0;
 
 }
