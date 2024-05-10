@@ -21,12 +21,6 @@ Component::Component(double resistance, std::shared_ptr<Node> start, std::shared
     startNd->addConnection();
     endNd->addConnection();
 }
-// TODO() fix this
-template<typename T>
-std::string Component::get_class_name(T object) {
-    if (object != nullptr) { return std::regex_replace(std::string(typeid(object).name()), std::regex("[0-9]+"), ""); }
-    return std::regex_replace(std::string(typeid(this).name()), std::regex("[0-9]+"), "");
-}
 
 Component Component::add(Component *thisObj, Component *other) {
     return add_equal(thisObj, other);

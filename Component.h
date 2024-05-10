@@ -32,7 +32,7 @@ protected:
 
 public:
     template<typename T>
-    std::string get_class_name(T object );
+    std::string get_class_name(T object = nullptr );
     virtual ~Component();
 
     Component();
@@ -99,5 +99,5 @@ public:
     void current(double val);
 };
 
-
+#include "Component.tpp"
 #endif //DEMOPROJECT_COMPONENT_H

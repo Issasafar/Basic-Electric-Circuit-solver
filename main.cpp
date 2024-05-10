@@ -49,7 +49,7 @@ int main() {
     std::cout<<cmp3.to_string();
 //    cmp1 += cmp2;
     std::cout<<cmp1.to_string();
-    std::cout<<r2.get_class_name(r2);
+    std::cout<<cmp1.get_class_name();
 //    r2 + v1;
 //    r2 + r3;
 
