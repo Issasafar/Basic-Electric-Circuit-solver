@@ -7,6 +7,17 @@
 #include <utility>
 Branch::Branch() : Component(){}
 
-std::vector<Component> Branch::components() {return vec;}
-Branch::Branch(std::vector<Component> components) : Component(), vec{std::move(components)}{}
-void Branch::addComponent(Component component) {vec.push_back(component);}
+Branch::Branch(std::vector<com_ptr> components) {
+ vec = std::move(components);
+}
+
+std::vector<com_ptr> Branch::components() {
+    return {};
+}
+
+
+
+
+//std::vector<std::shared_ptr<Component>> Branch::components() {return vec;}
+//Branch::Branch(std::vector<com_ptr> components) : Component(), vec{std::move(components)}{}
+//void Branch::addComponent( Component component) {vec.push_back(component);}

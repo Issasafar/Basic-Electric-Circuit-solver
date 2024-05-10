@@ -19,9 +19,7 @@ int main() {
     Resistance r4 = Resistance(40, node2, node1);
 
     Component *branch;
-    Branch b = Branch();
-    branch = &b;
-    std::vector<Component> vector1{*r1, r2, r3, r4, *branch};
+
     if (dynamic_cast<Resistance *>(r1) != nullptr) {
         std::cout << "r1 is a resistor" << std::endl;
     }
@@ -61,12 +59,15 @@ int main() {
     Voltage vv1 = Voltage(9,true);
     std::cout<<vv1.voltage()<<std::endl;
 
-    ground->get_voltage(9);
+    ground->get_voltage();
 //    nodev.get_voltage();
     std::shared_ptr<Node> dev = std::make_shared<Node>(Node(9, 10));
 
     ground->get_voltage().known();
-
+    Branch b1 = Branch();
+//    b1.addComponent(r1);
+    b1.addComponent(v1);
+    b1.addComponent(c1);
     return 0;
 
 }

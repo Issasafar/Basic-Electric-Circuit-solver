@@ -9,18 +9,20 @@
 #include <vector>
 #include "Component.h"
 
+using com_ptr = std::shared_ptr<Component>;
 class Branch : public Component {
 private:
-    std::vector<Component> vec;
+    std::vector<com_ptr> vec;
 public:
     Branch();
 
-    explicit Branch(std::vector<Component> components);
+    explicit Branch(std::vector<com_ptr> components);
 
-    std::vector<Component> components();
+    std::vector<com_ptr> components();
 
-    void addComponent(Component component);
-    Component toComponent();
+    template<class T>
+    void addComponent( T component){
+    vec.push_back(std::make_shared<Component>(component));}
 };
 
 
