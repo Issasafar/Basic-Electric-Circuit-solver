@@ -6,12 +6,15 @@
 #define UNTITLED_RESISTANCE_H
 #include "Node.h"
 #include "Component.h"
-
 class Resistance : public Component {
+private:
+    Component add(Component *thisObj, Component *other) override;
+    Component& add_equal(Component *thisObj, Component *other) override;
+    Component& subtract_equal(Component*thisObj,Component *other) override;
 public:
     Resistance();
     Resistance(double val);
-    Resistance(double val, Node& start, Node& end);
+    Resistance(double val, std::shared_ptr<Node> start, std::shared_ptr<Node> end);
 
     double resistance() const;
 

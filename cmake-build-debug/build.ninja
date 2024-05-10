@@ -79,8 +79,25 @@ build CMakeFiles/untitled.dir/Branch.cpp.o: CXX_COMPILER__untitled_Debug /home/i
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir
 
+<<<<<<< HEAD
 build CMakeFiles/untitled.dir/test.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/test.cpp || cmake_object_order_depends_target_untitled
   DEP_FILE = CMakeFiles/untitled.dir/test.cpp.o.d
+=======
+build CMakeFiles/untitled.dir/VoltageSource.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/VoltageSource.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/VoltageSource.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+
+build CMakeFiles/untitled.dir/CurrentSource.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/CurrentSource.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/CurrentSource.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+
+build CMakeFiles/untitled.dir/CircuitException.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/CircuitException.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/CircuitException.cpp.o.d
+>>>>>>> getClassNameFix
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir
@@ -93,7 +110,11 @@ build CMakeFiles/untitled.dir/test.cpp.o: CXX_COMPILER__untitled_Debug /home/iss
 #############################################
 # Link the executable untitled
 
+<<<<<<< HEAD
 build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/Node.cpp.o CMakeFiles/untitled.dir/Resistance.cpp.o CMakeFiles/untitled.dir/Component.cpp.o CMakeFiles/untitled.dir/Branch.cpp.o CMakeFiles/untitled.dir/test.cpp.o
+=======
+build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/Node.cpp.o CMakeFiles/untitled.dir/Resistance.cpp.o CMakeFiles/untitled.dir/Component.cpp.o CMakeFiles/untitled.dir/Branch.cpp.o CMakeFiles/untitled.dir/VoltageSource.cpp.o CMakeFiles/untitled.dir/CurrentSource.cpp.o CMakeFiles/untitled.dir/CircuitException.cpp.o
+>>>>>>> getClassNameFix
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/untitled.dir
   POST_BUILD = :

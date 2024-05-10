@@ -2,28 +2,94 @@
 // Created by issa on 27/04/24.
 //
 
+#include <iostream>
+#include <utility>
+#include <regex>
 #include "Component.h"
+
 Component::~Component() = default;
-Component::Component() : r{0}, v{0}, c{0}{}
-Component::Component(Node &start, Node &end) : startNd{&start}, endNd{&end}, r{0}, v{0}, c{0}{}
-void Component::endNode(Node left) {
+
+Component::Component() : r{0}, v{0}, c{0} {}
+
+
+Component::Component(double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end) : startNd{
+        std::move(start)},
+                                                                                                  endNd{std::move(end)},
+                                                                                                  r{resistance},
+                                                                                                  v{0},
+                                                                                                  c{0} {
+    startNd->addConnection();
+    endNd->addConnection();
+}
+
+std::string Component::get_class_name() {
+    return std::regex_replace(std::string(typeid(*this).name()), std::regex("[0-9]+"), "");
+}
+Component Component::add(Component *thisObj, Component *other) {
+    return add_equal(thisObj, other);
+}
+
+Component &Component::add_equal(Component *thisObj, Component *other) {
+    thisObj->r += other->r;
+    thisObj->v += other->v;
+    thisObj->c += other->c;
+    return *thisObj;
+}
+
+Component &Component::subtract_equal(Component *thisObj, Component *other) {
+    thisObj->r -= other->r;
+    thisObj->v -= other->v;
+    thisObj->c -= other->c;
+    return *thisObj;
+}
+
+Component Component::subtract(Component *thisObj, Component *other) {
+    return subtract_equal(thisObj, other);
+}
+
+Component Component::multiply(Component *thisObj, Component *other) {
+    thisObj->r *= other->r;
+    thisObj->v *= other->v;
+    thisObj->c *= other->c;
+    return *thisObj;
+}
+
+Component Component::divide(Component *thisObj, Component *other) {
+    return {};
+}
+
+
+void Component::endNode(std::shared_ptr<Node> &end) {
     endNd->removeConnection();
-    endNd = &left;
-    left.addConnection();
+    end->addConnection();
+    endNd = end;
 }
 
-void Component::startNode(Node start) {
+void Component::startNode(const std::shared_ptr<Node> &start) {
     startNd->removeConnection();
-    startNd = &start;
-    start.addConnection();
+
+    start->addConnection();
+    startNd = start;
+
 }
 
-Node &Component::startNode() { return *startNd; }
+std::string Component::to_string() {
+    return "Component with: R= " + std::to_string(this->r) + ", V= " + std::to_string(this->v) + ", C= " +
+           std::to_string(this->c) + "\n";
+}
 
-Node &Component::endNode() { return *endNd; }
-double Component::resistance() const {return r;}
-double Component::voltage() const{return v;}
-double Component::current() const{return c;}
-void Component::voltage(double val){v = val;}
-void Component::resistance(double val) {r = val;}
-void Component::current(double val) {c = val;}
+std::shared_ptr<Node> Component::startNode() { return startNd; }
+
+std::shared_ptr<Node> Component::endNode() { return endNd; }
+
+double Component::resistance() const { return r; }
+
+double Component::voltage() const { return v; }
+
+double Component::current() const { return c; }
+
+void Component::voltage(double val) { v = val; }
+
+void Component::resistance(double val) { r = val; }
+
+void Component::current(double val) { c = val; }

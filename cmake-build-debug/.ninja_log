@@ -1,5 +1,6 @@
 # ninja log v5
 0	268	1713720307142490215	CMakeFiles/untitled.dir/Complex.cpp.o	28326cc50efaa2ac
+<<<<<<< HEAD
 0	232	1714539677122785485	CMakeFiles/untitled.dir/main.cpp.o	157f21dbfffb0ed2
 0	37	1715250110469954352	build.ninja	66ae3689c7a5316f
 1	20	1714539599223536214	CMakeFiles/untitled.dir/Node.cpp.o	962a8a747a975070
@@ -8,3 +9,22 @@
 2	16	1714539599219536253	CMakeFiles/untitled.dir/test.cpp.o	374d3c2360afdb49
 232	309	1714539677202784714	untitled	bf18b9a706d48ce4
 2	115	1714539599319535289	CMakeFiles/untitled.dir/Branch.cpp.o	c901593e331c2d4b
+=======
+1	737	1715337176742098030	CMakeFiles/untitled.dir/main.cpp.o	157f21dbfffb0ed2
+1	49	1715338047027257223	build.ninja	66ae3689c7a5316f
+3	628	1715337176634095693	CMakeFiles/untitled.dir/CurrentSource.cpp.o	ef1bfc211b55ef64
+1	197	1715337842520570247	CMakeFiles/untitled.dir/CircuitException.cpp.o	14c53534f7e17b0f
+2	133	1715334671686307224	CMakeFiles/untitled.dir/Node.cpp.o	962a8a747a975070
+1	1819	1715337844136591497	CMakeFiles/untitled.dir/Resistance.cpp.o	5286cafb66fbf0f5
+2	2005	1715337178002125261	CMakeFiles/untitled.dir/Component.cpp.o	4b23694c14ea175e
+1819	2024	1715337844344594231	untitled	dddaa5cdaa2bd7b3
+2	670	1715337176674096559	CMakeFiles/untitled.dir/Branch.cpp.o	c901593e331c2d4b
+2	617	1715337176622095433	CMakeFiles/untitled.dir/VoltageSource.cpp.o	9e5459530bc7056d
+2	412	1715338051055313673	CMakeFiles/untitled.dir/CurrentSource.cpp.o	ef1bfc211b55ef64
+2	418	1715338051059313729	CMakeFiles/untitled.dir/VoltageSource.cpp.o	9e5459530bc7056d
+2	479	1715338051123314626	CMakeFiles/untitled.dir/Branch.cpp.o	c901593e331c2d4b
+0	527	1715338051171315298	CMakeFiles/untitled.dir/main.cpp.o	157f21dbfffb0ed2
+1	1986	1715338052623335636	CMakeFiles/untitled.dir/Resistance.cpp.o	5286cafb66fbf0f5
+2	1999	1715338052635335804	CMakeFiles/untitled.dir/Component.cpp.o	4b23694c14ea175e
+1999	2185	1715338052823338437	untitled	dddaa5cdaa2bd7b3
+>>>>>>> getClassNameFix
