@@ -18,6 +18,7 @@ protected:
     double c;
     std::shared_ptr<Node> startNd{new Node()};
     std::shared_ptr<Node> endNd{new Node()};
+
     virtual Component &add_equal(Component *thisObj, Component *other);
 
     virtual Component &subtract_equal(Component *thisObj, Component *other);
@@ -31,8 +32,8 @@ protected:
     virtual Component divide(Component *thisObj, Component *other);
 
 public:
-    template<typename T>
-    std::string get_class_name(T object = nullptr );
+    std::string get_class_name();
+
     virtual ~Component();
 
     Component();
@@ -40,17 +41,18 @@ public:
     Component(double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end);
 
     virtual std::string to_string();
+
     template<class T>
-    typename std::enable_if<std::is_base_of<Component, T>::value, Component& >::type
+    typename std::enable_if<std::is_base_of<Component, T>::value, Component &>::type
     operator+=(T other) {
-        *this  = add_equal(std::make_unique<Component>(*this).get(), dynamic_cast<Component *>(&other));
+        *this = add_equal(std::make_unique<Component>(*this).get(), dynamic_cast<Component *>(&other));
         return *this;
     }
 
     template<class T>
     typename std::enable_if<std::is_base_of<Component, T>::value, Component &>::type
     operator-=(T other) {
-        *this =  subtract_equal(std::make_unique<Component>(*this).get(),dynamic_cast<Component *>(&other));
+        *this = subtract_equal(std::make_unique<Component>(*this).get(), dynamic_cast<Component *>(&other));
         return *this;
     }
 
@@ -99,5 +101,4 @@ public:
     void current(double val);
 };
 
-#include "Component.tpp"
 #endif //DEMOPROJECT_COMPONENT_H

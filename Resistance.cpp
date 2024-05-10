@@ -7,7 +7,7 @@
 #include <iostream>
 #include <utility>
 #include <regex>
-
+#include "CircuitException.h"
 Resistance::Resistance() : Component() {}
 
 Resistance::Resistance(double val) : Component() { r = val; }
@@ -33,9 +33,8 @@ Component &Resistance::subtract_equal(Component*thisObj,Component *other) {
     if (dynamic_cast<Resistance *>(other)) {
         return Component::subtract_equal(thisObj, other);
     } else {
-        std::string error_message ="error in reisistor";
-       // std::string error_message = "Cannot add a "+ get_class_name(*this)+ " with "+get_class_name(*other);
-        throw std::runtime_error(error_message);
+        std::string error_message = "Cannot add a "+ this->get_class_name()+ " with "+other->get_class_name();
+        throw CircuitException(error_message);
     }
 }
 Component Resistance::add(Component *thisObj,Component *other) {

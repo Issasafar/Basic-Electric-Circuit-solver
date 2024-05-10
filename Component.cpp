@@ -22,6 +22,9 @@ Component::Component(double resistance, std::shared_ptr<Node> start, std::shared
     endNd->addConnection();
 }
 
+std::string Component::get_class_name() {
+    return std::regex_replace(std::string(typeid(*this).name()), std::regex("[0-9]+"), "");
+}
 Component Component::add(Component *thisObj, Component *other) {
     return add_equal(thisObj, other);
 }
