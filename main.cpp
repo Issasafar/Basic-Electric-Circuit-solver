@@ -104,29 +104,19 @@ int main() {
     std::shared_ptr<Node> n1{std::make_shared<Node>(Node(0))};
     std::shared_ptr<Node> n2{std::make_shared<Node>(Node(1))};
     VoltageSource v1 = VoltageSource(5, 0, ground, n1);
-//    VoltageSource v2 = VoltageSource(10, 0, ground, n1);
+    CurrentSource c2 = CurrentSource(1,0,n2,ground);
     Resistance r1 = Resistance(50, n1, n2);
     Resistance r2 = Resistance(100, n2, ground);
     Branch b1 = Branch(0);
     Branch b2 = Branch(1);
     b1.addComponent(v1);
-//    b1.addComponent(v2);
     b2.addComponent(r1);
+//    b2.addComponent(c2);
     b2.addComponent(r2);
     Circuit circuit = Circuit();
     circuit.add_branch(b1);
     circuit.add_branch(b2);
     circuit.solve();
-//    Eigen::Matrix3f A;
-//    Eigen::Vector3f b;
-//    A << 1, 0, 0,
-//            1, -1, -10,
-//            0, 0, 1;
-//    std::cout << A << std::endl;
-//    b << 12, 0, 1;
-//    std::cout << b<<std::endl;
-//    Eigen::Vector3f result = A.colPivHouseholderQr().solve(b);
-//    std::cout<<"The result is:\n "<<result<<std::endl;
 
     return 0;
 

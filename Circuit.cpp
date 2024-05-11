@@ -5,7 +5,7 @@
 #include "Circuit.h"
 #include <Eigen/Dense>
 
-using Eigen::MatrixXf;
+using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
 b_vec Circuit::branches() { return b; }
@@ -16,7 +16,7 @@ void Circuit::add_branch(Branch branch) {
 }
 
 void Circuit::solve() {
-    MatrixXf matrix = MatrixXf::Zero(equations_count, equations_count);
+    MatrixXd matrix = MatrixXd::Zero(equations_count, equations_count);
     VectorXd vector = VectorXd::Zero(equations_count);
 
     int row{0};
@@ -65,8 +65,7 @@ void Circuit::solve() {
     }
     VectorXd re = VectorXd::Zero(equations_count);
     std::cout<<"The result is: "<<std::endl;
-    Eigen::BDCSVD bdcsvd = Eigen::BDCSVD(matrix);
-    std::cout<<"The solution is: \n"<<bdcsvd.solve(b)<<std::endl;
+    std::cout<<matrix.colPivHouseholderQr().solve(vector);
 //    << matrix.template bdcSvd<Eigen::ComputeThinU | Eigen::ComputeThinV>().solve(b);
 //    std::cout<<result<<std::endl;
 }
