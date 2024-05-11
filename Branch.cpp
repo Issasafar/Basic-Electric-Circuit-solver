@@ -12,7 +12,7 @@ Branch::Branch(std::vector<com_ptr> components) {
 }
 
 std::vector<com_ptr> Branch::components() {
-    return {};
+    return vec;
 }
 
 
