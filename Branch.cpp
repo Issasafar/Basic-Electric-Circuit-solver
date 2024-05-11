@@ -5,16 +5,19 @@
 #include "Branch.h"
 
 #include <utility>
-Branch::Branch() : Component(){}
+Branch::Branch(int number) : Component(), branch_number{number}{}
 
-Branch::Branch(std::vector<com_ptr> components) {
- vec = std::move(components);
-}
+Branch::Branch(int number,std::vector<com_ptr> components): branch_number{number}, vec{std::move(components)} {}
 
 std::vector<com_ptr> Branch::components() {
     return vec;
 }
 
+std::unordered_map<com_ptr, std::string> Branch::types_map() {
+    return map;
+}
+
+int Branch::number() {return branch_number;}
 
 
 

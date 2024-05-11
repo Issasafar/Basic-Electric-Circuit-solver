@@ -16,6 +16,8 @@ protected:
     double r;
     double v;
     double c;
+    // start node represent the negative pole
+    // end node represent the positive pole
     std::shared_ptr<Node> startNd{new Node()};
     std::shared_ptr<Node> endNd{new Node()};
 

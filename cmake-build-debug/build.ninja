@@ -52,54 +52,70 @@ build cmake_object_order_depends_target_untitled: phony || CMakeFiles/untitled.d
 build CMakeFiles/untitled.dir/main.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/main.cpp || cmake_object_order_depends_target_untitled
   DEP_FILE = CMakeFiles/untitled.dir/main.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir
 
 build CMakeFiles/untitled.dir/Node.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/Node.cpp || cmake_object_order_depends_target_untitled
   DEP_FILE = CMakeFiles/untitled.dir/Node.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir
 
 build CMakeFiles/untitled.dir/Resistance.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/Resistance.cpp || cmake_object_order_depends_target_untitled
   DEP_FILE = CMakeFiles/untitled.dir/Resistance.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir
 
 build CMakeFiles/untitled.dir/Component.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/Component.cpp || cmake_object_order_depends_target_untitled
   DEP_FILE = CMakeFiles/untitled.dir/Component.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir
 
 build CMakeFiles/untitled.dir/Branch.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/Branch.cpp || cmake_object_order_depends_target_untitled
   DEP_FILE = CMakeFiles/untitled.dir/Branch.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir
 
 build CMakeFiles/untitled.dir/VoltageSource.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/VoltageSource.cpp || cmake_object_order_depends_target_untitled
   DEP_FILE = CMakeFiles/untitled.dir/VoltageSource.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir
 
 build CMakeFiles/untitled.dir/CurrentSource.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/CurrentSource.cpp || cmake_object_order_depends_target_untitled
   DEP_FILE = CMakeFiles/untitled.dir/CurrentSource.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir
 
 build CMakeFiles/untitled.dir/CircuitException.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/CircuitException.cpp || cmake_object_order_depends_target_untitled
   DEP_FILE = CMakeFiles/untitled.dir/CircuitException.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir
 
 build CMakeFiles/untitled.dir/Voltage.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/Voltage.cpp || cmake_object_order_depends_target_untitled
   DEP_FILE = CMakeFiles/untitled.dir/Voltage.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/usr/include/eigen3
+  OBJECT_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+
+build CMakeFiles/untitled.dir/Circuit.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/DemoProjects/Circuit.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/Circuit.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir
 
@@ -111,7 +127,7 @@ build CMakeFiles/untitled.dir/Voltage.cpp.o: CXX_COMPILER__untitled_Debug /home/
 #############################################
 # Link the executable untitled
 
-build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/Node.cpp.o CMakeFiles/untitled.dir/Resistance.cpp.o CMakeFiles/untitled.dir/Component.cpp.o CMakeFiles/untitled.dir/Branch.cpp.o CMakeFiles/untitled.dir/VoltageSource.cpp.o CMakeFiles/untitled.dir/CurrentSource.cpp.o CMakeFiles/untitled.dir/CircuitException.cpp.o CMakeFiles/untitled.dir/Voltage.cpp.o
+build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/Node.cpp.o CMakeFiles/untitled.dir/Resistance.cpp.o CMakeFiles/untitled.dir/Component.cpp.o CMakeFiles/untitled.dir/Branch.cpp.o CMakeFiles/untitled.dir/VoltageSource.cpp.o CMakeFiles/untitled.dir/CurrentSource.cpp.o CMakeFiles/untitled.dir/CircuitException.cpp.o CMakeFiles/untitled.dir/Voltage.cpp.o CMakeFiles/untitled.dir/Circuit.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/untitled.dir
   POST_BUILD = :
@@ -162,14 +178,14 @@ build all: phony untitled
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/issa/CLionProjects/DemoProjects/CMakeLists.txt /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux-GNU-C.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux-GNU-CXX.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux-GNU.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/issa/CLionProjects/DemoProjects/CMakeLists.txt /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux-GNU-C.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux-GNU-CXX.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux-GNU.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/UnixPaths.cmake /usr/share/eigen3/cmake/Eigen3Config.cmake /usr/share/eigen3/cmake/Eigen3ConfigVersion.cmake /usr/share/eigen3/cmake/Eigen3Targets.cmake CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/issa/CLionProjects/DemoProjects/CMakeLists.txt /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux-GNU-C.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux-GNU-CXX.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux-GNU.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake: phony
+build /home/issa/CLionProjects/DemoProjects/CMakeLists.txt /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux-GNU-C.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux-GNU-CXX.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux-GNU.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/Linux.cmake /usr/local/softwares/clion-2023.1.4/bin/cmake/linux/x64/share/cmake-3.25/Modules/Platform/UnixPaths.cmake /usr/share/eigen3/cmake/Eigen3Config.cmake /usr/share/eigen3/cmake/Eigen3ConfigVersion.cmake /usr/share/eigen3/cmake/Eigen3Targets.cmake CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake: phony
 
 
 #############################################

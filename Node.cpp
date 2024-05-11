@@ -7,6 +7,10 @@
 Node::Node() : v{-1},volt{Voltage(0, false)}{
 }
 
+Node Node::ground() {
+    return {-1,0};
+}
+
 Node::Node(int val) : v{val >= -1 ? val : -1}, volt{Voltage(0, false)} {}
 Node::Node(int val, double voltage): v{val}, volt(Voltage(voltage, true)){
 }
