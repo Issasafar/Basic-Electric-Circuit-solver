@@ -6,8 +6,17 @@
 #define DEMOPROJECT_CIRCUIT_H
 
 
-class Circuit {
+#include "Branch.h"
 
+using b_vec = std::vector<Branch>;
+class Circuit {
+private:
+    b_vec b;
+    int equations_count = 0;
+public:
+    b_vec branches();
+    void add_branch(Branch branch);
+    void solve();
 };
 
 

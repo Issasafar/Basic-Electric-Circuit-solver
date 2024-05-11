@@ -13,6 +13,7 @@ private:
     int c = 0;
     Voltage volt;
 public:
+    static Node ground();
     Node();
     Node(int val, double voltage);
     Node(int val, const Voltage& voltage);

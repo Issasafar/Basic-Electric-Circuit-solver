@@ -8,21 +8,28 @@
 
 #include <vector>
 #include "Component.h"
-
+#include <unordered_map>
 using com_ptr = std::shared_ptr<Component>;
+
 class Branch : public Component {
 private:
     std::vector<com_ptr> vec;
+    std::unordered_map<com_ptr,std::string> map;
+    int branch_number;
 public:
-    Branch();
+    Branch(int number);
 
-    explicit Branch(std::vector<com_ptr> components);
-
+    explicit Branch(int number, std::vector<com_ptr> components);
+    int number();
     std::vector<com_ptr> components();
-
+    std::unordered_map<com_ptr, std::string> types_map();
     template<class T>
-    void addComponent( T component){
-    vec.push_back(std::make_shared<Component>(component));}
+    void addComponent(T component) {
+       /* map.insert(std::make_shared<Component>(component), component.get_class_name());*/
+       std::shared_ptr<Component> element = std::make_shared<Component>(component);
+       map[element] = component.get_class_name();
+        vec.push_back(element);
+    }
 };
 
 
