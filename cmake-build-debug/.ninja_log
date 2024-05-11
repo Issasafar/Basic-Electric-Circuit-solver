@@ -1,7 +1,7 @@
 # ninja log v5
 0	268	1713720307142490215	CMakeFiles/untitled.dir/Complex.cpp.o	28326cc50efaa2ac
 0	522	1715410872053639436	CMakeFiles/untitled.dir/main.cpp.o	157f21dbfffb0ed2
-1	49	1715452883760317889	build.ninja	66ae3689c7a5316f
+1	49	1715455003506321425	build.ninja	66ae3689c7a5316f
 5	565	1715371760076632890	CMakeFiles/untitled.dir/CurrentSource.cpp.o	ef1bfc211b55ef64
 1	172	1715370363275599534	CMakeFiles/untitled.dir/Voltage.cpp.o	3a96e4762fade4e1
 3	202	1715370239150800448	CMakeFiles/untitled.dir/CircuitException.cpp.o	14c53534f7e17b0f
