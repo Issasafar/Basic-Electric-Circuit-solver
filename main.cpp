@@ -68,9 +68,13 @@ int main() {
 //    b1.addComponent(r1);
     b1.addComponent(v1);
     b1.addComponent(c1);
+    b1.addComponent(r2);
+    b1.addComponent(*r1);
+    b1.addComponent(r4);
+
     auto thing = b1.components();
     for (auto el: thing) {
-        std::cout<<el->to_string()<<std::endl;
+        std::cout<<el->get_class_name()+" "<<el->to_string()<<std::endl;
     }
     return 0;
 

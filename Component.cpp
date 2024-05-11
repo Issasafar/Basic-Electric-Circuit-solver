@@ -6,7 +6,7 @@
 #include <regex>
 #include "Component.h"
 #include "CircuitException.h"
-
+#include "VoltageSource.h"
 
 bool is_valid_operation(Component *thisObj, Component *other){
     if (thisObj->get_class_name() == other->get_class_name()) {
