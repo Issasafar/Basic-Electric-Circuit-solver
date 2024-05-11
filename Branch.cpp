@@ -4,10 +4,8 @@
 
 #include "Branch.h"
 
-#include <utility>
 Branch::Branch(int number) : Component(), branch_number{number}{}
 
-Branch::Branch(int number,std::vector<com_ptr> components): branch_number{number}, vec{std::move(components)} {}
 
 std::vector<com_ptr> Branch::components() {
     return vec;

@@ -19,7 +19,6 @@ private:
 public:
     Branch(int number);
 
-    explicit Branch(int number, std::vector<com_ptr> components);
     int number();
     std::vector<com_ptr> components();
     std::unordered_map<com_ptr, std::string> types_map();
