@@ -114,7 +114,7 @@ int main() {
     Branch b2 = Branch(1,{r1,r2});
     Circuit circuit = Circuit({b1,b2});
     circuit.solve();
-
+    std::cout<<"n1 voltage "<<n1->voltage()<<std::endl;
     return 0;
 
 }

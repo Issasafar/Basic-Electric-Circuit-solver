@@ -72,7 +72,11 @@ void Circuit::solve() {
     }
     VectorXd re = VectorXd::Zero(equations_count);
     std::cout<<"The result is: "<<std::endl;
-    std::cout<<matrix.colPivHouseholderQr().solve(vector);
+    VectorXd result = matrix.colPivHouseholderQr().solve(vector);
+    std::cout<<result<<std::endl;
+    Branch b1 = branches().at(0);
+    b1.components().at(0)->endNode()->voltage(99);
+    b1.components().at(0)->voltage(9999);
 //    << matrix.template bdcSvd<Eigen::ComputeThinU | Eigen::ComputeThinV>().solve(b);
 //    std::cout<<result<<std::endl;
 }
