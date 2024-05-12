@@ -115,7 +115,7 @@ int main() {
     Circuit circuit = Circuit({b1,b2});
     circuit.solve();
     std::cout<<"n1 voltage "<<n1->voltage()<<std::endl;
-
+    std::cout<<"v1 voltage"<<b1.components().at(0)->voltage()<<std::endl;
     return 0;
 
 }
