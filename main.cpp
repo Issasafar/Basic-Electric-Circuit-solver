@@ -8,8 +8,10 @@
 #include "Voltage.h"
 #include "Circuit.h"
 #include <Eigen/Dense>
+#include <boost/any.hpp>
 
 using Eigen::MatrixXd;
+
 
 int main() {
     /*  MatrixXd m(2,2);
@@ -104,7 +106,7 @@ int main() {
     std::shared_ptr<Node> n1{std::make_shared<Node>(Node(0))};
     std::shared_ptr<Node> n2{std::make_shared<Node>(Node(1))};
     VoltageSource v1 = VoltageSource(5, 0, ground, n1);
-    CurrentSource c2 = CurrentSource(1,0,n2,ground);
+    CurrentSource c2 = CurrentSource(1, 0, n2, ground);
     Resistance r1 = Resistance(50, n1, n2);
     Resistance r2 = Resistance(100, n2, ground);
     Branch b1 = Branch(0);
@@ -117,7 +119,12 @@ int main() {
     circuit.add_branch(b1);
     circuit.add_branch(b2);
     circuit.solve();
-
+    boost::any a = r2;
+    std::cout << std::endl;
+    if (!a.empty()) {
+        const std::type_info &ti = a.type();
+        std::cout << ti.name() << '\n';
+    }
     return 0;
 
 }
