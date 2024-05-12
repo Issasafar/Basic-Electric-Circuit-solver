@@ -9,14 +9,15 @@
 #include <type_traits>
 #include <iostream>
 #include "Node.h"
+#include "Current.h"
 #include <memory>
 #include <boost/any.hpp>
 
 class Component {
 protected:
     double r;
-    double v;
-    double c;
+    std::shared_ptr<Voltage> v{new Voltage};
+    std::shared_ptr<Current> c{new Current()};
     // start node represent the negative pole
     // end node represent the positive pole
     std::shared_ptr<Node> startNd{new Node()};

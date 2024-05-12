@@ -5,6 +5,13 @@
 #include "CurrentSource.h"
 
 #include <utility>
-CurrentSource::CurrentSource(): Component() {}
-CurrentSource::CurrentSource(double val, double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end) : Component(resistance, std::move(start), std::move(end) ){c = val;}
-CurrentSource::CurrentSource(double val, double resistance) {c = val; r = resistance;}
+
+CurrentSource::CurrentSource() : Component() {}
+
+CurrentSource::CurrentSource(double val, double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end)
+        : Component(resistance, std::move(start), std::move(end)) { c->current(val); }
+
+CurrentSource::CurrentSource(double val, double resistance) {
+    c->current(val);
+    r = resistance;
+}

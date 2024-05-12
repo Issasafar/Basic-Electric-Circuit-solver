@@ -53,7 +53,7 @@ int main() {
       std::cout << "the val resistance value is " << val.resistance() << std::endl;
       std::cout << "val connection start count is : " << val.startNode()->connectionsCount() << " with value of Node: "
                 << val.startNode()->value() << std::endl;
-      std::cout << "node1 connections count: " << r2.startNode()->connectionsCount() << std::endl;
+      std::cout << "node1 connections count: " << r2.startNode()->connections_count() << std::endl;
       Component cmp1 = Component(10, node2, node1);
       Component cmp2 = Component(7, node2, node2);
       Component cmp3 = cmp1 * cmp2;
@@ -76,7 +76,7 @@ int main() {
   //    nodev.get_voltage();
       std::shared_ptr<Node> dev = std::make_shared<Node>(Node(9, 10));
 
-      ground->get_voltage().known();
+      ground->voltage_object().known();
       Branch b1 = Branch();
   //    b1.addComponent(r1);
       b1.addComponent(v1);
@@ -115,6 +115,7 @@ int main() {
     Circuit circuit = Circuit({b1,b2});
     circuit.solve();
     std::cout<<"n1 voltage "<<n1->voltage()<<std::endl;
+
     return 0;
 
 }

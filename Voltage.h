@@ -12,8 +12,8 @@ double v;
 bool is_known;
 public:
     Voltage();
-    Voltage(const double volt, bool known);
-    void voltage(const double volt);
+    Voltage(const double voltage, bool known);
+    void voltage(const double voltage);
     double voltage() const;
     bool known() const;
     void known(bool predicate);

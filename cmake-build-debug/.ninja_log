@@ -1,7 +1,7 @@
 # ninja log v5
 0	268	1713720307142490215	CMakeFiles/untitled.dir/Complex.cpp.o	28326cc50efaa2ac
-2	1057	1715532697387265675	CMakeFiles/untitled.dir/main.cpp.o	ba74a07b1a1736af
-0	26	1715521126006757030	build.ninja	66ae3689c7a5316f
+1	1049	1715534273355161664	CMakeFiles/untitled.dir/main.cpp.o	ba74a07b1a1736af
+0	26	1715537096592886665	build.ninja	66ae3689c7a5316f
 4	491	1715527825338841372	CMakeFiles/untitled.dir/CurrentSource.cpp.o	497ed63958614006
 2	339	1715455316685719571	CMakeFiles/untitled.dir/Voltage.cpp.o	82f0c21eb0440dff
 2	302	1715455316649726894	CMakeFiles/untitled.dir/CircuitException.cpp.o	7c8357b32076cf3
@@ -10,10 +10,18 @@
 0	5	0	clean	838f9308b4733263
 2	1889	1715528160419951217	CMakeFiles/untitled.dir/Component.cpp.o	5d7b0cba54f6c5f3
 4	1197	1715428675631937470	CMakeFiles/untitled.dir/test.cpp.o	7131327b9a153c04
-2	6030	1715532702343195680	CMakeFiles/untitled.dir/Circuit.cpp.o	f6007af4bd83d8ac
-6031	6417	1715532702743190031	untitled	8349ac3190a72fd9
+3	5996	1715532779598104563	CMakeFiles/untitled.dir/Circuit.cpp.o	f6007af4bd83d8ac
+1049	1441	1715534273747156128	untitled	8349ac3190a72fd9
 2	637	1715531681485609830	CMakeFiles/untitled.dir/Branch.cpp.o	bf97e547f04268f1
 3	490	1715527825338841372	CMakeFiles/untitled.dir/VoltageSource.cpp.o	51cc780e4f76b6df
-2	1077	1715532774694173825	CMakeFiles/untitled.dir/main.cpp.o	ba74a07b1a1736af
-3	5996	1715532779598104563	CMakeFiles/untitled.dir/Circuit.cpp.o	f6007af4bd83d8ac
-5996	6386	1715532780002098857	untitled	8349ac3190a72fd9
+4	332	1715538365938956877	CMakeFiles/untitled.dir/Voltage.cpp.o	82f0c21eb0440dff
+4	332	1715538365938956877	CMakeFiles/untitled.dir/Current.cpp.o	deffce22ec39c9d9
+3	508	1715538366114954391	CMakeFiles/untitled.dir/VoltageSource.cpp.o	51cc780e4f76b6df
+4	519	1715538366122954278	CMakeFiles/untitled.dir/CurrentSource.cpp.o	497ed63958614006
+2	624	1715538366230952753	CMakeFiles/untitled.dir/Node.cpp.o	fa109b9b37a6f98
+2	720	1715538366326951397	CMakeFiles/untitled.dir/Resistance.cpp.o	74fe3ef6883180ba
+3	972	1715538366574947894	CMakeFiles/untitled.dir/Branch.cpp.o	bf97e547f04268f1
+1	1408	1715538367010941735	CMakeFiles/untitled.dir/main.cpp.o	ba74a07b1a1736af
+3	2231	1715538367830930153	CMakeFiles/untitled.dir/Component.cpp.o	5d7b0cba54f6c5f3
+4	6416	1715538372002871223	CMakeFiles/untitled.dir/Circuit.cpp.o	f6007af4bd83d8ac
+6416	6831	1715538372430865178	untitled	6b5b52d793e0421
