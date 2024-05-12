@@ -10,6 +10,7 @@
 #include <iostream>
 #include "Node.h"
 #include <memory>
+#include <boost/any.hpp>
 
 class Component {
 protected:
@@ -35,6 +36,7 @@ protected:
 
 public:
     std::string get_class_name();
+    static std::string get_class_name(boost::any obj);
 
     virtual ~Component();
 

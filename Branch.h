@@ -18,13 +18,12 @@ private:
     int branch_number;
 public:
     Branch(int number);
-
     int number();
     std::vector<com_ptr> components();
+    void components(std::vector<boost::any> components);
     std::unordered_map<com_ptr, std::string> types_map();
     template<class T>
-    void addComponent(T component) {
-       /* map.insert(std::make_shared<Component>(component), component.get_class_name());*/
+    void add_component(T component) {
        std::shared_ptr<Component> element = std::make_shared<Component>(component);
        map[element] = component.get_class_name();
         vec.push_back(element);

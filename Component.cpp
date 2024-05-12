@@ -118,3 +118,8 @@ void Component::voltage(double val) { v = val; }
 void Component::resistance(double val) { r = val; }
 
 void Component::current(double val) { c = val; }
+
+std::string Component::get_class_name(boost::any obj) {
+    const std::type_info &ti = obj.type();
+    return std::regex_replace(std::string(ti.name()), std::regex("[0-9]+"), "");
+}

@@ -84,7 +84,7 @@ int main() {
       b1.addComponent(c1);
       b1.addComponent(r2);
       b1.addComponent(*r1);
-      b1.addComponent(r4);
+      b1.add_component(r4);
 
       auto thing = b1.components();
       auto thingtype = b1.types_map();
@@ -111,18 +111,23 @@ int main() {
     Resistance r2 = Resistance(100, n2, ground);
     Branch b1 = Branch(0);
     Branch b2 = Branch(1);
-    b1.addComponent(v1);
-    b2.addComponent(r1);
-//    b2.addComponent(c2);
-    b2.addComponent(r2);
+    Branch b3 = Branch(2);
+    b3.components({r1,r2,v1,r1});
+    b1.add_component(v1);
+    b2.add_component(r1);
+//    b2.add_component(c2);
+    b2.add_component(r2);
     Circuit circuit = Circuit();
     circuit.add_branch(b1);
     circuit.add_branch(b2);
-    circuit.solve();
+//    circuit.solve();
+
     boost::any a = r2;
+    std::cout << Component::get_class_name(r2) << std::endl;
     std::cout << std::endl;
     if (!a.empty()) {
         const std::type_info &ti = a.type();
+        std::cout << Component::get_class_name(a) << std::endl;
         std::cout << ti.name() << '\n';
     }
     return 0;
