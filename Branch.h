@@ -16,6 +16,7 @@ private:
     std::vector<com_ptr> vec;
     std::unordered_map<com_ptr,std::string> map;
     int branch_number;
+    std::shared_ptr<Current> branch_current{new Current()};
 public:
     Branch(int number);
     Branch(int number, std::vector<boost::any> components);
@@ -28,6 +29,7 @@ public:
        std::shared_ptr<Component> element = std::make_shared<Component>(component);
        map[element] = component.get_class_name();
         vec.push_back(element);
+        element->set_current_object(this->c);
     }
 };
 

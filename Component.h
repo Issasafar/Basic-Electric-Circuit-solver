@@ -12,7 +12,6 @@
 #include "Current.h"
 #include <memory>
 #include <boost/any.hpp>
-
 class Component {
 protected:
     double r;
@@ -36,6 +35,7 @@ protected:
     virtual Component divide(Component *thisObj, Component *other);
 
 public:
+    void set_current_object(std::shared_ptr<Current> current);
     std::string get_class_name();
     static std::string get_class_name(boost::any obj);
 

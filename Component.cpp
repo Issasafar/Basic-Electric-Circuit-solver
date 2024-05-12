@@ -143,6 +143,10 @@ std::string Component::to_string() {
     return message;
 }
 
+void Component::set_current_object(std::shared_ptr<Current> current) {
+    this->c = std::move(current);
+}
+
 std::shared_ptr<Node> Component::startNode() { return startNd; }
 
 std::shared_ptr<Node> Component::endNode() { return endNd; }

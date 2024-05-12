@@ -25,18 +25,21 @@ void Branch::components(std::vector<boost::any> components) {
 
         if (Component::get_class_name(component) == "Resistance") {
             auto el = boost::any_cast<Resistance>(component);
+            el.set_current_object(this->c);
             std::shared_ptr<Component> element = std::make_shared<Component>(el);
             map[element] = Component::get_class_name(component);
             vec.push_back(element);
         }
         if (Component::get_class_name(component) == "VoltageSource") {
             auto el = boost::any_cast<VoltageSource>(component);
+            el.set_current_object(this->c);
             std::shared_ptr<Component> element = std::make_shared<Component>(el);
             map[element] = Component::get_class_name(component);
             vec.push_back(element);
         }
         if (Component::get_class_name(component) == "CurrentSource") {
             auto el = boost::any_cast<CurrentSource>(component);
+            el.set_current_object(this->c);
             std::shared_ptr<Component> element = std::make_shared<Component>(el);
             map[element] = Component::get_class_name(component);
             vec.push_back(element);
@@ -49,9 +52,3 @@ std::unordered_map<com_ptr, std::string> Branch::types_map() {
 }
 
 int Branch::number() { return branch_number; }
-
-
-
-//std::vector<std::shared_ptr<Component>> Branch::components() {return vec;}
-//Branch::Branch(std::vector<com_ptr> components) : Component(), vec{std::move(components)}{}
-//void Branch::add_component( Component component) {vec.push_back(component);}

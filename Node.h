@@ -9,16 +9,21 @@
 #include <boost/any.hpp>
 #include <vector>
 
+//using com_ptr = std::shared_ptr<Component>;
 class Node {
 private:
     int v;
     int c = 0;
     Voltage volt;
 public:
-    std::vector<boost::any> observers;
-    void register_observer(boost::any observer);
-    void remove_observer(boost::any observer);
-    void notify_observers();
+//    std::vector<com_ptr> observers;
+//
+//    template<class T>
+//    void register_observer(T observer){
+//        observers.push_back(std::make_shared<Component>(observer));
+//    }
+//
+//    void notify_observers();
     static Node ground();
     Node();
     Node(int val, double voltage);

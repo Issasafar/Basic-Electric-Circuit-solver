@@ -17,9 +17,6 @@ Node::Node(int val, double voltage): v{val}, volt(Voltage(voltage, true)){
 }
 Node::Node(int val,  const Voltage& voltage): v{val},volt{voltage}{}
 
-void Node::register_observer(boost::any observer) {
-
-}
 double Node::voltage() {
     return this->volt.voltage();
 }
