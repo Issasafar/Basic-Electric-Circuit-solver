@@ -14,6 +14,8 @@ private:
     b_vec b;
     int equations_count = 0;
 public:
+    Circuit();
+    Circuit(std::vector<Branch> branches);
     b_vec branches();
     void add_branch(Branch branch);
     void solve();

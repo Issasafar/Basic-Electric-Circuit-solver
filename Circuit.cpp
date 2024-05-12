@@ -4,10 +4,17 @@
 
 #include "Circuit.h"
 #include <Eigen/Dense>
+#include <utility>
 
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
-
+Circuit::Circuit() = default;
+Circuit::Circuit(std::vector<Branch> branches) {
+    b = std::move(branches);
+    for (Branch branch: b) {
+        equations_count += branch.components().size();
+    }
+}
 b_vec Circuit::branches() { return b; }
 
 void Circuit::add_branch(Branch branch) {

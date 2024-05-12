@@ -3,9 +3,17 @@
 //
 
 #include <boost/smart_ptr/shared_ptr.hpp>
+#include <utility>
 #include "Branch.h"
+#include "Resistance.h"
+#include "VoltageSource.h"
+#include "CurrentSource.h"
 
-Branch::Branch(int number) : Component(), branch_number{number}{}
+Branch::Branch(int number) : Component(), branch_number{number} {}
+
+Branch::Branch(int number, std::vector<boost::any> components) : Branch::Branch(number) {
+    Branch::components(std::move(components));
+}
 
 
 std::vector<com_ptr> Branch::components() {
@@ -13,17 +21,34 @@ std::vector<com_ptr> Branch::components() {
 }
 
 void Branch::components(std::vector<boost::any> components) {
-    std::cout<<"########################################"<<std::endl;
-    for (auto thing: components) {
-        std::cout<<Component::get_class_name(thing)<<std::endl;
+    for (auto component: components) {
+
+        if (Component::get_class_name(component) == "Resistance") {
+            auto el = boost::any_cast<Resistance>(component);
+            std::shared_ptr<Component> element = std::make_shared<Component>(el);
+            map[element] = Component::get_class_name(component);
+            vec.push_back(element);
+        }
+        if (Component::get_class_name(component) == "VoltageSource") {
+            auto el = boost::any_cast<VoltageSource>(component);
+            std::shared_ptr<Component> element = std::make_shared<Component>(el);
+            map[element] = Component::get_class_name(component);
+            vec.push_back(element);
+        }
+        if (Component::get_class_name(component) == "CurrentSource") {
+            auto el = boost::any_cast<CurrentSource>(component);
+            std::shared_ptr<Component> element = std::make_shared<Component>(el);
+            map[element] = Component::get_class_name(component);
+            vec.push_back(element);
+        }
     }
-    std::cout<<"########################################"<<std::endl;
 }
+
 std::unordered_map<com_ptr, std::string> Branch::types_map() {
     return map;
 }
 
-int Branch::number() {return branch_number;}
+int Branch::number() { return branch_number; }
 
 
 

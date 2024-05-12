@@ -109,27 +109,12 @@ int main() {
     CurrentSource c2 = CurrentSource(1, 0, n2, ground);
     Resistance r1 = Resistance(50, n1, n2);
     Resistance r2 = Resistance(100, n2, ground);
-    Branch b1 = Branch(0);
-    Branch b2 = Branch(1);
-    Branch b3 = Branch(2);
-    b3.components({r1,r2,v1,r1});
-    b1.add_component(v1);
-    b2.add_component(r1);
-//    b2.add_component(c2);
-    b2.add_component(r2);
-    Circuit circuit = Circuit();
-    circuit.add_branch(b1);
-    circuit.add_branch(b2);
-//    circuit.solve();
+    Branch b3(2,{r1,r2,v1});
+    Branch b1 = Branch(0,{v1});
+    Branch b2 = Branch(1,{r1,r2});
+    Circuit circuit = Circuit({b1,b2});
+    circuit.solve();
 
-    boost::any a = r2;
-    std::cout << Component::get_class_name(r2) << std::endl;
-    std::cout << std::endl;
-    if (!a.empty()) {
-        const std::type_info &ti = a.type();
-        std::cout << Component::get_class_name(a) << std::endl;
-        std::cout << ti.name() << '\n';
-    }
     return 0;
 
 }

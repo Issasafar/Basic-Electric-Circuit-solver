@@ -18,6 +18,7 @@ private:
     int branch_number;
 public:
     Branch(int number);
+    Branch(int number, std::vector<boost::any> components);
     int number();
     std::vector<com_ptr> components();
     void components(std::vector<boost::any> components);
