@@ -97,7 +97,9 @@ public:
     double voltage() const;
 
     virtual double current() const;
-
+    void set_start_voltage(double volt);
+    void set_end_voltage(double volt);
+    void voltage_changed();
     void resistance(double val);
 
     void voltage(double val);

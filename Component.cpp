@@ -166,3 +166,17 @@ std::string Component::get_class_name(boost::any obj) {
     const std::type_info &ti = obj.type();
     return std::regex_replace(std::string(ti.name()), std::regex("[0-9]+"), "");
 }
+
+void Component::set_start_voltage(double volt) {
+   startNd->voltage(volt);
+}
+
+void Component::set_end_voltage(double volt ) {
+    endNd->voltage(volt);
+}
+
+void Component::voltage_changed() {
+    if (startNd->voltage_object().known() && endNd->voltage_object().known()) {
+        v->voltage(endNd->voltage() - startNd->voltage());
+    }
+}
