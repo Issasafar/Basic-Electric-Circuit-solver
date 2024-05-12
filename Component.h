@@ -15,8 +15,8 @@
 class Component {
 protected:
     double r;
-    std::shared_ptr<Voltage> v{new Voltage};
-    std::shared_ptr<Current> c{new Current()};
+    std::shared_ptr<Voltage> v{std::make_shared<Voltage>(Voltage{0,false})};
+    std::shared_ptr<Current> c{std::make_shared<Current>(Current{0, false})};
     // start node represent the negative pole
     // end node represent the positive pole
     std::shared_ptr<Node> startNd{new Node()};
@@ -35,7 +35,6 @@ protected:
     virtual Component divide(Component *thisObj, Component *other);
 
 public:
-    void set_current_object(std::shared_ptr<Current> current);
     std::string get_class_name();
     static std::string get_class_name(boost::any obj);
 
@@ -97,13 +96,13 @@ public:
 
     double voltage() const;
 
-    double current() const;
+    virtual double current() const;
 
     void resistance(double val);
 
     void voltage(double val);
 
-    void current(double val);
+    virtual void current(double val);
 };
 
 #endif //DEMOPROJECT_COMPONENT_H

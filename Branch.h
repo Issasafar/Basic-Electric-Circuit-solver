@@ -13,12 +13,17 @@ using com_ptr = std::shared_ptr<Component>;
 
 class Branch : public Component {
 private:
+//    using Component::current;
+//    using Component::voltage;
     std::vector<com_ptr> vec;
     std::unordered_map<com_ptr,std::string> map;
     int branch_number;
-    std::shared_ptr<Current> branch_current{new Current()};
 public:
-    Branch(int number);
+//    void current(double current);
+//    double current();
+void current(double current) override;
+double current() const override;
+    explicit Branch(int number);
     Branch(int number, std::vector<boost::any> components);
     int number();
     std::vector<com_ptr> components();
@@ -29,7 +34,7 @@ public:
        std::shared_ptr<Component> element = std::make_shared<Component>(component);
        map[element] = component.get_class_name();
         vec.push_back(element);
-        element->set_current_object(this->c);
+        element->current(this->c->current());
     }
 };
 

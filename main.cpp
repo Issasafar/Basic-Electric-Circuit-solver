@@ -109,13 +109,22 @@ int main() {
     CurrentSource c2 = CurrentSource(1, 0, n2, ground);
     Resistance r1 = Resistance(50, n1, n2);
     Resistance r2 = Resistance(100, n2, ground);
-    Branch b3(2,{r1,r2,v1});
-    Branch b1 = Branch(0,{v1});
-    Branch b2 = Branch(1,{r1,r2});
-    Circuit circuit = Circuit({b1,b2});
+    Branch b3(2, {r1, r2, v1});
+    Branch b1 = Branch(0, {v1});
+    Branch b2 = Branch(1, {r1, r2});
+    Circuit circuit = Circuit({b1, b2});
     circuit.solve();
-    std::cout<<"n1 voltage "<<n1->voltage()<<std::endl;
-    std::cout<<"v1 voltage"<<b1.components().at(0)->voltage()<<std::endl;
+    std::cout << "n1 voltage " << n1->voltage() << std::endl;
+    std::cout << "v1 voltage" << b1.components().at(0)->voltage() << std::endl;
+    Current curr{9, true};
+//    b2.current(9);
+    b2.current(9);
+    std::cout << "b2 current: " << b2.current() << std::endl;
+    Resistance ccc{19, n1, n2};
+    ccc.current(999);
+    std::cout << "ccc current:" << ccc.current() << std::endl;
+    std::cout << "current through r2: " << r2.current() << std::endl;
+    std::cout << "current through r1: " << r1.current() << std::endl;
     return 0;
 
 }

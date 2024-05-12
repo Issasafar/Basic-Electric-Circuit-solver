@@ -17,7 +17,7 @@ bool is_valid_operation(Component *thisObj, Component *other) {
 
 Component::~Component() = default;
 
-Component::Component() : r{0}, v{}, c{} {}
+Component::Component() : r{0}, v{std::make_shared<Voltage>(Voltage(0, false))}, c{std::make_shared<Current>(Current(0,false))} {}
 
 
 Component::Component(double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end) : startNd{
@@ -143,9 +143,6 @@ std::string Component::to_string() {
     return message;
 }
 
-void Component::set_current_object(std::shared_ptr<Current> current) {
-    this->c = std::move(current);
-}
 
 std::shared_ptr<Node> Component::startNode() { return startNd; }
 
@@ -157,11 +154,13 @@ double Component::voltage() const { return v->voltage(); }
 
 double Component::current() const { return c->current(); }
 
-void Component::voltage(double val) { v->voltage(val); }
+void Component::voltage(double val) { v->voltage(val);
+v->known(true);}
 
 void Component::resistance(double val) { r = val; }
 
-void Component::current(double val) { c->current(val); }
+void Component::current(double val) { c->current(val);
+c->known(true);}
 
 std::string Component::get_class_name(boost::any obj) {
     const std::type_info &ti = obj.type();
