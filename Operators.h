@@ -23,7 +23,7 @@ namespace circuit {
             {Operator::MINUS,  "\"-\""},
             {Operator::TIMES,  "\"*\""},
             {Operator::DIVIDE, "\"/\""},
-            {Operator::ERROR,  "Cannot perform operator "},
+            {Operator::ERROR,  "Unable to perform operator "},
     };
 
     std::string operator_error_message(Operator e, Component *thisObj, Component *other) {

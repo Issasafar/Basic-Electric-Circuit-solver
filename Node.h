@@ -9,7 +9,6 @@
 #include <boost/any.hpp>
 #include <vector>
 
-//using com_ptr = std::shared_ptr<Component>;
 class Node : public ElectricalProperty {
 private:
     using ElectricalProperty::set_known;

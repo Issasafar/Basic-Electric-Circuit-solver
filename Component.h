@@ -101,7 +101,7 @@ public:
     /**
      * @fn get_class_name
      * @brief can be called without instantiating the component class
-     * @param obj can be any object need to know its name
+     * @param obj can be any object
      * @return object's class name
      */
     static std::string get_class_name(boost::any obj);
