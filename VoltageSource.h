@@ -17,6 +17,7 @@ public:
     VoltageSource(double val, double resistance);
 
     VoltageSource(double val, double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end);
+    VoltageSource(double val, std::shared_ptr<Node> start, std::shared_ptr<Node> end);
 };
 
 

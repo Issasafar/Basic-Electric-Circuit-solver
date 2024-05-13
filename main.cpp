@@ -3,12 +3,8 @@
 #include "Resistance.h"
 #include "Node.h"
 #include "VoltageSource.h"
-#include "CurrentSource.h"
-#include "Component.h"
-#include "Voltage.h"
 #include "Circuit.h"
 #include <Eigen/Dense>
-#include <boost/any.hpp>
 
 using Eigen::MatrixXd;
 

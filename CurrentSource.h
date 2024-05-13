@@ -19,6 +19,7 @@ public:
 
     CurrentSource(double val, double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end);
 
+    CurrentSource(double val, std::shared_ptr<Node> start, std::shared_ptr<Node> end);
 
 };
 
