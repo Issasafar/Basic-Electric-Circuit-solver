@@ -21,6 +21,7 @@ int main() {
     Branch b2 = Branch(1, {r3});
     Circuit circuit = Circuit({b1, b2});
     std::cout << circuit.solve() << std::endl;
+    Component c;
 //    std::cout << "r1 volt should be 5: " << r1.startNode()->get_voltage() << std::endl;
 //    std::cout << r1.voltage() << std::endl;
 //    std::cout << "r1 current " << r1.current() << std::endl;
