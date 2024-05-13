@@ -10,8 +10,12 @@
 #include <vector>
 
 //using com_ptr = std::shared_ptr<Component>;
-class Node {
+class Node : public ElectricalProperty {
 private:
+    using ElectricalProperty::set_known;
+    using ElectricalProperty::get_known;
+    using ElectricalProperty::get_value;
+    using ElectricalProperty::set_value;
     int v;
     int c = 0;
     Voltage volt;
@@ -24,8 +28,8 @@ public:
     void add_connection();
     void remove_connection();
     void value(int val);
-    void voltage(double val);
-    double voltage();
+    void set_voltage(double val);
+    double get_voltage();
     Voltage voltage_object();
     int connections_count() const;
     [[nodiscard]] int value() const;

@@ -3,6 +3,7 @@
 //
 
 #include <algorithm>
+#include <iostream>
 #include "Node.h"
 
 Node::Node() : v{-1},volt{Voltage(0, false)}{
@@ -17,12 +18,16 @@ Node::Node(int val, double voltage): v{val}, volt(Voltage(voltage, true)){
 }
 Node::Node(int val,  const Voltage& voltage): v{val},volt{voltage}{}
 
-double Node::voltage() {
-    return this->volt.voltage();
+double Node::get_voltage() {
+    return this->volt.get_value();
 }
-void Node::voltage(double val) {
-    volt.voltage(val);
-    volt.known(true);
+void Node::set_voltage(double val) {
+    volt.set_value(val);
+    volt.set_known(true);
+    for (auto &observer: observers) {
+        observer->on_value_changed(val);
+        std::cout<<"Observing change in voltage "<<val<<std::endl;
+    }
 }
 void Node::value(int val) { v = val; }
 

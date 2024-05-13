@@ -70,13 +70,13 @@ int main() {
       s = cmp2 * s;
       std::cout << s.to_string() << std::endl;
       Voltage vv1 = Voltage(9,true);
-      std::cout<<vv1.voltage()<<std::endl;
+      std::cout<<vv1.set_value()<<std::endl;
 
       ground->get_voltage();
   //    nodev.get_voltage();
       std::shared_ptr<Node> dev = std::make_shared<Node>(Node(9, 10));
 
-      ground->voltage_object().known();
+      ground->voltage_object().get_known();
       Branch b1 = Branch();
   //    b1.addComponent(r1);
       b1.addComponent(v1);
@@ -114,17 +114,17 @@ int main() {
     Branch b2 = Branch(1, {r1, r2});
     Circuit circuit = Circuit({b1, b2});
     circuit.solve();
-    std::cout << "n1 voltage " << n1->voltage() << std::endl;
-    std::cout << "v1 voltage" << b1.components().at(0)->voltage() << std::endl;
+    std::cout << "n1 set_value " << n1->get_voltage() << std::endl;
+    std::cout << "v1 set_value" << b1.components().at(0)->voltage() << std::endl;
     Current curr{9, true};
-//    b2.current(9);
+//    b2.set_value(9);
     b2.current(9);
-    std::cout << "b2 current: " << b2.current() << std::endl;
+    std::cout << "b2 set_value: " << b2.current() << std::endl;
     Resistance ccc{19, n1, n2};
     ccc.current(999);
-    std::cout << "ccc current:" << ccc.current() << std::endl;
-    std::cout << "current through r2: " << r2.current() << std::endl;
-    std::cout << "current through r1: " << r1.current() << std::endl;
+    std::cout << "ccc set_value:" << ccc.current() << std::endl;
+    std::cout << "set_value through r2: " << r2.current() << std::endl;
+    std::cout << "set_value through r1: " << r1.current() << std::endl;
     return 0;
 
 }

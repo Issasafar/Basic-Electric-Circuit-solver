@@ -12,8 +12,9 @@
 #include "Current.h"
 #include <memory>
 #include <boost/any.hpp>
-class Component {
+class Component : public ElectricalPropertyObserver{
 protected:
+    void on_value_changed(double value) override;
     double r;
     std::shared_ptr<Voltage> v{std::make_shared<Voltage>(Voltage{0,false})};
     std::shared_ptr<Current> c{std::make_shared<Current>(Current{0, false})};
@@ -33,6 +34,8 @@ protected:
     virtual Component multiply(Component *thisObj, Component *other);
 
     virtual Component divide(Component *thisObj, Component *other);
+
+    void handle_node(std::shared_ptr<Node> member, std::shared_ptr<Node> other);
 
 public:
     std::string get_class_name();
@@ -88,9 +91,9 @@ public:
 
     std::shared_ptr<Node> endNode();
 
-    void startNode(const std::shared_ptr<Node> &r);
+    void startNode(std::shared_ptr<Node> r);
 
-    void endNode(std::shared_ptr<Node> &l);
+    void endNode(std::shared_ptr<Node> l);
 
     double resistance() const;
 
@@ -105,6 +108,7 @@ public:
     void voltage(double val);
 
     virtual void current(double val);
+
 };
 
 #endif //DEMOPROJECT_COMPONENT_H

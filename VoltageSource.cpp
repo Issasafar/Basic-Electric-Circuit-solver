@@ -7,10 +7,10 @@
 VoltageSource::VoltageSource() : Component() {}
 
 VoltageSource::VoltageSource(double val, double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end)
-        : Component(resistance, start, end) { v->voltage(val); }
+        : Component(resistance, start, end) { v->set_value(val); }
 
 VoltageSource::VoltageSource(double val, double resistance) {
-    v->voltage(val);
+    v->set_value(val);
     r = resistance;
 }
 

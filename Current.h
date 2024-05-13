@@ -6,18 +6,13 @@
 #define DEMOPROJECT_CURRENT_H
 
 
-class Current {
-private:
-    double c;
-    bool is_known;
+
+#include "ElectricalProperty.h"
+class Current : public ElectricalProperty {
+protected:
+    std::string get_type() const override;
 public:
     Current();
-    Current(const double current, bool known);
-    void current(const double current);
-    double current() const;
-    bool known() const;
-    void known(bool predicate);
+    Current(const double value, bool known);
 };
-
-
 #endif //DEMOPROJECT_CURRENT_H

@@ -16,24 +16,24 @@ Branch::Branch(int number, std::vector<boost::any> components) : Branch::Branch(
 }
 
 void Branch::current(double current) {
-    c->current(current);
+    c->set_value(current);
     for (std::shared_ptr<Component> component: components()) {
         component->current(current);
     }
 }
-//double Branch::current() {
-//    return branch_current->current();
+//double Branch::set_value() {
+//    return branch_current->set_value();
 //}
 //
-//void Branch::current(double current) {
-//    branch_current->current(current);
-//    branch_current->known(true);
+//void Branch::get_value(double set_value) {
+//    branch_current->get_value(set_value);
+//    branch_current->get_known(true);
 //    for (const auto& element: components()) {
 //        element->set_current_object(branch_current);
 //    }
 //
 //    for (const auto& element: components()) {
-//        std::cout<<"inside a branch: "<<element->current()<<std::endl;
+//        std::cout<<"inside a branch: "<<element->set_value()<<std::endl;
 //    }
 //}
 std::vector<com_ptr> Branch::components() {
@@ -73,5 +73,5 @@ std::unordered_map<com_ptr, std::string> Branch::types_map() {
 int Branch::number() { return branch_number; }
 
 double Branch::current() const {
-    return c->current();
+    return c->get_value();
 }

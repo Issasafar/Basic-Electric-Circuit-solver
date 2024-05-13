@@ -5,18 +5,13 @@
 #ifndef DEMOPROJECT_VOLTAGE_H
 #define DEMOPROJECT_VOLTAGE_H
 
-
-class Voltage {
+#include "ElectricalProperty.h"
+class Voltage : public ElectricalProperty {
 protected:
-double v;
-bool is_known;
-public:
+    std::string get_type() const override;
+    public:
     Voltage();
-    Voltage(const double voltage, bool known);
-    void voltage(const double voltage);
-    double voltage() const;
-    bool known() const;
-    void known(bool predicate);
+    Voltage(const double value, bool known);
 };
 
 #endif //DEMOPROJECT_VOLTAGE_H
