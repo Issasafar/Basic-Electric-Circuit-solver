@@ -13,7 +13,7 @@ int main() {
     std::shared_ptr<Node> ground{std::make_shared<Node>(Node::ground())};
     std::shared_ptr<Node> n1{std::make_shared<Node>(Node(0))};
     std::shared_ptr<Node> n2{std::make_shared<Node>(Node(1))};
-    VoltageSource v1 = VoltageSource(5, 0, ground, n1);
+    VoltageSource v1 = VoltageSource(5, ground, n1);
     Resistance r1 = Resistance(50, n1, n2);
     Resistance r2 = Resistance(100, n2, ground);
     Resistance r3 = Resistance(50, n1, ground);
