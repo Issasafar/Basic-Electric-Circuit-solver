@@ -2,14 +2,18 @@
 // Created by issa on 21/04/24.
 //
 
-#ifndef UNTITLED_RESISTANCE_H
-#define UNTITLED_RESISTANCE_H
+#ifndef CIRCUITSOLVER_RESISTANCE_H
+#define CIRCUITSOLVER_RESISTANCE_H
 
 #include "Node.h"
 #include "Component.h"
-
+/**
+ * @file Resistance.h
+ * @brief electrical resistance
+ */
 class Resistance : public Component {
 private:
+    // overriding methods from the parent class
     Component add(Component *thisObj, Component *other) override;
 
     Component subtract(Component *thisObj, Component *other) override;
@@ -34,4 +38,4 @@ public:
 };
 
 
-#endif //UNTITLED_RESISTANCE_H
+#endif //CIRCUITSOLVER_RESISTANCE_H

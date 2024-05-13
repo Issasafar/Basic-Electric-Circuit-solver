@@ -14,7 +14,7 @@ Circuit::Circuit() = default;
 Circuit::Circuit(std::vector<Branch> branches) {
     b = std::move(branches);
     for (Branch branch: b) {
-        equations_count += branch.components().size();
+        equationsCount += branch.components().size();
     }
 }
 
@@ -26,12 +26,12 @@ void Circuit::insert_node(std::shared_ptr<Node> node) {
 
 void Circuit::add_branch(Branch branch) {
     b.push_back(branch);
-    equations_count += branch.components().size();
+    equationsCount += branch.components().size();
 }
 
 VectorXd Circuit::solve() {
-    MatrixXd matrix = MatrixXd::Zero(equations_count, equations_count);
-    VectorXd vector = VectorXd::Zero(equations_count);
+    MatrixXd matrix = MatrixXd::Zero(equationsCount, equationsCount);
+    VectorXd vector = VectorXd::Zero(equationsCount);
 
     int row{0};
     for (auto branch: branches()) {
@@ -41,34 +41,34 @@ VectorXd Circuit::solve() {
             insert_node(component->startNode());
             insert_node(component->endNode());
             if (branch.types_map().at(component) == "VoltageSource") {
-                if (component->startNode()->value() != Node::ground().value()) {
-                    matrix(row, component->startNode()->value()) = -1;
+                if (component->startNode()->number() != Node::ground().number()) {
+                    matrix(row, component->startNode()->number()) = -1;
                 }
-                if (component->endNode()->value() != Node::ground().value()) {
-                    matrix(row, component->endNode()->value()) = 1;
+                if (component->endNode()->number() != Node::ground().number()) {
+                    matrix(row, component->endNode()->number()) = 1;
                 }
                 vector(row) = component->voltage();
 
             }
             if (branch.types_map().at(component) == "CurrentSource") {
-                matrix(row, equations_count - 1 - branch.number()) = 1;
+                matrix(row, equationsCount - 1 - branch.number()) = 1;
                 vector(row) = component->current();
             }
             if (branch.types_map().at(component) == "Resistance") {
-                if (component->startNode()->value() != Node::ground().value()) {
-                    matrix(row, component->startNode()->value()) = 1;
+                if (component->startNode()->number() != Node::ground().number()) {
+                    matrix(row, component->startNode()->number()) = 1;
                 }
-                if (component->endNode()->value() != Node::ground().value()) {
-                    matrix(row, component->endNode()->value()) = -1;
+                if (component->endNode()->number() != Node::ground().number()) {
+                    matrix(row, component->endNode()->number()) = -1;
                 }
-                matrix(row, equations_count - 1 - branch.number()) = -component->resistance();
+                matrix(row, equationsCount - 1 - branch.number()) = -component->resistance();
                 insert_branch(std::make_shared<Branch>(branch));
             }
             // go to next row in the matrix to fill up
             ++row;
         }
     }
-    VectorXd result = VectorXd::Zero(equations_count);
+    VectorXd result = VectorXd::Zero(equationsCount);
     result = matrix.colPivHouseholderQr().solve(vector);
     std::cout << "################ MATRIX ###################" << std::endl;
     std::cout << matrix << std::endl;
@@ -91,8 +91,8 @@ void Circuit::update_branches_current(Eigen::VectorXd data) {
 
 void Circuit::update_node_voltages(Eigen::VectorXd data) {
     for (auto node: s) {
-        if (node->value() != -1) {
-            node->set_voltage(data(node->value()));
+        if (node->number() != -1) {
+            node->set_voltage(data(node->number()));
         }
     }
 

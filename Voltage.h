@@ -2,19 +2,30 @@
 // Created by issa on 10/05/24.
 //
 
-#ifndef DEMOPROJECT_VOLTAGE_H
-#define DEMOPROJECT_VOLTAGE_H
+#ifndef CIRCUITSOLVER_VOLTAGE_H
+#define CIRCUITSOLVER_VOLTAGE_H
 
 #include "ElectricalProperty.h"
-
+/**
+ * @file Voltage.h
+ * @brief represent the electrical voltage
+ */
 class Voltage : public ElectricalProperty {
 protected:
+    /**
+     * @brief overrides the parent method
+     * @return string "Voltage"
+     */
     std::string get_type() const override;
 
 public:
     Voltage();
-
+    /**
+     * @brief constructor
+     * @param value the voltage number
+     * @param known is the voltage known or not
+     */
     Voltage(const double value, bool known);
 };
 
-#endif //DEMOPROJECT_VOLTAGE_H
+#endif //CIRCUITSOLVER_VOLTAGE_H

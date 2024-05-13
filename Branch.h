@@ -2,21 +2,27 @@
 // Created by issa on 27/04/24.
 //
 
-#ifndef DEMOPROJECT_BRANCH_H
-#define DEMOPROJECT_BRANCH_H
+#ifndef CIRCUITSOLVER_BRANCH_H
+#define CIRCUITSOLVER_BRANCH_H
 
 
 #include <vector>
 #include "Component.h"
 #include <unordered_map>
-
+// aliasing for shorter names
 using com_ptr = std::shared_ptr<Component>;
-
+/**
+ * @file Branch.h
+ * @brief electrical branch that holds components
+ */
 class Branch : public Component {
 private:
+    /**@var vec @brief holds references to each component in the branch*/
     std::vector<com_ptr> vec;
+    /**@var map @brief holds the type for each component in the branch*/
     std::unordered_map<com_ptr, std::string> map;
-    int branch_number;
+    /**@var branchNumber @brief the branch number*/
+    int branchNumber;
 public:
     void current(double current) override;
 
@@ -33,7 +39,11 @@ public:
     void components(std::vector<boost::any> components);
 
     std::unordered_map<com_ptr, std::string> types_map();
-
+    /**
+     * @brief adds component to the branch
+     * @tparam T type of the component
+     * @param component
+     */
     template<class T>
     void add_component(T component) {
         std::shared_ptr<Component> element = std::make_shared<Component>(component);
@@ -44,4 +54,4 @@ public:
 };
 
 
-#endif //DEMOPROJECT_BRANCH_H
+#endif //CIRCUITSOLVER_BRANCH_H

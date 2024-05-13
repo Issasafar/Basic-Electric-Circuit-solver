@@ -2,8 +2,8 @@
 // Created by issa on 13/05/24.
 //
 
-#ifndef DEMOPROJECT_ELECTRICALPROPERTY_H
-#define DEMOPROJECT_ELECTRICALPROPERTY_H
+#ifndef CIRCUITSOLVER_ELECTRICALPROPERTY_H
+#define CIRCUITSOLVER_ELECTRICALPROPERTY_H
 
 
 #include "ElectricatPropertyObserver.h"
@@ -18,7 +18,7 @@ class ElectricalProperty {
 protected:
     /**@var observers @brief vector containing references to ElectricalPropertyObservers */
     std::vector<ElectricalPropertyObserver *> observers;
-    /**@var value_ @brief the property value*/
+    /**@var value_ @brief the property number*/
     double value_;
     /**@var is_known @brief is the property known or not*/
     bool is_known;
@@ -33,7 +33,7 @@ public:
     ElectricalProperty();
     /**
      *
-     * @param value property value
+     * @param value property number
      * @param known property known or not
      */
     ElectricalProperty(const double value, bool known);
@@ -48,13 +48,13 @@ public:
      */
     void remove_observer(ElectricalPropertyObserver *observer);
     /**
-     * @brief set property value
-     * @param value new value
+     * @brief set property number
+     * @param value new number
      */
     void set_value(double value);
     /**
      *
-     * @return property value
+     * @return property number
      */
     double get_value() const;
     /**
@@ -72,4 +72,4 @@ public:
 };
 
 
-#endif //DEMOPROJECT_ELECTRICALPROPERTY_H
+#endif //CIRCUITSOLVER_ELECTRICALPROPERTY_H

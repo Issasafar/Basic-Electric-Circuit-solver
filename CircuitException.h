@@ -2,12 +2,15 @@
 // Created by issa on 10/05/24.
 //
 
-#ifndef DEMOPROJECT_CIRCUITEXCEPTION_H
-#define DEMOPROJECT_CIRCUITEXCEPTION_H
+#ifndef CIRCUITSOLVER_CIRCUITEXCEPTION_H
+#define CIRCUITSOLVER_CIRCUITEXCEPTION_H
 
 #include <exception>
 #include <string>
-
+/**
+ * @file CircuitException.h
+ * @brief custom exception for circuit errors
+ */
 class CircuitException : public std::exception {
 public:
     CircuitException(std::string message);
@@ -15,8 +18,9 @@ public:
     const char *what() const noexcept override;
 
 private:
+    /**@var message_ @brief error message on fault*/
     std::string message_;
 };
 
 
-#endif //DEMOPROJECT_CIRCUITEXCEPTION_H
+#endif //CIRCUITSOLVER_CIRCUITEXCEPTION_H

@@ -1,24 +1,35 @@
 //
 // Created by issa on 21/04/24.
 //
-#ifndef UNTITLED_NODE_H
-#define UNTITLED_NODE_H
+#ifndef CIRCUITSOLVER_NODE_H
+#define CIRCUITSOLVER_NODE_H
 
 #include "Voltage.h"
 #include <memory>
 #include <boost/any.hpp>
 #include <vector>
-
+/**
+ * @file Node.h
+ * @brief electrical node
+ */
 class Node : public ElectricalProperty {
 private:
+    // restrict access to some parent methods
     using ElectricalProperty::set_known;
     using ElectricalProperty::get_known;
     using ElectricalProperty::get_value;
     using ElectricalProperty::set_value;
-    int v;
+    /**@var n @brief node number*/
+    int n;
+    /**@var c @brief connections count of the node*/
     int c = 0;
+    /**@var volt @brief node voltage*/
     Voltage volt;
 public:
+    /**
+     *
+     * @return ground of the circuit
+     */
     static Node ground();
 
     Node();
@@ -33,7 +44,7 @@ public:
 
     void remove_connection();
 
-    void value(int val);
+    void number(int val);
 
     void set_voltage(double val);
 
@@ -43,8 +54,8 @@ public:
 
     int connections_count() const;
 
-    [[nodiscard]] int value() const;
+    int number() const;
 };
 
 
-#endif //UNTITLED_NODE_H
+#endif //CIRCUITSOLVER_NODE_H

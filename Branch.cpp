@@ -9,7 +9,7 @@
 #include "VoltageSource.h"
 #include "CurrentSource.h"
 
-Branch::Branch(int number) : Component(), branch_number{number} {}
+Branch::Branch(int number) : Component(), branchNumber{number} {}
 
 Branch::Branch(int number, std::vector<boost::any> components) : Branch::Branch(number) {
     Branch::components(std::move(components));
@@ -57,7 +57,7 @@ std::unordered_map<com_ptr, std::string> Branch::types_map() {
     return map;
 }
 
-int Branch::number() { return branch_number; }
+int Branch::number() { return branchNumber; }
 
 double Branch::current() const {
     return c->get_value();

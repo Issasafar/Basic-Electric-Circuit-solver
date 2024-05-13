@@ -2,8 +2,8 @@
 // Created by issa on 13/05/24.
 //
 
-#ifndef DEMOPROJECT_ELECTRICATPROPERTYOBSERVER_H
-#define DEMOPROJECT_ELECTRICATPROPERTYOBSERVER_H
+#ifndef CIRCUITSOLVER_ELECTRICATPROPERTYOBSERVER_H
+#define CIRCUITSOLVER_ELECTRICATPROPERTYOBSERVER_H
 /**
  * @file ElectricalPropertyObserver.h
  * @brief base observer interface for voltage or current changes
@@ -15,4 +15,4 @@ public:
     virtual void on_current_changed(double value) = 0;
 };
 
-#endif //DEMOPROJECT_ELECTRICATPROPERTYOBSERVER_H
+#endif //CIRCUITSOLVER_ELECTRICATPROPERTYOBSERVER_H

@@ -2,8 +2,8 @@
 // Created by issa on 27/04/24.
 //
 
-#ifndef DEMOPROJECT_COMPONENT_H
-#define DEMOPROJECT_COMPONENT_H
+#ifndef CIRCUITSOLVER_COMPONENT_H
+#define CIRCUITSOLVER_COMPONENT_H
 
 
 #include <type_traits>
@@ -23,7 +23,7 @@ protected:
     /**@var r @brief internal resistance*/
     double r;
 
-    /**@var v @brief voltage across component (difference between end and start nodes voltage)*/
+    /**@var n @brief voltage across component (difference between end and start nodes voltage)*/
     std::shared_ptr<Voltage> v{std::make_shared<Voltage>(Voltage{0, false})};
     /**@var c @brief current passing through the component (start -> end)*/
     std::shared_ptr<Current> c{std::make_shared<Current>(Current{0, false})};
@@ -85,7 +85,7 @@ protected:
 public:
     /**
      * @brief called whenever the voltage changed in the nodes
-     * @param value the new voltage value for either start or end node
+     * @param value the new voltage number for either start or end node
      */
     void on_voltage_changed(double value) override;
     /**
@@ -239,4 +239,4 @@ public:
 
 };
 
-#endif //DEMOPROJECT_COMPONENT_H
+#endif //CIRCUITSOLVER_COMPONENT_H
