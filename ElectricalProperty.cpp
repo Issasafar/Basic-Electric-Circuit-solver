@@ -7,8 +7,10 @@
 #include "Component.h"
 #include <algorithm>
 
-ElectricalProperty::ElectricalProperty(const double value, bool known): value_{value}, is_known{known} {}
-ElectricalProperty::ElectricalProperty(): value_{0}, is_known{false} {}
+ElectricalProperty::ElectricalProperty(const double value, bool known) : value_{value}, is_known{known} {}
+
+ElectricalProperty::ElectricalProperty() : value_{0}, is_known{false} {}
+
 void ElectricalProperty::add_observer(ElectricalPropertyObserver *observer) {
     observers.push_back(observer);
 }
@@ -19,15 +21,16 @@ void ElectricalProperty::remove_observer(ElectricalPropertyObserver *observer) {
         observers.erase(it);
     }
 }
+
 void ElectricalProperty::set_value(double value) {
     value_ = value;
     is_known = true;
-    if(get_type() == "Voltage") {
+    if (get_type() == "Voltage") {
         for (auto &observer: observers) {
             observer->on_voltage_changed(value);
         }
     }
-    if(get_type() == "Current") {
+    if (get_type() == "Current") {
         for (auto &observer: observers) {
             observer->on_current_changed(value);
         }
@@ -37,9 +40,10 @@ void ElectricalProperty::set_value(double value) {
 std::string ElectricalProperty::get_type() const {
     return "Electrical Property";
 }
+
 double ElectricalProperty::get_value() const {
     if (!is_known) {
-        throw CircuitException("Unknown "+ get_type());
+        throw CircuitException("Unknown " + get_type());
     }
     return value_;
 }

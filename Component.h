@@ -12,10 +12,11 @@
 #include "Current.h"
 #include <memory>
 #include <boost/any.hpp>
-class Component : public ElectricalPropertyObserver{
+
+class Component : public ElectricalPropertyObserver {
 protected:
     double r;
-    std::shared_ptr<Voltage> v{std::make_shared<Voltage>(Voltage{0,false})};
+    std::shared_ptr<Voltage> v{std::make_shared<Voltage>(Voltage{0, false})};
     std::shared_ptr<Current> c{std::make_shared<Current>(Current{0, false})};
     // start node represent the negative pole
     // end node represent the positive pole
@@ -38,8 +39,11 @@ protected:
 
 public:
     void on_voltage_changed(double value) override;
+
     void on_current_changed(double value) override;
+
     std::string get_class_name();
+
     static std::string get_class_name(boost::any obj);
 
     virtual ~Component();
@@ -101,12 +105,15 @@ public:
     double voltage() const;
 
     virtual double current() const;
+
     void resistance(double val);
 
     void voltage(double val);
 
     virtual void current(double val);
+
     std::shared_ptr<Current> get_current_object();
+
     std::shared_ptr<Voltage> get_voltage_object();
 
 };

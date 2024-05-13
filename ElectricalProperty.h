@@ -12,18 +12,27 @@
 
 class ElectricalProperty {
 protected:
-    std::vector<ElectricalPropertyObserver*> observers;
+    std::vector<ElectricalPropertyObserver *> observers;
     double value_;
     bool is_known;
+
     virtual std::string get_type() const;
+
 public:
     ElectricalProperty();
+
     ElectricalProperty(const double value, bool known);
-    void add_observer(ElectricalPropertyObserver* observer);
-    void remove_observer(ElectricalPropertyObserver* observer);
+
+    void add_observer(ElectricalPropertyObserver *observer);
+
+    void remove_observer(ElectricalPropertyObserver *observer);
+
     void set_value(double value);
+
     double get_value() const;
+
     void set_known(bool predicate);
+
     bool get_known() const;
 
 };

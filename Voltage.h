@@ -6,11 +6,14 @@
 #define DEMOPROJECT_VOLTAGE_H
 
 #include "ElectricalProperty.h"
+
 class Voltage : public ElectricalProperty {
 protected:
     std::string get_type() const override;
-    public:
+
+public:
     Voltage();
+
     Voltage(const double value, bool known);
 };
 

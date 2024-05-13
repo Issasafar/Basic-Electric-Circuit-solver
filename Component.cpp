@@ -14,13 +14,14 @@ bool is_valid_operation(Component *thisObj, Component *other) {
     return false;
 }
 
-std::shared_ptr<Voltage> Component::get_voltage_object() {return v;}
+std::shared_ptr<Voltage> Component::get_voltage_object() { return v; }
 
-std::shared_ptr<Current> Component::get_current_object() {return c;}
+std::shared_ptr<Current> Component::get_current_object() { return c; }
 
 Component::~Component() = default;
 
-Component::Component() : r{0}, v{std::make_shared<Voltage>(Voltage(0, false))}, c{std::make_shared<Current>(Current(0,false))} {}
+Component::Component() : r{0}, v{std::make_shared<Voltage>(Voltage(0, false))},
+                         c{std::make_shared<Current>(Current(0, false))} {}
 
 
 Component::Component(double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end) : startNd{
@@ -117,7 +118,7 @@ Component Component::divide(Component *thisObj, Component *other) {
     return *thisObj;
 }
 
-void Component::handle_node(std::shared_ptr<Node> member,  std::shared_ptr<Node> other){
+void Component::handle_node(std::shared_ptr<Node> member, std::shared_ptr<Node> other) {
     member->remove_connection();
     member->remove_observer(this);
     other->add_connection();
@@ -126,6 +127,7 @@ void Component::handle_node(std::shared_ptr<Node> member,  std::shared_ptr<Node>
 
 
 }
+
 void Component::endNode(std::shared_ptr<Node> end) {
     handle_node(endNd, end);
 }
@@ -164,13 +166,15 @@ double Component::current() const { return c->get_value(); }
 
 void Component::voltage(double val) {
     v->set_value(val);
-    v->set_known(true);}
+    v->set_known(true);
+}
 
 void Component::resistance(double val) { r = val; }
 
 void Component::current(double val) {
     c->set_value(val);
-    c->set_known(true);}
+    c->set_known(true);
+}
 
 std::string Component::get_class_name(boost::any obj) {
     const std::type_info &ti = obj.type();
@@ -178,16 +182,16 @@ std::string Component::get_class_name(boost::any obj) {
 }
 
 void Component::on_current_changed(double value) {
-    std::cout<<get_class_name()<<this->to_string()<<" Current changed: "<<value<<std::endl;
     if (r != 0) {
         if (startNd->voltage_object().get_known() && !endNd->voltage_object().get_known()) {
-            endNd->set_voltage(r*value + startNd->get_voltage());
+            endNd->set_voltage(r * value + startNd->get_voltage());
         }
         if (endNd->voltage_object().get_known() && !startNd->voltage_object().get_known()) {
-            startNd->set_voltage(-r*value + endNd->get_voltage());
+            startNd->set_voltage(-r * value + endNd->get_voltage());
         }
     }
 }
+
 void Component::on_voltage_changed(double value) {
     if (startNd->voltage_object().get_known() && endNd->voltage_object().get_known()) {
         v->set_value(endNd->get_voltage() - startNd->get_voltage());

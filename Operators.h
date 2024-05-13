@@ -8,7 +8,8 @@
 #include <string>
 #include <unordered_map>
 #include "Component.h"
-namespace circuit{
+
+namespace circuit {
     enum class Operator {
         PLUS,
         MINUS,
@@ -25,8 +26,9 @@ namespace circuit{
             {Operator::ERROR,  "Cannot perform operator "},
     };
 
-    std::string operator_error_message(Operator e,Component*thisObj,Component *other) {
-        return operators_map.at(circuit::Operator::ERROR)+operators_map.at(e)+": "+ thisObj->get_class_name()+operators_map.at(e) +other->get_class_name();
+    std::string operator_error_message(Operator e, Component *thisObj, Component *other) {
+        return operators_map.at(circuit::Operator::ERROR) + operators_map.at(e) + ": " + thisObj->get_class_name() +
+               operators_map.at(e) + other->get_class_name();
     }
 }
 #endif //DEMOPROJECT_OPERATORS_H

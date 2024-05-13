@@ -8,7 +8,7 @@
 
 #include "Component.h"
 
-class VoltageSource : public Component{
+class VoltageSource : public Component {
 private:
     using Component::current;
 public:

@@ -3,8 +3,10 @@
 //
 
 #include "Current.h"
-Current::Current(): ElectricalProperty() {}
-Current::Current(const double value, bool known): ElectricalProperty(value, known) {}
+
+Current::Current() : ElectricalProperty() {}
+
+Current::Current(const double value, bool known) : ElectricalProperty(value, known) {}
 
 std::string Current::get_type() const {
     return "Current";

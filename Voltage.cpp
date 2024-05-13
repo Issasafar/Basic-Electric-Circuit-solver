@@ -3,8 +3,10 @@
 //
 
 #include "Voltage.h"
-Voltage::Voltage(): ElectricalProperty() {}
-Voltage::Voltage(const double value, bool known): ElectricalProperty(value, known) {}
+
+Voltage::Voltage() : ElectricalProperty() {}
+
+Voltage::Voltage(const double value, bool known) : ElectricalProperty(value, known) {}
 
 std::string Voltage::get_type() const {
     return "Voltage";

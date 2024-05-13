@@ -13,9 +13,6 @@ message("${CMAKE_MODULE_PATH}")
 message("${EIGEN3_INCLUDE_DIR}")
 
 
-
-
-
 add_executable(untitled main.cpp Node.cpp Node.h Resistance.cpp Resistance.h Component.cpp Component.h Branch.cpp Branch.h VoltageSource.cpp VoltageSource.h CurrentSource.cpp CurrentSource.h CircuitException.cpp CircuitException.h Operators.h Voltage.cpp Voltage.h Circuit.cpp Circuit.h Current.cpp Current.h ElectricatPropertyObserver.h ElectricalProperty.cpp ElectricalProperty.h)
 
 

@@ -19,11 +19,7 @@ void Branch::current(double current) {
     c->set_value(current);
     for (std::shared_ptr<Component> component: components()) {
         component->current(current);
-        std::cout<<"calling on current changed from branch with "<<current<<std::endl;
         component->on_current_changed(current);
-    }
-    for(std::shared_ptr<Component> component: components()){
-       std::cout<<"inside branch components: "<<component->current()<<std::endl;
     }
 
 }
@@ -31,7 +27,6 @@ void Branch::current(double current) {
 std::vector<com_ptr> Branch::components() {
     return vec;
 }
-
 
 
 void Branch::components(std::vector<boost::any> components) {

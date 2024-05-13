@@ -21,8 +21,9 @@ Circuit::Circuit(std::vector<Branch> branches) {
 b_vec Circuit::branches() { return b; }
 
 void Circuit::insert_node(std::shared_ptr<Node> node) {
-   s.insert(node);
+    s.insert(node);
 }
+
 void Circuit::add_branch(Branch branch) {
     b.push_back(branch);
     equations_count += branch.components().size();
@@ -50,7 +51,7 @@ VectorXd Circuit::solve() {
 
             }
             if (branch.types_map().at(component) == "CurrentSource") {
-                matrix(row, equations_count - branch.number()) = 1;
+                matrix(row, equations_count - 1 - branch.number()) = 1;
                 vector(row) = component->current();
             }
             if (branch.types_map().at(component) == "Resistance") {
@@ -60,19 +61,19 @@ VectorXd Circuit::solve() {
                 if (component->endNode()->value() != Node::ground().value()) {
                     matrix(row, component->endNode()->value()) = -1;
                 }
-                matrix(row, equations_count - branch.number()) = -component->resistance();
+                matrix(row, equations_count - 1 - branch.number()) = -component->resistance();
                 insert_branch(std::make_shared<Branch>(branch));
             }
             // go to next row in the matrix to fill up
-            std::cout << "################ MATRIX ###################" << std::endl;
-            std::cout << matrix << std::endl;
-            std::cout << "################ VECTOR ###################" << std::endl;
-            std::cout << vector << std::endl;
             ++row;
         }
     }
     VectorXd result = VectorXd::Zero(equations_count);
     result = matrix.colPivHouseholderQr().solve(vector);
+    std::cout << "################ MATRIX ###################" << std::endl;
+    std::cout << matrix << std::endl;
+    std::cout << "################ VECTOR ###################" << std::endl;
+    std::cout << vector << std::endl;
     update_node_voltages(result);
     update_branches_current(result);
     return result;
@@ -81,18 +82,18 @@ VectorXd Circuit::solve() {
 void Circuit::insert_branch(std::shared_ptr<Branch> branch) {
     bSet.insert(branch);
 }
+
 void Circuit::update_branches_current(Eigen::VectorXd data) {
     for (auto branch: bSet) {
-        std::cout<<"branch number #"<<branch->number()<<", data: "<<data(data.size()   - branch->number())<<std::endl;
-        branch->current(data(data.size()  - branch->number()));
+        branch->current(data(data.size() - 1 - branch->number()));
     }
 }
 
 void Circuit::update_node_voltages(Eigen::VectorXd data) {
     for (auto node: s) {
-        if(node->value() != -1){
-        node->set_voltage(data(node->value()));
-    }
+        if (node->value() != -1) {
+            node->set_voltage(data(node->value()));
+        }
     }
 
 }

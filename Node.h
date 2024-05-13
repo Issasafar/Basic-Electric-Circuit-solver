@@ -21,17 +21,29 @@ private:
     Voltage volt;
 public:
     static Node ground();
+
     Node();
+
     Node(int val, double voltage);
-    Node(int val, const Voltage& voltage);
+
+    Node(int val, const Voltage &voltage);
+
     explicit Node(int val);
+
     void add_connection();
+
     void remove_connection();
+
     void value(int val);
+
     void set_voltage(double val);
+
     double get_voltage();
+
     Voltage voltage_object();
+
     int connections_count() const;
+
     [[nodiscard]] int value() const;
 };
 

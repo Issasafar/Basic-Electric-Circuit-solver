@@ -14,14 +14,10 @@ using com_ptr = std::shared_ptr<Component>;
 
 class Branch : public Component {
 private:
-//    using Component::set_value;
-//    using Component::set_value;
     std::vector<com_ptr> vec;
     std::unordered_map<com_ptr, std::string> map;
     int branch_number;
 public:
-//    void get_value(double set_value);
-//    double set_value();
     void current(double current) override;
 
     double current() const override;
