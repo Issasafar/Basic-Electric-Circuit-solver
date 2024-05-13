@@ -25,8 +25,7 @@ void Node::set_voltage(double val) {
     volt.set_value(val);
     volt.set_known(true);
     for (auto &observer: observers) {
-        observer->on_value_changed(val);
-        std::cout<<"Observing change in voltage "<<val<<std::endl;
+        observer->on_voltage_changed(val);
     }
 }
 void Node::value(int val) { v = val; }

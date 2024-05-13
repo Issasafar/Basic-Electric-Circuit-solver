@@ -19,23 +19,15 @@ void Branch::current(double current) {
     c->set_value(current);
     for (std::shared_ptr<Component> component: components()) {
         component->current(current);
+        std::cout<<"calling on current changed from branch with "<<current<<std::endl;
+        component->on_current_changed(current);
     }
+    for(std::shared_ptr<Component> component: components()){
+       std::cout<<"inside branch components: "<<component->current()<<std::endl;
+    }
+
 }
-//double Branch::set_value() {
-//    return branch_current->set_value();
-//}
-//
-//void Branch::get_value(double set_value) {
-//    branch_current->get_value(set_value);
-//    branch_current->get_known(true);
-//    for (const auto& element: components()) {
-//        element->set_current_object(branch_current);
-//    }
-//
-//    for (const auto& element: components()) {
-//        std::cout<<"inside a branch: "<<element->set_value()<<std::endl;
-//    }
-//}
+
 std::vector<com_ptr> Branch::components() {
     return vec;
 }

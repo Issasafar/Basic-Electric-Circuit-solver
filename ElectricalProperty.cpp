@@ -22,8 +22,15 @@ void ElectricalProperty::remove_observer(ElectricalPropertyObserver *observer) {
 void ElectricalProperty::set_value(double value) {
     value_ = value;
     is_known = true;
-    for (auto &observer: observers) {
-        observer->on_value_changed(value);
+    if(get_type() == "Voltage") {
+        for (auto &observer: observers) {
+            observer->on_voltage_changed(value);
+        }
+    }
+    if(get_type() == "Current") {
+        for (auto &observer: observers) {
+            observer->on_current_changed(value);
+        }
     }
 }
 

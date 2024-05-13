@@ -14,6 +14,10 @@ bool is_valid_operation(Component *thisObj, Component *other) {
     return false;
 }
 
+std::shared_ptr<Voltage> Component::get_voltage_object() {return v;}
+
+std::shared_ptr<Current> Component::get_current_object() {return c;}
+
 Component::~Component() = default;
 
 Component::Component() : r{0}, v{std::make_shared<Voltage>(Voltage(0, false))}, c{std::make_shared<Current>(Current(0,false))} {}
@@ -173,8 +177,18 @@ std::string Component::get_class_name(boost::any obj) {
     return std::regex_replace(std::string(ti.name()), std::regex("[0-9]+"), "");
 }
 
-void Component::on_value_changed(double value) {
-    std::cout<<"on value changed called "<<std::endl;
+void Component::on_current_changed(double value) {
+    std::cout<<get_class_name()<<this->to_string()<<" Current changed: "<<value<<std::endl;
+    if (r != 0) {
+        if (startNd->voltage_object().get_known() && !endNd->voltage_object().get_known()) {
+            endNd->set_voltage(r*value + startNd->get_voltage());
+        }
+        if (endNd->voltage_object().get_known() && !startNd->voltage_object().get_known()) {
+            startNd->set_voltage(-r*value + endNd->get_voltage());
+        }
+    }
+}
+void Component::on_voltage_changed(double value) {
     if (startNd->voltage_object().get_known() && endNd->voltage_object().get_known()) {
         v->set_value(endNd->get_voltage() - startNd->get_voltage());
     }

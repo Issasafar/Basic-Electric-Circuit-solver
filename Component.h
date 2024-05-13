@@ -14,7 +14,6 @@
 #include <boost/any.hpp>
 class Component : public ElectricalPropertyObserver{
 protected:
-    void on_value_changed(double value) override;
     double r;
     std::shared_ptr<Voltage> v{std::make_shared<Voltage>(Voltage{0,false})};
     std::shared_ptr<Current> c{std::make_shared<Current>(Current{0, false})};
@@ -38,6 +37,8 @@ protected:
     void handle_node(std::shared_ptr<Node> member, std::shared_ptr<Node> other);
 
 public:
+    void on_voltage_changed(double value) override;
+    void on_current_changed(double value) override;
     std::string get_class_name();
     static std::string get_class_name(boost::any obj);
 
@@ -100,14 +101,13 @@ public:
     double voltage() const;
 
     virtual double current() const;
-    void set_start_voltage(double volt);
-    void set_end_voltage(double volt);
-    void voltage_changed();
     void resistance(double val);
 
     void voltage(double val);
 
     virtual void current(double val);
+    std::shared_ptr<Current> get_current_object();
+    std::shared_ptr<Voltage> get_voltage_object();
 
 };
 
