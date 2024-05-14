@@ -3,6 +3,7 @@
 //
 
 #include "Circuit.h"
+#include "CircuitException.h"
 #include <Eigen/Dense>
 #include <utility>
 
@@ -30,9 +31,8 @@ void Circuit::add_branch(Branch branch) {
 }
 
 VectorXd Circuit::solve() {
-    MatrixXd matrix = MatrixXd::Zero(equationsCount, equationsCount);
-    VectorXd vector = VectorXd::Zero(equationsCount);
-
+    matrix = MatrixXd::Zero(equationsCount, equationsCount);
+    vector = VectorXd::Zero(equationsCount);
     int row{0};
     for (auto branch: branches()) {
         // append each component's equation to the matrix
@@ -70,10 +70,8 @@ VectorXd Circuit::solve() {
     }
     VectorXd result = VectorXd::Zero(equationsCount);
     result = matrix.colPivHouseholderQr().solve(vector);
-    std::cout << "################ MATRIX ###################" << std::endl;
-    std::cout << matrix << std::endl;
-    std::cout << "################ VECTOR ###################" << std::endl;
-    std::cout << vector << std::endl;
+    is_solved = true;
+    solution = result;
     update_node_voltages(result);
     update_branches_current(result);
     return result;
@@ -95,5 +93,70 @@ void Circuit::update_node_voltages(Eigen::VectorXd data) {
             node->set_voltage(data(node->number()));
         }
     }
+}
 
+void Circuit::print_matrix() {
+    if (!is_solved) {
+        throw CircuitException("The circuit is not solved");
+    }
+//    for (int k = 0; k < 10*equationsCount; ++k) {
+//        if(k == 10*equationsCount/2){
+//            std::cout<<"MATRIX";
+//        }else{
+//            std::cout<<"#";
+//        }
+//    }
+//    std::cout<<std::endl;
+    std::stringstream ss;
+    unsigned long maxMatrixLength = 0;
+    unsigned long maxVectorLength = 0;
+    unsigned long maxSolutionLength = 0;
+    for (int j = 0; j < equationsCount; ++j) {
+        std::stringstream tempStream;
+        for (int i = 0; i < equationsCount; ++i) {
+            tempStream.str(std::string());
+            tempStream << " " << matrix(i, j) << "\t";
+            if (tempStream.str().length() > maxMatrixLength) {
+                maxMatrixLength = tempStream.str().length();
+            }
+            ss << tempStream.str();
+        }
+        tempStream.str(std::string());
+        tempStream << "|\t" << vector(j) << "\t";
+        if (tempStream.str().length() > maxVectorLength) {
+            maxVectorLength = tempStream.str().length();
+        }
+        ss << tempStream.str();
+        tempStream.str(std::string());
+        tempStream << "||\t" << solution(j) << std::endl;
+        if (tempStream.str().length() > maxSolutionLength) {
+            maxSolutionLength = tempStream.str().length();
+        }
+        ss << tempStream.str();
+    }
+    maxMatrixLength *= 3;
+    for (int i = 0; i <= maxMatrixLength; ++i) {
+        if (i == maxMatrixLength / 2) {
+            std::cout << " MATRIX ";
+        } else {
+            std::cout << "-";
+        }
+    }
+
+    for (int i = 0; i <= maxVectorLength; ++i) {
+        if (i == maxVectorLength / 2) {
+            std::cout << " VECTOR ";
+        } else {
+            std::cout << "-";
+        }
+    }
+    for (int i = 0; i <= maxSolutionLength; ++i) {
+        if (i == maxSolutionLength / 2) {
+            std::cout << " SOLUTION ";
+        } else {
+            std::cout << "-";
+        }
+    }
+    std::cout << std::endl;
+    std::cout << ss.str() << std::endl;
 }

@@ -133,6 +133,13 @@ build CMakeFiles/untitled.dir/ElectricalProperty.cpp.o: CXX_COMPILER__untitled_D
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir
 
+build CMakeFiles/untitled.dir/ComponentsFactory.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/ComponentsFactory.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/ComponentsFactory.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/usr/include/eigen3
+  OBJECT_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target untitled
@@ -141,7 +148,7 @@ build CMakeFiles/untitled.dir/ElectricalProperty.cpp.o: CXX_COMPILER__untitled_D
 #############################################
 # Link the executable untitled
 
-build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/Node.cpp.o CMakeFiles/untitled.dir/Resistance.cpp.o CMakeFiles/untitled.dir/Component.cpp.o CMakeFiles/untitled.dir/Branch.cpp.o CMakeFiles/untitled.dir/VoltageSource.cpp.o CMakeFiles/untitled.dir/CurrentSource.cpp.o CMakeFiles/untitled.dir/CircuitException.cpp.o CMakeFiles/untitled.dir/Voltage.cpp.o CMakeFiles/untitled.dir/Circuit.cpp.o CMakeFiles/untitled.dir/Current.cpp.o CMakeFiles/untitled.dir/ElectricalProperty.cpp.o
+build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/Node.cpp.o CMakeFiles/untitled.dir/Resistance.cpp.o CMakeFiles/untitled.dir/Component.cpp.o CMakeFiles/untitled.dir/Branch.cpp.o CMakeFiles/untitled.dir/VoltageSource.cpp.o CMakeFiles/untitled.dir/CurrentSource.cpp.o CMakeFiles/untitled.dir/CircuitException.cpp.o CMakeFiles/untitled.dir/Voltage.cpp.o CMakeFiles/untitled.dir/Circuit.cpp.o CMakeFiles/untitled.dir/Current.cpp.o CMakeFiles/untitled.dir/ElectricalProperty.cpp.o CMakeFiles/untitled.dir/ComponentsFactory.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/untitled.dir
   POST_BUILD = :

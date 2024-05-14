@@ -34,6 +34,13 @@ Component::Component(double resistance, std::shared_ptr<Node> start, std::shared
     endNd->add_observer(this);
 }
 
+Component::Component(double resistance, double voltage, double current, std::shared_ptr<Node> start,
+                     std::shared_ptr<Node> end) : r{resistance}, startNd{std::move(start)},
+                                                  endNd{std::move(end)} {
+    v->set_value(voltage);
+    c->set_value(current);
+}
+
 std::string Component::get_class_name() {
     return std::regex_replace(std::string(typeid(*this).name()), std::regex("[0-9]+"), "");
 }
@@ -197,3 +204,4 @@ void Component::on_voltage_changed(double value) {
         v->set_value(endNd->get_voltage() - startNd->get_voltage());
     }
 }
+

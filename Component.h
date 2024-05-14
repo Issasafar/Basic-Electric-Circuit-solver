@@ -118,7 +118,15 @@ public:
      * @param end node that represent the end of the component
      */
     Component(double resistance, std::shared_ptr<Node> start, std::shared_ptr<Node> end);
-
+    /**
+     * @brief general component
+     * @param resistance
+     * @param voltage
+     * @param current
+     * @param start node that represent the start of the component
+     * @param end node that represent the end of the component
+     */
+    Component(double resistance, double voltage, double current, std::shared_ptr<Node> start, std::shared_ptr<Node> end);
     /**
      * @brief can be overridden
      * @return string representation of the current object

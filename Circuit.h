@@ -28,8 +28,15 @@ private:
     /**@var bSet @brief circuit branches set*/
     b_set bSet;
     /**@var equationsCount @brief required equations count for solving the circuit*/
-
     int equationsCount = 0;
+    /**@var is_solved @brief is the circuit solved or not*/
+    bool is_solved = false;
+    /**@Var matrix @brief represent A in Ax = b equation*/
+    Eigen::MatrixXd matrix;
+    /**@Var vector @brief represent b in Ax = b equation*/
+    Eigen::VectorXd vector;
+    /**@Var solution @brief represent x in Ax = b equation*/
+    Eigen::VectorXd solution;
 
     /**
      * @brief updates each branch current
@@ -48,22 +55,36 @@ public:
 
     Circuit(std::vector<Branch> branches);
 
+    /**
+     * @fn branches
+     * @return circuit branches vector
+     */
     b_vec branches();
+
+    /**
+     * @fn print_matrix
+     * @brief prints the equation Ax=b matrix
+     */
+    void print_matrix();
+
     /**
      * @brief adds a branch to circuit branches vector
      * @param branch
      */
     void add_branch(Branch branch);
+
     /**
      * @brief insert node into the nodes set
      * @param node
      */
     void insert_node(std::shared_ptr<Node> node);
+
     /**
      * @brief insert branch into the branches set
      * @param branch
      */
     void insert_branch(std::shared_ptr<Branch> branch);
+
     /**
      * @brief solves the circuit
      * @return result

@@ -37,7 +37,6 @@ public:
     std::vector<com_ptr> components();
 
     void components(std::vector<boost::any> components);
-
     std::unordered_map<com_ptr, std::string> types_map();
     /**
      * @brief adds component to the branch
