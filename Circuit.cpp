@@ -10,36 +10,46 @@
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
+// Default constructor for the Circuit class.
 Circuit::Circuit() = default;
 
+// Constructor for the Circuit class initializing with a vector of Branches.
 Circuit::Circuit(std::vector<Branch> branches) {
     b = std::move(branches);
+    // Calculate the total number of equations required based on the number of components in all branches.
     for (Branch branch: b) {
         equationsCount += branch.components().size();
     }
 }
 
+// Returns the vector of branches in the circuit.
 b_vec Circuit::branches() { return b; }
 
+// Inserts a node into the set of nodes in the circuit.
 void Circuit::insert_node(std::shared_ptr<Node> node) {
     s.insert(node);
 }
 
+// Adds a branch to the circuit and updates the equations count accordingly.
 void Circuit::add_branch(Branch branch) {
     b.push_back(branch);
     equationsCount += branch.components().size();
 }
 
+// Solves the circuit using matrix equations and returns the solution vector.
 VectorXd Circuit::solve() {
+    // Initialize the matrix and vector for solving the circuit equations.
     matrix = MatrixXd::Zero(equationsCount, equationsCount);
     vector = VectorXd::Zero(equationsCount);
     int row{0};
+
+    // Iterate through each branch and each component within the branch to fill the matrix and vector.
     for (auto branch: branches()) {
-        // append each component's equation to the matrix
-        // number of required equation is always equal to the number of components in all branches
         for (auto component: branch.components()) {
             insert_node(component->startNode());
             insert_node(component->endNode());
+
+            // Handle VoltageSource components.
             if (branch.types_map().at(component) == "VoltageSource") {
                 if (component->startNode()->number() != Node::ground().number()) {
                     matrix(row, component->startNode()->number()) = -1;
@@ -48,12 +58,15 @@ VectorXd Circuit::solve() {
                     matrix(row, component->endNode()->number()) = 1;
                 }
                 vector(row) = component->voltage();
-
             }
+
+            // Handle CurrentSource components.
             if (branch.types_map().at(component) == "CurrentSource") {
                 matrix(row, equationsCount - 1 - branch.number()) = 1;
                 vector(row) = component->current();
             }
+
+            // Handle Resistance components.
             if (branch.types_map().at(component) == "Resistance") {
                 if (component->startNode()->number() != Node::ground().number()) {
                     matrix(row, component->startNode()->number()) = 1;
@@ -64,29 +77,38 @@ VectorXd Circuit::solve() {
                 matrix(row, equationsCount - 1 - branch.number()) = -component->resistance();
                 insert_branch(std::make_shared<Branch>(branch));
             }
-            // go to next row in the matrix to fill up
+
+            // Move to the next row in the matrix for the next component's equation.
             ++row;
         }
     }
+
+    // Solve the matrix equation.
     VectorXd result = VectorXd::Zero(equationsCount);
     result = matrix.colPivHouseholderQr().solve(vector);
+
+    // Update the circuit's state with the solution.
     is_solved = true;
     solution = result;
     update_node_voltages(result);
     update_branches_current(result);
+
     return result;
 }
 
+// Inserts a branch into the set of branches in the circuit.
 void Circuit::insert_branch(std::shared_ptr<Branch> branch) {
     bSet.insert(branch);
 }
 
+// Updates the currents in all branches based on the solution vector.
 void Circuit::update_branches_current(Eigen::VectorXd data) {
     for (auto branch: bSet) {
         branch->current(data(data.size() - 1 - branch->number()));
     }
 }
 
+// Updates the voltages at all nodes based on the solution vector.
 void Circuit::update_node_voltages(Eigen::VectorXd data) {
     for (auto node: s) {
         if (node->number() != -1) {
@@ -95,22 +117,18 @@ void Circuit::update_node_voltages(Eigen::VectorXd data) {
     }
 }
 
+// Prints the matrix, vector, and solution if the circuit is solved.
 void Circuit::print_matrix() {
     if (!is_solved) {
         throw CircuitException("The circuit is not solved");
     }
-//    for (int k = 0; k < 10*equationsCount; ++k) {
-//        if(k == 10*equationsCount/2){
-//            std::cout<<"MATRIX";
-//        }else{
-//            std::cout<<"#";
-//        }
-//    }
-//    std::cout<<std::endl;
+
     std::stringstream ss;
     unsigned long maxMatrixLength = 0;
     unsigned long maxVectorLength = 0;
     unsigned long maxSolutionLength = 0;
+
+    // Iterate through the matrix, vector, and solution to determine the maximum lengths for formatting.
     for (int j = 0; j < equationsCount; ++j) {
         std::stringstream tempStream;
         for (int i = 0; i < equationsCount; ++i) {
@@ -134,7 +152,10 @@ void Circuit::print_matrix() {
         }
         ss << tempStream.str();
     }
+
     maxMatrixLength *= 3;
+
+    // Print formatted matrix, vector, and solution headers.
     for (int i = 0; i <= maxMatrixLength; ++i) {
         if (i == maxMatrixLength / 2) {
             std::cout << " MATRIX ";
@@ -150,6 +171,7 @@ void Circuit::print_matrix() {
             std::cout << "-";
         }
     }
+
     for (int i = 0; i <= maxSolutionLength; ++i) {
         if (i == maxSolutionLength / 2) {
             std::cout << " SOLUTION ";
@@ -157,6 +179,7 @@ void Circuit::print_matrix() {
             std::cout << "-";
         }
     }
+
     std::cout << std::endl;
     std::cout << ss.str() << std::endl;
 }
