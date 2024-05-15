@@ -83,8 +83,10 @@ VectorXd Circuit::solve() {
             ++row;
         }
     }
+    // search in the setOfNodes for the ground
     auto it = std::find_if(setOfNodes.begin(), setOfNodes.end(), [](std::shared_ptr<Node> node){return node->number() == -1;});
     bool ground_found = it != setOfNodes.end();
+    // if there is no ground node the circuit cannot be solved
     if (!ground_found) {
         throw CircuitException("The Circuit is not grounded");
     }
