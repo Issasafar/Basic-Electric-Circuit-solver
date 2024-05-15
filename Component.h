@@ -95,14 +95,14 @@ public:
     void on_current_changed(double value) override;
     /**
      * @fn get_class_name
-     * @return the current object class's name
+     * @return the current object class'setOfNodes name
      */
     std::string get_class_name();
     /**
      * @fn get_class_name
      * @brief can be called without instantiating the component class
      * @param obj can be any object
-     * @return object's class name
+     * @return object'setOfNodes class name
      */
     static std::string get_class_name(boost::any obj);
     /**
@@ -113,7 +113,7 @@ public:
     Component();
     /**
      *
-     * @param resistance component's resistance
+     * @param resistance component'setOfNodes resistance
      * @param start node that represent the start of the component
      * @param end node that represent the end of the component
      */

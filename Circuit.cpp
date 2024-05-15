@@ -6,6 +6,7 @@
 #include "CircuitException.h"
 #include <Eigen/Dense>
 #include <utility>
+#include <algorithm>
 
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
@@ -15,24 +16,24 @@ Circuit::Circuit() = default;
 
 // Constructor for the Circuit class initializing with a vector of Branches.
 Circuit::Circuit(std::vector<Branch> branches) {
-    b = std::move(branches);
+    branchesVector = std::move(branches);
     // Calculate the total number of equations required based on the number of components in all branches.
-    for (Branch branch: b) {
+    for (Branch branch: branchesVector) {
         equationsCount += branch.components().size();
     }
 }
 
 // Returns the vector of branches in the circuit.
-b_vec Circuit::branches() { return b; }
+b_vec Circuit::branches() { return branchesVector; }
 
 // Inserts a node into the set of nodes in the circuit.
 void Circuit::insert_node(std::shared_ptr<Node> node) {
-    s.insert(node);
+    setOfNodes.insert(node);
 }
 
 // Adds a branch to the circuit and updates the equations count accordingly.
 void Circuit::add_branch(Branch branch) {
-    b.push_back(branch);
+    branchesVector.push_back(branch);
     equationsCount += branch.components().size();
 }
 
@@ -78,16 +79,20 @@ VectorXd Circuit::solve() {
                 insert_branch(std::make_shared<Branch>(branch));
             }
 
-            // Move to the next row in the matrix for the next component's equation.
+            // Move to the next row in the matrix for the next component'setOfNodes equation.
             ++row;
         }
     }
-
+    auto it = std::find_if(setOfNodes.begin(), setOfNodes.end(), [](std::shared_ptr<Node> node){return node->number() == -1;});
+    bool ground_found = it != setOfNodes.end();
+    if (!ground_found) {
+        throw CircuitException("The Circuit is not grounded");
+    }
     // Solve the matrix equation.
     VectorXd result = VectorXd::Zero(equationsCount);
     result = matrix.colPivHouseholderQr().solve(vector);
 
-    // Update the circuit's state with the solution.
+    // Update the circuit'setOfNodes state with the solution.
     is_solved = true;
     solution = result;
     update_node_voltages(result);
@@ -98,19 +103,19 @@ VectorXd Circuit::solve() {
 
 // Inserts a branch into the set of branches in the circuit.
 void Circuit::insert_branch(std::shared_ptr<Branch> branch) {
-    bSet.insert(branch);
+    setOfBranches.insert(branch);
 }
 
 // Updates the currents in all branches based on the solution vector.
 void Circuit::update_branches_current(Eigen::VectorXd data) {
-    for (auto branch: bSet) {
+    for (auto branch: setOfBranches) {
         branch->current(data(data.size() - 1 - branch->number()));
     }
 }
 
 // Updates the voltages at all nodes based on the solution vector.
 void Circuit::update_node_voltages(Eigen::VectorXd data) {
-    for (auto node: s) {
+    for (auto node: setOfNodes) {
         if (node->number() != -1) {
             node->set_voltage(data(node->number()));
         }

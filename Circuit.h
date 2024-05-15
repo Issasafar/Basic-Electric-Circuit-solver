@@ -21,21 +21,21 @@ using b_set = std::unordered_set<std::shared_ptr<Branch>>;
  */
 class Circuit {
 private:
-    /**@var b @brief circuit branches vector*/
-    b_vec b;
-    /**@var s @brief circuit nodes set*/
-    n_set s;
-    /**@var bSet @brief circuit branches set*/
-    b_set bSet;
+    /**@var branchesVector @brief circuit branches vector*/
+    b_vec branchesVector;
+    /**@var setOfNodes @brief circuit nodes set*/
+    n_set setOfNodes;
+    /**@var setOfBranches @brief circuit branches set*/
+    b_set setOfBranches;
     /**@var equationsCount @brief required equations count for solving the circuit*/
     int equationsCount = 0;
     /**@var is_solved @brief is the circuit solved or not*/
     bool is_solved = false;
-    /**@Var matrix @brief represent A in Ax = b equation*/
+    /**@Var matrix @brief represent A in Ax = branchesVector equation*/
     Eigen::MatrixXd matrix;
-    /**@Var vector @brief represent b in Ax = b equation*/
+    /**@Var vector @brief represent branchesVector in Ax = branchesVector equation*/
     Eigen::VectorXd vector;
-    /**@Var solution @brief represent x in Ax = b equation*/
+    /**@Var solution @brief represent x in Ax = branchesVector equation*/
     Eigen::VectorXd solution;
 
     /**
@@ -63,7 +63,7 @@ public:
 
     /**
      * @fn print_matrix
-     * @brief prints the equation Ax=b matrix
+     * @brief prints the equation Ax=branchesVector matrix
      */
     void print_matrix();
 

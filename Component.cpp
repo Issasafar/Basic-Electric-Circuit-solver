@@ -127,7 +127,7 @@ void Component::handle_node(std::shared_ptr<Node> member, std::shared_ptr<Node> 
     member->remove_observer(this);
     other->add_connection();
     other->add_observer(this);
-    // Update the component's node reference.
+    // Update the component'setOfNodes node reference.
     member = other;
 }
 
@@ -141,7 +141,7 @@ void Component::startNode(std::shared_ptr<Node> start) {
     handle_node(startNd, start);
 }
 
-// Convert the component's properties to a string representation.
+// Convert the component'setOfNodes properties to a string representation.
 std::string Component::to_string() {
     // Get a pointer to the current object as Component (for dynamic casting).
     Component *this_component{dynamic_cast<Component *>(this)};
@@ -213,7 +213,7 @@ void Component::on_current_changed(double value) {
 
 // Handle changes in voltage associated with the component.
 void Component::on_voltage_changed(double value) {
-    // If both start and end node voltages are known, update component's voltage.
+    // If both start and end node voltages are known, update component'setOfNodes voltage.
     if (startNd->voltage_object().get_known() && endNd->voltage_object().get_known()) {
         v->set_value(endNd->get_voltage() - startNd->get_voltage());
     }
