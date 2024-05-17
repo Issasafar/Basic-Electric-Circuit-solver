@@ -1,5 +1,19 @@
-#include "ComponentsFactory.h"
+#include "concrete/ComponentsFactory.h"
+#include "transpiler/Helpers.h"
+#include "transpiler/Token.h"
+#include "transpiler/Tokenizer.h"
+#include <iostream>
+void example();
 int main() {
+    std::string str = "let r  = Resistance(9 9 9)";
+    std::vector<Token> tokens  = tokenize(str);
+    for (auto token: tokens) {
+        std::cout<<token<<std::endl;
+    }
+    return 0;
+}
+
+void example(){
     ComponentsFactory cf = ComponentsFactory();
     auto ground = cf.get_ground();
     auto n1 = cf.get_node();
@@ -11,5 +25,4 @@ int main() {
     auto circuit = cf.get_circuit({b1});
     circuit.solve();
     circuit.print_matrix();
-    return 0;
 }

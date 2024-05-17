@@ -13,6 +13,6 @@ message("${CMAKE_MODULE_PATH}")
 message("${EIGEN3_INCLUDE_DIR}")
 
 
-add_executable(untitled main.cpp Node.cpp Node.h Resistance.cpp Resistance.h Component.cpp Component.h Branch.cpp Branch.h VoltageSource.cpp VoltageSource.h CurrentSource.cpp CurrentSource.h CircuitException.cpp CircuitException.h Operators.h Voltage.cpp Voltage.h Circuit.cpp Circuit.h Current.cpp Current.h ElectricatPropertyObserver.h ElectricalProperty.cpp ElectricalProperty.h ComponentsFactory.cpp ComponentsFactory.h)
+add_executable(untitled main.cpp concrete/Node.cpp concrete/Node.h concrete/Resistance.cpp concrete/Resistance.h concrete/Component.cpp concrete/Component.h concrete/Branch.cpp concrete/Branch.h concrete/VoltageSource.cpp concrete/VoltageSource.h concrete/CurrentSource.cpp concrete/CurrentSource.h concrete/CircuitException.cpp concrete/CircuitException.h concrete/Operators.h concrete/Voltage.cpp concrete/Voltage.h concrete/Circuit.cpp concrete/Circuit.h concrete/Current.cpp concrete/Current.h concrete/ElectricatPropertyObserver.h concrete/ElectricalProperty.cpp concrete/ElectricalProperty.h concrete/ComponentsFactory.cpp concrete/ComponentsFactory.h transpiler/Helpers.cpp transpiler/Helpers.h transpiler/Tokenizer.cpp transpiler/Tokenizer.h transpiler/Token.cpp transpiler/Token.h transpiler/Parser.cpp transpiler/Parser.h)
 
 
