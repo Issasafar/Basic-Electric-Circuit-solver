@@ -6,9 +6,6 @@
 #define DEMOPROJECT_PARSER_H
 
 
-class Parser {
-
-};
 
 
 #endif //DEMOPROJECT_PARSER_H
