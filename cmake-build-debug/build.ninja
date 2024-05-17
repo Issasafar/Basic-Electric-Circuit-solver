@@ -56,89 +56,117 @@ build CMakeFiles/untitled.dir/main.cpp.o: CXX_COMPILER__untitled_Debug /home/iss
   OBJECT_DIR = CMakeFiles/untitled.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled.dir
 
-build CMakeFiles/untitled.dir/Node.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/Node.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Node.cpp.o.d
+build CMakeFiles/untitled.dir/concrete/Node.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/concrete/Node.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/concrete/Node.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/concrete
 
-build CMakeFiles/untitled.dir/Resistance.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/Resistance.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Resistance.cpp.o.d
+build CMakeFiles/untitled.dir/concrete/Resistance.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/concrete/Resistance.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/concrete/Resistance.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/concrete
 
-build CMakeFiles/untitled.dir/Component.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/Component.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Component.cpp.o.d
+build CMakeFiles/untitled.dir/concrete/Component.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/concrete/Component.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/concrete/Component.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/concrete
 
-build CMakeFiles/untitled.dir/Branch.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/Branch.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Branch.cpp.o.d
+build CMakeFiles/untitled.dir/concrete/Branch.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/concrete/Branch.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/concrete/Branch.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/concrete
 
-build CMakeFiles/untitled.dir/VoltageSource.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/VoltageSource.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/VoltageSource.cpp.o.d
+build CMakeFiles/untitled.dir/concrete/VoltageSource.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/concrete/VoltageSource.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/concrete/VoltageSource.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/concrete
 
-build CMakeFiles/untitled.dir/CurrentSource.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/CurrentSource.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/CurrentSource.cpp.o.d
+build CMakeFiles/untitled.dir/concrete/CurrentSource.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/concrete/CurrentSource.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/concrete/CurrentSource.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/concrete
 
-build CMakeFiles/untitled.dir/CircuitException.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/CircuitException.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/CircuitException.cpp.o.d
+build CMakeFiles/untitled.dir/concrete/CircuitException.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/concrete/CircuitException.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/concrete/CircuitException.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/concrete
 
-build CMakeFiles/untitled.dir/Voltage.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/Voltage.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Voltage.cpp.o.d
+build CMakeFiles/untitled.dir/concrete/Voltage.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/concrete/Voltage.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/concrete/Voltage.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/concrete
 
-build CMakeFiles/untitled.dir/Circuit.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/Circuit.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Circuit.cpp.o.d
+build CMakeFiles/untitled.dir/concrete/Circuit.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/concrete/Circuit.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/concrete/Circuit.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/concrete
 
-build CMakeFiles/untitled.dir/Current.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/Current.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/Current.cpp.o.d
+build CMakeFiles/untitled.dir/concrete/Current.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/concrete/Current.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/concrete/Current.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/concrete
 
-build CMakeFiles/untitled.dir/ElectricalProperty.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/ElectricalProperty.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/ElectricalProperty.cpp.o.d
+build CMakeFiles/untitled.dir/concrete/ElectricalProperty.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/concrete/ElectricalProperty.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/concrete/ElectricalProperty.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/concrete
 
-build CMakeFiles/untitled.dir/ComponentsFactory.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/ComponentsFactory.cpp || cmake_object_order_depends_target_untitled
-  DEP_FILE = CMakeFiles/untitled.dir/ComponentsFactory.cpp.o.d
+build CMakeFiles/untitled.dir/concrete/ComponentsFactory.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/concrete/ComponentsFactory.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/concrete/ComponentsFactory.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/untitled.dir
-  OBJECT_FILE_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/concrete
+
+build CMakeFiles/untitled.dir/transpiler/Helpers.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/transpiler/Helpers.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/transpiler/Helpers.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/usr/include/eigen3
+  OBJECT_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/transpiler
+
+build CMakeFiles/untitled.dir/transpiler/Tokenizer.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/transpiler/Tokenizer.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/transpiler/Tokenizer.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/usr/include/eigen3
+  OBJECT_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/transpiler
+
+build CMakeFiles/untitled.dir/transpiler/Token.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/transpiler/Token.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/transpiler/Token.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/usr/include/eigen3
+  OBJECT_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/transpiler
+
+build CMakeFiles/untitled.dir/transpiler/Parser.cpp.o: CXX_COMPILER__untitled_Debug /home/issa/CLionProjects/CircuitSolver/transpiler/Parser.cpp || cmake_object_order_depends_target_untitled
+  DEP_FILE = CMakeFiles/untitled.dir/transpiler/Parser.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -I/usr/include/eigen3
+  OBJECT_DIR = CMakeFiles/untitled.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled.dir/transpiler
 
 
 # =============================================================================
@@ -148,7 +176,7 @@ build CMakeFiles/untitled.dir/ComponentsFactory.cpp.o: CXX_COMPILER__untitled_De
 #############################################
 # Link the executable untitled
 
-build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/Node.cpp.o CMakeFiles/untitled.dir/Resistance.cpp.o CMakeFiles/untitled.dir/Component.cpp.o CMakeFiles/untitled.dir/Branch.cpp.o CMakeFiles/untitled.dir/VoltageSource.cpp.o CMakeFiles/untitled.dir/CurrentSource.cpp.o CMakeFiles/untitled.dir/CircuitException.cpp.o CMakeFiles/untitled.dir/Voltage.cpp.o CMakeFiles/untitled.dir/Circuit.cpp.o CMakeFiles/untitled.dir/Current.cpp.o CMakeFiles/untitled.dir/ElectricalProperty.cpp.o CMakeFiles/untitled.dir/ComponentsFactory.cpp.o
+build untitled: CXX_EXECUTABLE_LINKER__untitled_Debug CMakeFiles/untitled.dir/main.cpp.o CMakeFiles/untitled.dir/concrete/Node.cpp.o CMakeFiles/untitled.dir/concrete/Resistance.cpp.o CMakeFiles/untitled.dir/concrete/Component.cpp.o CMakeFiles/untitled.dir/concrete/Branch.cpp.o CMakeFiles/untitled.dir/concrete/VoltageSource.cpp.o CMakeFiles/untitled.dir/concrete/CurrentSource.cpp.o CMakeFiles/untitled.dir/concrete/CircuitException.cpp.o CMakeFiles/untitled.dir/concrete/Voltage.cpp.o CMakeFiles/untitled.dir/concrete/Circuit.cpp.o CMakeFiles/untitled.dir/concrete/Current.cpp.o CMakeFiles/untitled.dir/concrete/ElectricalProperty.cpp.o CMakeFiles/untitled.dir/concrete/ComponentsFactory.cpp.o CMakeFiles/untitled.dir/transpiler/Helpers.cpp.o CMakeFiles/untitled.dir/transpiler/Tokenizer.cpp.o CMakeFiles/untitled.dir/transpiler/Token.cpp.o CMakeFiles/untitled.dir/transpiler/Parser.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/untitled.dir
   POST_BUILD = :
