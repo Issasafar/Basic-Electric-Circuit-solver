@@ -4,13 +4,17 @@
 #include "transpiler/Tokenizer.h"
 #include <iostream>
 #include "boost/any.hpp"
+#include "transpiler/Parser.h"
+
 void example();
 int main() {
-    std::string str = "let r  = Resistance(9 9 9)";
+    std::string str = "99 \"hello\"";
     std::vector<Token> tokens  = tokenize(str);
     for (auto token: tokens) {
         auto thing = tokens.begin();
         std::cout<<token<<std::endl;
+        auto x = 9;
+
     }
     return 0;
 }
