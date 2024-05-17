@@ -19,24 +19,24 @@ enum NodeType{
 class AstNodeBase {
 protected:
     NodeType type;
-    int number_;
+    double number_;
     std::string text_;
     std::string op_;
     std::shared_ptr<AstNodeBase> left_{nullptr};
     std::shared_ptr<AstNodeBase> right_{nullptr};
-    std::vector<std::shared_ptr<AstNodeBase>> arguments;
+    std::vector<std::shared_ptr<AstNodeBase>> arguments_;
 public:
     std::string get_class_name();
     AstNodeBase() = default;
     static std::string get_class_name(boost::any obj);
 
-    AstNodeBase(NodeType type, int number, const std::string &text, const std::string &op,
+    AstNodeBase(NodeType type, double number, const std::string &text, const std::string &op,
                 const std::shared_ptr<AstNodeBase> &left, const std::shared_ptr<AstNodeBase> &right,
                 const std::vector<std::shared_ptr<AstNodeBase>> &arguments);
 
     NodeType getType() const;
 
-    int getNumber() const;
+    double getNumber() const;
 
     const std::string &getText() const;
 
@@ -48,6 +48,7 @@ public:
     const std::vector<std::shared_ptr<AstNodeBase>> &getArguments() const;
 
     const std::string &getOp() const;
+
 };
 
 

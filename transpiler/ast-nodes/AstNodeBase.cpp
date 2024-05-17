@@ -14,7 +14,7 @@ NodeType AstNodeBase::getType() const {
     return type;
 }
 
-int AstNodeBase::getNumber() const {
+double AstNodeBase::getNumber() const {
     return number_;
 }
 
@@ -31,20 +31,21 @@ const std::shared_ptr<AstNodeBase> &AstNodeBase::getRight() const {
 }
 
 const std::vector<std::shared_ptr<AstNodeBase>> &AstNodeBase::getArguments() const {
-    return arguments;
+    return arguments_;
 }
 
 const std::string &AstNodeBase::getOp() const {
     return op_;
 }
 
-AstNodeBase::AstNodeBase(NodeType type, int number, const std::string &text, const std::string &op,
+AstNodeBase::AstNodeBase(NodeType type, double number, const std::string &text,const std::string &op,
                          const std::shared_ptr<AstNodeBase> &left, const std::shared_ptr<AstNodeBase> &right,
                          const std::vector<std::shared_ptr<AstNodeBase>> &arguments) : type(type), number_(number), text_(text), op_(op),
-                                                                      left_(left), right_(right),
-                                                                      arguments(arguments) {}
+                                                                                       left_(left), right_(right),
+                                                                                       arguments_(arguments) {}
 
 std::string AstNodeBase::get_class_name() {
    return AstNodeBase::get_class_name(*this);
 }
+
 

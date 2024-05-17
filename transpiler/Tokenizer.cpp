@@ -32,7 +32,7 @@ std::vector<Token> tokenize(const std::string& input){
             text<<character;
             char atPosition = input[++cursor];
             while (Helpers::isNumber(atPosition) || Helpers::isDot(atPosition)) {
-                text<<character;
+                text<<atPosition;
                 atPosition = input[++cursor];
             }
             tokens.emplace_back(
@@ -44,8 +44,10 @@ std::vector<Token> tokenize(const std::string& input){
         }
         if(Helpers::isLetter(character)){
             text<<character;
-            while (Helpers::isLetter(input[++cursor])) {
+            char atPosition = input[++cursor];
+            while (Helpers::isLetter(atPosition) || Helpers::isNumber(atPosition)) {
                 text << input[cursor];
+                atPosition = input[++cursor];
             }
             tokens.emplace_back(
                     TokenType::NAME,

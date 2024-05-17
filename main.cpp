@@ -5,27 +5,17 @@
 #include <iostream>
 #include "transpiler/ast-nodes/StringLiteral.h"
 #include "transpiler/ast-nodes/AstNodeBase.h"
+#include "transpiler/Parser.h"
 
-class A{
-public:
-    virtual ~A() = default;
-    int num;
-    virtual std::string to_string(){
-        return "A";
-    }
-};
-class B: public A{
-public:
-    std::string to_string() override{
-        return "B";
-    }
-};
 void example();
 int main() {
-    std::string str = "99.8 \"hello\" = +-";
+    std::string str = "97.99 \"hello\" r1";
     std::vector<Token> tokens  = tokenize(str);
     for (auto token: tokens) {
         auto thing = tokens.begin();
+        StringLiteral lt = StringLiteral("hell");
+        auto parsed = parse(token);
+        std::cout<<"Parsed "<<AstNodeBase::get_class_name(parsed)<<std::endl;
         std::cout<<token<<std::endl;
         auto x = 9;
 

@@ -13,7 +13,7 @@ const std::regex LETTER{R"([a-zA-Z])"};
 const std::regex WHITESPACE{R"(\s+)"};
 const std::regex NUM{R"(^[0-9]+$)"};
 const std::regex EQ("=");
-const std::regex DOT("/.");
+const std::regex DOT("\\.");
 const std::vector<char> OPERATORS = {'+', '-', '*', '/'};
 
 class Helpers {
