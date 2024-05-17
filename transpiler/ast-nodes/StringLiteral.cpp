@@ -4,12 +4,6 @@
 
 #include "StringLiteral.h"
 
-StringLiteral::StringLiteral( const std::string &value) : ASTNode("StringLiteral"), value(value) {}
+#include <utility>
 
-const std::string &StringLiteral::getValue() const {
-    return value;
-}
-
-void StringLiteral::setValue(const std::string &value) {
-    StringLiteral::value = value;
-}
+StringLiteral::StringLiteral(std::string text) : AstNodeBase(){ text_ = std::move(text);}

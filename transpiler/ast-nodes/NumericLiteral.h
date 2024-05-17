@@ -5,19 +5,16 @@
 #ifndef DEMOPROJECT_NUMERICLITERAL_H
 #define DEMOPROJECT_NUMERICLITERAL_H
 
-#include "ASTNode.h"
-class NumericLiteral:public ASTNode {
-public:
-    NumericLiteral( double value);
-
-    double getValue() const;
-
-    void setValue(double value);
-
-public:
-
+#include "AstNodeBase.h"
+class NumericLiteral :public AstNodeBase{
 private:
-    double value;
+    using AstNodeBase::getText;
+    using AstNodeBase::getRight;
+    using AstNodeBase::getLeft;
+    using AstNodeBase::getArguments;
+public:
+    NumericLiteral(double value);
+
 };
 
 

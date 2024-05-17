@@ -3,12 +3,26 @@
 #include "transpiler/Token.h"
 #include "transpiler/Tokenizer.h"
 #include <iostream>
-#include "boost/any.hpp"
-#include "transpiler/Parser.h"
+#include "transpiler/ast-nodes/StringLiteral.h"
+#include "transpiler/ast-nodes/AstNodeBase.h"
 
+class A{
+public:
+    virtual ~A() = default;
+    int num;
+    virtual std::string to_string(){
+        return "A";
+    }
+};
+class B: public A{
+public:
+    std::string to_string() override{
+        return "B";
+    }
+};
 void example();
 int main() {
-    std::string str = "99 \"hello\"";
+    std::string str = "99.8 \"hello\" = +-";
     std::vector<Token> tokens  = tokenize(str);
     for (auto token: tokens) {
         auto thing = tokens.begin();

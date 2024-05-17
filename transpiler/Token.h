@@ -21,17 +21,23 @@ enum TokenType {
 
 class Token {
 public:
-    Token(TokenType type, std::variant<std::string, int, char> value);
+
+
+    Token(TokenType type, int cursorPosition, const std::string &value);
 
     TokenType getType() const;
 
-    const std::variant<std::string, int, char> &getValue() const;
 
     friend std::ostream &operator<<(std::ostream &os, const Token &token);
 
+    int getCursorPosition() const;
+
+    const std::string &getValue() const;
+
 private:
     TokenType type;
-    std::variant<std::string, int, char> value;
+    int cursorPosition;
+    std::string value;
 };
 
 

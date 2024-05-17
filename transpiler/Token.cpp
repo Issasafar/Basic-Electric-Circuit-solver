@@ -12,23 +12,22 @@ TokenType Token::getType() const {
 }
 
 
-Token::Token(TokenType type, std::variant<std::string, int, char> value) : type(type), value(std::move(value)) {}
 
-const std::variant<std::string, int, char> &Token::getValue() const {
+std::ostream &operator<<(std::ostream &os, const Token &token) {
+    os << "type: " << Helpers::getTokenTypeStr(token.type)<< ", value: "<<token.getValue();
+    return os;
+}
+
+int Token::getCursorPosition() const {
+    return cursorPosition;
+}
+
+Token::Token(TokenType type, int cursorPosition, const std::string &value) : type(type), cursorPosition(cursorPosition),
+                                                                             value(value) {}
+
+const std::string &Token::getValue() const {
     return value;
 }
 
-std::ostream &operator<<(std::ostream &os, const Token &token) {
-
-    os << "type: " << Helpers::getTokenTypeStr(token.type)<< ", value: ";
-    if (std::holds_alternative<std::string>(token.value)) {
-        os << std::get<std::string>(token.value);
-    } else if (std::holds_alternative<char>(token.value)) {
-        os << std::get<char>(token.value);
-    } else if (std::holds_alternative<int>(token.value)) {
-        os << std::get<int>(token.value);
-    }
-    return os;
-}
 
 

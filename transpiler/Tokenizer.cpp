@@ -10,12 +10,16 @@
 std::vector<Token> tokenize(const std::string& input){
     std::vector<Token> tokens;
     int cursor = 0;
+    std::stringstream text;
     while (cursor < input.length()) {
+        text.str(std::string());
         const char character = input[cursor];
         if (Helpers::isParenthesis(character)) {
+            text<<character;
             tokens.emplace_back(
                 TokenType::PARENTHESIS,
-                character
+                cursor,
+                text.str()
             );
             cursor++;
             continue;
@@ -25,59 +29,64 @@ std::vector<Token> tokenize(const std::string& input){
             continue;
         }
         if(Helpers::isNumber(character)){
-            int number = (int)character - (int)'0';
-
-            while (Helpers::isNumber(input[++cursor])) {
-                number *= 10;
-                number += (int)input[cursor] - (int)'0';
+            text<<character;
+            char atPosition = input[++cursor];
+            while (Helpers::isNumber(atPosition) || Helpers::isDot(atPosition)) {
+                text<<character;
+                atPosition = input[++cursor];
             }
             tokens.emplace_back(
                     TokenType::NUMBER,
-                    number
+                    cursor,
+                    text.str()
                     );
             continue;
         }
         if(Helpers::isLetter(character)){
-            std::stringstream symbol;
-            symbol<<character;
+            text<<character;
             while (Helpers::isLetter(input[++cursor])) {
-                symbol << input[cursor];
+                text << input[cursor];
             }
             tokens.emplace_back(
                     TokenType::NAME,
-                    symbol.str()
+                    cursor,
+                    text.str()
                     );
             continue;
         }
         if(Helpers::isQuote(character)){
-            std::stringstream string_;
             while (!Helpers::isQuote(input[++cursor])) {
-                string_ << input[cursor];
+                text << input[cursor];
             }
             tokens.emplace_back(
                     TokenType::STRING,
-                    string_.str()
+                    cursor,
+                    text.str()
                     );
             cursor++;
             continue;
         }
         if(Helpers::isOperator(character)){
+            text<<character;
             tokens.emplace_back(
                     TokenType::OPERATOR,
-                    character
+                    cursor,
+                    text.str()
                     );
             cursor++;
             continue;
         }
         if(Helpers::isEqual(character)){
+            text<<character;
             tokens.emplace_back(
                     TokenType::EQUAL,
-                    character
+                    cursor,
+                    text.str()
                     );
             cursor++;
             continue;
         }
-        throw std::runtime_error(std::to_string(character) +" is not valid");
+        throw std::runtime_error(std::to_string(character) +" is not valid for token");
     }
     return tokens;
 }

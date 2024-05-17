@@ -5,19 +5,18 @@
 #ifndef DEMOPROJECT_STRINGLITERAL_H
 #define DEMOPROJECT_STRINGLITERAL_H
 
-#include "ASTNode.h"
-class StringLiteral:public  ASTNode{
+#include <memory>
+#include <vector>
+#include "AstNodeBase.h"
+class StringLiteral :public AstNodeBase{
 public:
-    StringLiteral( const std::string &value);
-
-    const std::string &getValue() const;
-
-    void setValue(const std::string &value);
-
-public:
+StringLiteral(std::string text);
 private:
-    std::string value;
-
+    using AstNodeBase::getNumber;
+    using AstNodeBase::getOp;
+    using AstNodeBase::getLeft;
+    using AstNodeBase::getRight;
+    using AstNodeBase::getArguments;
 };
 
 

@@ -3,7 +3,9 @@
 //
 #include <iostream>
 #include "Helpers.h"
-
+bool Helpers::isDot(char character) {
+    return std::regex_match(std::string(1,character), DOT);
+}
 bool Helpers::isEqual(char character) {
     return std::regex_match(std::string(1, character), EQ);
 }
