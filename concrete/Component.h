@@ -134,7 +134,7 @@ public:
     virtual std::string to_string();
     /**
      * Enabled if other object is component or inherits from component
-     * @tparam T type other object
+     * @tparam T type_ other object
      * @param other other object
      * @return this += other
      */
@@ -147,7 +147,7 @@ public:
 
     /**
      * Enabled if other object is component or inherits from component
-     * @tparam T type other object
+     * @tparam T type_ other object
      * @param other other object
      * @return this -= other
      */
@@ -160,7 +160,7 @@ public:
 
     /**
      * Enabled if other object is component or inherits from component
-     * @tparam T type other object
+     * @tparam T type_ other object
      * @param other other object
      * @return this + other
      */
@@ -172,7 +172,7 @@ public:
 
     /**
      * Enabled if other object is component or inherits from component
-     * @tparam T type other object
+     * @tparam T type_ other object
      * @param other other object
      * @return this - other
      */
@@ -184,7 +184,7 @@ public:
 
     /**
      * Enabled if other object is component or inherits from component
-     * @tparam T type other object
+     * @tparam T type_ other object
      * @param other other object
      * @return this * other
      */
@@ -196,7 +196,7 @@ public:
 
     /**
      * Enabled if other object is component or inherits from component
-     * @tparam T type other object
+     * @tparam T type_ other object
      * @param other other object
      * @return this / other
      */

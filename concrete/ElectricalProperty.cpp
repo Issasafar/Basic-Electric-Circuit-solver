@@ -26,11 +26,11 @@ void ElectricalProperty::remove_observer(ElectricalPropertyObserver *observer) {
     }
 }
 
-// Set the value of the electrical property.
+// Set the value_ of the electrical property.
 void ElectricalProperty::set_value(double value) {
     value_ = value;
     is_known = true;
-    // Notify observers based on the type of electrical property.
+    // Notify observers based on the type_ of electrical property.
     if (get_type() == "Voltage") {
         for (auto &observer: observers) {
             observer->on_voltage_changed(value);
@@ -43,12 +43,12 @@ void ElectricalProperty::set_value(double value) {
     }
 }
 
-// Get the type of the electrical property.
+// Get the type_ of the electrical property.
 std::string ElectricalProperty::get_type() const {
     return "Electrical Property";
 }
 
-// Get the value of the electrical property.
+// Get the value_ of the electrical property.
 double ElectricalProperty::get_value() const {
     if (!is_known) {
         throw CircuitException("Unknown " + get_type());

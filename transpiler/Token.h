@@ -16,7 +16,9 @@ enum TokenType {
     STRING,
     OPERATOR,
     EQUAL,
-    ASSIGN
+    DOTACCESS,
+    KEYWORD,
+    CHECK
 };
 
 class Token {
@@ -35,9 +37,9 @@ public:
     const std::string &getValue() const;
 
 private:
-    TokenType type;
-    int cursorPosition;
-    std::string value;
+    TokenType type_;
+    int cursorPosition_;
+    std::string value_;
 };
 
 

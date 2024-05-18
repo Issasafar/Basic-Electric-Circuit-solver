@@ -6,4 +6,7 @@
 
 #include <utility>
 
-StringLiteral::StringLiteral(std::string text) : AstNodeBase(){ text_ = std::move(text);}
+StringLiteral::StringLiteral(std::string text) : AstNodeBase() {
+    text_ = std::move(text);
+    type_ = NodeType::STRINGLITERAL;
+}

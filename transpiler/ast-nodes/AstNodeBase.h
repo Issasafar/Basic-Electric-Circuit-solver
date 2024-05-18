@@ -14,11 +14,13 @@ enum NodeType{
     IDENTIFIER,
     ASSIGNMENT,
     CALLEXPRESSION,
-
+    BINARYEXPRESSION,
+    VARDECLARATION,
+    UNKNOWN
 };
 class AstNodeBase {
 protected:
-    NodeType type;
+    NodeType type_;
     double number_;
     std::string text_;
     std::string op_;
@@ -27,7 +29,7 @@ protected:
     std::vector<std::shared_ptr<AstNodeBase>> arguments_;
 public:
     std::string get_class_name();
-    AstNodeBase() = default;
+    AstNodeBase();
     static std::string get_class_name(boost::any obj);
 
     AstNodeBase(NodeType type, double number, const std::string &text, const std::string &op,

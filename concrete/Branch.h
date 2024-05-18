@@ -19,7 +19,7 @@ class Branch : public Component {
 private:
     /**@var vec @brief holds references to each component in the branch*/
     std::vector<com_ptr> vec;
-    /**@var map @brief holds the type for each component in the branch*/
+    /**@var map @brief holds the type_ for each component in the branch*/
     std::unordered_map<com_ptr, std::string> map;
     /**@var branchNumber @brief the branch number*/
     int branchNumber;
@@ -40,7 +40,7 @@ public:
     std::unordered_map<com_ptr, std::string> types_map();
     /**
      * @brief adds component to the branch
-     * @tparam T type of the component
+     * @tparam T type_ of the component
      * @param component
      */
     template<class T>

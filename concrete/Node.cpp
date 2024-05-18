@@ -18,19 +18,19 @@ Node Node::ground() {
 // Parameterized constructor for Node class.
 Node::Node(int val) : n{val >= -1 ? val : -1}, volt{Voltage(0, false)} {}
 
-// Parameterized constructor for Node class with initial voltage value.
+// Parameterized constructor for Node class with initial voltage value_.
 Node::Node(int val, double voltage) : n{val}, volt(Voltage(voltage, true)) {
 }
 
 // Parameterized constructor for Node class with initial Voltage object.
 Node::Node(int val, const Voltage &voltage) : n{val}, volt{voltage} {}
 
-// Get the voltage value of the node.
+// Get the voltage value_ of the node.
 double Node::get_voltage() {
     return this->volt.get_value();
 }
 
-// Set the voltage value of the node.
+// Set the voltage value_ of the node.
 void Node::set_voltage(double val) {
     volt.set_value(val);
     volt.set_known(true);

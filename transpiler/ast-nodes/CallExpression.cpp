@@ -7,5 +7,5 @@
 CallExpression::CallExpression(std::string name, std::vector<std::shared_ptr<AstNodeBase>> args) :AstNodeBase(){
     arguments_ = std::move(args);
     text_ = std::move(name);
-
+    type_ = NodeType::CALLEXPRESSION;
 }

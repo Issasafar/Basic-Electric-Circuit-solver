@@ -3,4 +3,7 @@
 //
 
 #include "NumericLiteral.h"
-NumericLiteral::NumericLiteral(double value) : AstNodeBase(){number_ = value;}
+NumericLiteral::NumericLiteral(double value) : AstNodeBase() {
+    number_ = value;
+    type_ = NodeType::NUMERICALLITERAL;
+}

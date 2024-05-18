@@ -25,7 +25,7 @@ protected:
 
     /**
      *
-     * @return property type as string
+     * @return property type_ as string
      */
     virtual std::string get_type() const;
 

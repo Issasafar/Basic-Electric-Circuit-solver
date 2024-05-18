@@ -20,7 +20,7 @@ Resistance::Resistance(double val, std::shared_ptr<Node> start, std::shared_ptr<
                                                                                                        std::move(
                                                                                                                end)) {}
 
-// Get the resistance value.
+// Get the resistance value_.
 double Resistance::resistance() const { return r; }
 
 // Overridden method for addition operation.

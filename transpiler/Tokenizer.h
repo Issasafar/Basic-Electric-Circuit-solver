@@ -9,6 +9,7 @@
 #include "Token.h"
 
 std::vector<Token> tokenize(const std::string& input);
+std::string repeat(const std::string &str, unsigned long count);
 
 
 

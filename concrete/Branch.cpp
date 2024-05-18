@@ -35,7 +35,7 @@ std::vector<com_ptr> Branch::components() {
 void Branch::components(std::vector<boost::any> components) {
     for (auto component: components) {
 
-        // Check if the component is of type 'Resistance'.
+        // Check if the component is of type_ 'Resistance'.
         if (Component::get_class_name(component) == "Resistance") {
             auto el = boost::any_cast<Resistance>(component);
             std::shared_ptr<Component> element = std::make_shared<Component>(el);
@@ -43,7 +43,7 @@ void Branch::components(std::vector<boost::any> components) {
             vec.push_back(element);
         }
 
-        // Check if the component is of type 'VoltageSource'.
+        // Check if the component is of type_ 'VoltageSource'.
         if (Component::get_class_name(component) == "VoltageSource") {
             auto el = boost::any_cast<VoltageSource>(component);
             std::shared_ptr<Component> element = std::make_shared<Component>(el);
@@ -51,7 +51,7 @@ void Branch::components(std::vector<boost::any> components) {
             vec.push_back(element);
         }
 
-        // Check if the component is of type 'CurrentSource'.
+        // Check if the component is of type_ 'CurrentSource'.
         if (Component::get_class_name(component) == "CurrentSource") {
             auto el = boost::any_cast<CurrentSource>(component);
             std::shared_ptr<Component> element = std::make_shared<Component>(el);

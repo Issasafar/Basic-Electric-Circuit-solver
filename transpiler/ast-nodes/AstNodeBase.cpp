@@ -11,7 +11,7 @@ std::string AstNodeBase::get_class_name(boost::any obj) {
 }
 
 NodeType AstNodeBase::getType() const {
-    return type;
+    return type_;
 }
 
 double AstNodeBase::getNumber() const {
@@ -40,12 +40,17 @@ const std::string &AstNodeBase::getOp() const {
 
 AstNodeBase::AstNodeBase(NodeType type, double number, const std::string &text,const std::string &op,
                          const std::shared_ptr<AstNodeBase> &left, const std::shared_ptr<AstNodeBase> &right,
-                         const std::vector<std::shared_ptr<AstNodeBase>> &arguments) : type(type), number_(number), text_(text), op_(op),
+                         const std::vector<std::shared_ptr<AstNodeBase>> &arguments) : type_(type), number_(number), text_(text), op_(op),
                                                                                        left_(left), right_(right),
                                                                                        arguments_(arguments) {}
 
 std::string AstNodeBase::get_class_name() {
    return AstNodeBase::get_class_name(*this);
+}
+
+AstNodeBase::AstNodeBase() {
+    type_ = NodeType::UNKNOWN;
+    number_ = 0;
 }
 
 

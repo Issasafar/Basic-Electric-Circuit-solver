@@ -15,9 +15,10 @@ const std::regex NUM{R"(^[0-9]+$)"};
 const std::regex EQ("=");
 const std::regex DOT("\\.");
 const std::vector<char> OPERATORS = {'+', '-', '*', '/'};
-
+const std::vector<std::string> KEYWORDS = { "let","print"};
 class Helpers {
 public:
+    static bool isKeyWord(const std::string& word);
     static std::unordered_map<TokenType, std::string> tokenTypeMap;
 
     static std::string getTokenTypeStr(TokenType type);

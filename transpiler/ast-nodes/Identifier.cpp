@@ -6,4 +6,5 @@
 
 Identifier::Identifier(std::string name) : AstNodeBase(){
     text_ = name;
+    type_ = NodeType::IDENTIFIER;
 }

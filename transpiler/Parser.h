@@ -8,7 +8,9 @@
 #include "ast-nodes/AstNodeBase.h"
 #include <memory>
 #include "boost/any.hpp"
-boost::any parse(Token token);
+std::shared_ptr<AstNodeBase> parse(std::vector<Token> tokens);
+std::shared_ptr<AstNodeBase> parenthesize(std::vector<Token> tokens);
+std::vector<std::shared_ptr<AstNodeBase>> buildAstTree(std::vector<Token> tokens);
 
 
 #endif //DEMOPROJECT_PARSER_H

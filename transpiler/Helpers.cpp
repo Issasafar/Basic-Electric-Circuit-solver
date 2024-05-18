@@ -3,9 +3,11 @@
 //
 #include <iostream>
 #include "Helpers.h"
+
 bool Helpers::isDot(char character) {
-    return std::regex_match(std::string(1,character), DOT);
+    return std::regex_match(std::string(1, character), DOT);
 }
+
 bool Helpers::isEqual(char character) {
     return std::regex_match(std::string(1, character), EQ);
 }
@@ -41,7 +43,9 @@ bool Helpers::isQuote(char character) {
 bool Helpers::isOperator(char character) {
     return std::find(OPERATORS.begin(), OPERATORS.end(), character) != OPERATORS.end();
 }
-
+bool Helpers::isKeyWord(const std::string& word) {
+    return std::find(KEYWORDS.begin(), KEYWORDS.end(), word) != KEYWORDS.end();
+}
 std::string Helpers::getTokenTypeStr(TokenType type) {
     auto it = tokenTypeMap.find(type);
     if (it != tokenTypeMap.end()) {
@@ -55,4 +59,6 @@ std::unordered_map<TokenType, std::string> Helpers::tokenTypeMap = {{TokenType::
                                                                     {TokenType::PARENTHESIS, "Parenthesis"},
                                                                     {TokenType::STRING,      "String"},
                                                                     {TokenType::OPERATOR,    "Operator"},
-                                                                    {TokenType::EQUAL,       "Equal"}};
+                                                                    {TokenType::EQUAL,       "Equal"},
+                                                                    {TokenType::DOTACCESS,   "DotAccess"},
+                                                                    {TokenType::KEYWORD,     "KeyWord"}};

@@ -3,24 +3,21 @@
 #include "transpiler/Token.h"
 #include "transpiler/Tokenizer.h"
 #include <iostream>
-#include "transpiler/ast-nodes/StringLiteral.h"
+#include "transpiler/ast-nodes/Identifier.h"
 #include "transpiler/ast-nodes/AstNodeBase.h"
 #include "transpiler/Parser.h"
 
 void example();
 int main() {
-    std::string str = "97.99 \"hello\" r1";
+    std::string str = " fun(x y 9)";
     std::vector<Token> tokens  = tokenize(str);
-    for (auto token: tokens) {
-        auto thing = tokens.begin();
-        StringLiteral lt = StringLiteral("hell");
-        auto parsed = parse(token);
-        std::cout<<"Parsed "<<AstNodeBase::get_class_name(parsed)<<std::endl;
+    for(auto token :tokens){
         std::cout<<token<<std::endl;
-        auto x = 9;
-
     }
-    return 0;
+    auto thing = buildAstTree(tokens);
+    int x = 9;
+    std::shared_ptr<AstNodeBase> aa = std::make_shared<AstNodeBase>(Identifier("varx"));
+z\    return 0;
 }
 
 void example(){
