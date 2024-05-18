@@ -8,19 +8,45 @@
 #include "transpiler/Parser.h"
 
 void example();
+void console();
+
 int main() {
-    std::string str = " fun(x y 9)";
-    std::vector<Token> tokens  = tokenize(str);
-    for(auto token :tokens){
-        std::cout<<token<<std::endl;
-    }
-    auto thing = buildAstTree(tokens);
-    int x = 9;
-    std::shared_ptr<AstNodeBase> aa = std::make_shared<AstNodeBase>(Identifier("varx"));
-z\    return 0;
+    auto tkns = tokenize("x.solve()");
+   auto thing=  buildAstTree(tkns);
+//    std::string str = " fun(x y 9)";
+//    std::vector<Token> tokens  = tokenize(str);
+//    for(auto token :tokens){
+//        std::cout<<token<<std::endl;
+//    }
+//    auto thing = buildAstTree(tokens);
+//    int x = 9;
+//    std::shared_ptr<AstNodeBase> aa = std::make_shared<AstNodeBase>(Identifier("varx"));
+    return 0;
 }
 
-void example(){
+void console() {
+    std::string prompt = "\033[1;36m#> \033[0;33m";
+    std::string line;
+    std::stringstream screen;
+    while (true) {
+        std::cout << prompt;
+        std::getline(std::cin, line);
+        if (line == "exit") {
+            std::cout << "\033[0m";
+            break;
+        }
+        if (line == "clear") {
+            system("clear");
+            continue;
+        }
+        std::vector<Token> tokens = tokenize(line);
+        for (auto token: tokens) {
+            std::cout << token << std::endl;
+        }
+    }
+}
+
+void example() {
     ComponentsFactory cf = ComponentsFactory();
     auto ground = cf.get_ground();
     auto n1 = cf.get_node();
