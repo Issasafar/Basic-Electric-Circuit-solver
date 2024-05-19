@@ -8,6 +8,7 @@
 #include "Helpers.h"
 #include "Token.h"
 #include "TranspilerException.h"
+#include <algorithm>
 
 std::string repeat(const std::string &str, unsigned long count) {
     std::stringstream ss;
@@ -24,6 +25,10 @@ std::vector<Token> tokenize(const std::string &input) {
     while (cursor < input.length()) {
         text.str(std::string());
         const char character = input[cursor];
+        if(Helpers::isComma(character)){
+            cursor++;
+            continue;
+        }
         if (Helpers::isParenthesis(character)) {
             text << character;
             tokens.emplace_back(

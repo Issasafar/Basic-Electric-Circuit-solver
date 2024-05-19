@@ -55,3 +55,9 @@
 2834	3789	1716112815896572921	untitled	aaf0a50a8ba47c46
 3	2677	1716112967153312377	CMakeFiles/untitled.dir/transpiler/Parser.cpp.o	f4a33fe5a9c06900
 2677	3588	1716112968061316816	untitled	aaf0a50a8ba47c46
+8	2571	1716113814441454558	CMakeFiles/untitled.dir/transpiler/Token.cpp.o	ae40f6ece6693975
+7	2628	1716113814501454852	CMakeFiles/untitled.dir/transpiler/Tokenizer.cpp.o	59a85a4fca10e609
+9	2756	1716113814625455458	CMakeFiles/untitled.dir/transpiler/Parser.cpp.o	f4a33fe5a9c06900
+7	2969	1716113814841456514	CMakeFiles/untitled.dir/transpiler/Helpers.cpp.o	73640213885d9ec
+6	3929	1716113815801461207	CMakeFiles/untitled.dir/main.cpp.o	1344b9288a28f449
+3929	5005	1716113816873466448	untitled	aaf0a50a8ba47c46

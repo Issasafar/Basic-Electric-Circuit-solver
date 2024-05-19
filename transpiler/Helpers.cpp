@@ -4,6 +4,9 @@
 #include <iostream>
 #include "Helpers.h"
 
+bool Helpers::isComma(char character) {
+    return std::regex_match(std::string(1,character),COMMA);
+}
 bool Helpers::isLowOperator(char character) {
     return std::find(LOW_TIER_OPERATORS.begin(), LOW_TIER_OPERATORS.end(),character) != LOW_TIER_OPERATORS.end();
 }
@@ -69,3 +72,4 @@ std::unordered_map<TokenType, std::string> Helpers::tokenTypeMap = {{TokenType::
                                                                     {TokenType::EQUAL,       "Equal"},
                                                                     {TokenType::DOTACCESS,   "DotAccess"},
                                                                     {TokenType::KEYWORD,     "KeyWord"}};
+

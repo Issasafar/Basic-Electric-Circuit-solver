@@ -14,6 +14,7 @@ const std::regex WHITESPACE{R"(\s+)"};
 const std::regex NUM{R"(^[0-9]+$)"};
 const std::regex EQ("=");
 const std::regex DOT("\\.");
+const std::regex COMMA(",");
 const std::vector<char> OPERATORS = {'+', '-', '*', '/'};
 const std::vector<std::string> KEYWORDS = { "let","print"};
 const std::vector<char> HIGH_TIER_OPERATORS  = {'*','/'};
@@ -25,6 +26,7 @@ public:
     static std::unordered_map<TokenType, std::string> tokenTypeMap;
 
     static std::string getTokenTypeStr(TokenType type);
+    static bool isComma(char character);
     static bool isLowOperator(char character);
     static bool isHighOperator(char character);
 

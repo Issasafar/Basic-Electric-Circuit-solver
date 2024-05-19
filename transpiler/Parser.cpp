@@ -35,7 +35,6 @@ std::vector<std::shared_ptr<AstNodeBase>> buildAstTree(std::vector<Token> tokens
                 it = tokens.begin() + i;
             }
         }
-        //TODO() fix the operator precedence
         if (it->getType() == TokenType::OPERATOR) {
             auto nextArgumentPosition = it + 1;
             auto nextOperatorPosition = it + 2;
@@ -135,7 +134,7 @@ std::shared_ptr<AstNodeBase> parse(std::vector<Token> tokens) {
         return std::make_shared<AstNodeBase>(Identifier(first.getValue()));
     }
     std::stringstream ss;
-    ss << "Syntax Error " << first;
+    ss << "Syntax Error: Unexpected token at -> " << first;
     throw TranspilerException(ss.str());
 
 }
