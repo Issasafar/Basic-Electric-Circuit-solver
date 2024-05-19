@@ -35,6 +35,7 @@ std::vector<std::shared_ptr<AstNodeBase>> buildAstTree(std::vector<Token> tokens
                 it = tokens.begin() + i;
             }
         }
+        //TODO() fix the operator precedence
         if (it->getType() == TokenType::OPERATOR) {
             auto nextArgumentPosition = it + 1;
             auto nextOperatorPosition = it + 2;
@@ -48,6 +49,7 @@ std::vector<std::shared_ptr<AstNodeBase>> buildAstTree(std::vector<Token> tokens
                 auto closingPosition = it + 5;
                 tokens.insert(closingPosition,Token(TokenType::PARENTHESIS,0,")"));
                 it = tokens.begin() + i + 4;
+                i += 4;
             }
         }
 
