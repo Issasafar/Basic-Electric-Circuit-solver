@@ -23,18 +23,32 @@ std::vector<std::shared_ptr<AstNodeBase>> buildAstTree(std::vector<Token> tokens
             auto namePosition = it + 2;
             auto openParenthesisPosition = it + 3;
             bool isNextDot =
-                    (dotPosition != tokens.end() ) && (dotPosition->getType() == TokenType::DOTACCESS);
-            bool namePresent = (namePosition != tokens.end() ) && (namePosition->getType() == TokenType::NAME);
+                    (dotPosition != tokens.end()) && (dotPosition->getType() == TokenType::DOTACCESS);
+            bool namePresent = (namePosition != tokens.end()) && (namePosition->getType() == TokenType::NAME);
             bool openParenthesisPresent =
-                    (openParenthesisPosition != tokens.end() ) && (openParenthesisPosition->getValue() == "(");
+                    (openParenthesisPosition != tokens.end()) && (openParenthesisPosition->getValue() == "(");
             if (isNextDot && namePresent && openParenthesisPresent) {
                 Token variable = *it;
                 tokens.insert(openParenthesisPosition + 1, variable);
                 it = tokens.begin() + i;
-                tokens.erase(it, it+2);
+                tokens.erase(it, it + 2);
                 it = tokens.begin() + i;
             }
         }
+        if (it->getType() == TokenType::OPERATOR) {
+            auto nextArgumentPosition = it + 1;
+            auto nextOperatorPosition = it + 2;
+            bool nextIsNotParenthesis = nextArgumentPosition->getType() != TokenType::PARENTHESIS;
+            bool nextOperatorPresent = nextOperatorPosition->getType() == TokenType::OPERATOR;
+            bool isNextHigher = Helpers::isHighOperator(nextOperatorPosition->getValue()[0])&& Helpers::isLowOperator(it->getValue()[0]);
+            if(nextOperatorPresent && nextIsNotParenthesis && isNextHigher){
+                // insert () to insure the operator precedent
+
+
+            }
+
+        }
+
         ++i;
     }
     std::vector<std::shared_ptr<AstNodeBase>> result;

@@ -4,6 +4,13 @@
 #include <iostream>
 #include "Helpers.h"
 
+bool Helpers::isLowOperator(char character) {
+    return std::find(LOW_TIER_OPERATORS.begin(), LOW_TIER_OPERATORS.end(),character) != LOW_TIER_OPERATORS.end();
+}
+bool Helpers::isHighOperator(char character) {
+    return std::find(HIGH_TIER_OPERATORS.begin(), HIGH_TIER_OPERATORS.end(),character) != HIGH_TIER_OPERATORS.end();
+}
+
 bool Helpers::isDot(char character) {
     return std::regex_match(std::string(1, character), DOT);
 }

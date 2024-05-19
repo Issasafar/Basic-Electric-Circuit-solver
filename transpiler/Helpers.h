@@ -16,13 +16,20 @@ const std::regex EQ("=");
 const std::regex DOT("\\.");
 const std::vector<char> OPERATORS = {'+', '-', '*', '/'};
 const std::vector<std::string> KEYWORDS = { "let","print"};
+const std::vector<char> HIGH_TIER_OPERATORS {"*","/"};
+const std::vector<char> LOW_TIER_OPERATORS {"+","-"};
+
 class Helpers {
 public:
     static bool isKeyWord(const std::string& word);
     static std::unordered_map<TokenType, std::string> tokenTypeMap;
 
     static std::string getTokenTypeStr(TokenType type);
+    static bool isLowOperator(char character);
+    static boool isHighOperator(char character);
+
     static bool isDot(char character);
+
     static bool isEqual(char character);
 
     static bool isLetter(char character);
