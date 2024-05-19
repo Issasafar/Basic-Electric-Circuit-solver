@@ -16,8 +16,8 @@ const std::regex EQ("=");
 const std::regex DOT("\\.");
 const std::vector<char> OPERATORS = {'+', '-', '*', '/'};
 const std::vector<std::string> KEYWORDS = { "let","print"};
-const std::vector<char> HIGH_TIER_OPERATORS {"*","/"};
-const std::vector<char> LOW_TIER_OPERATORS {"+","-"};
+const std::vector<char> HIGH_TIER_OPERATORS  = {'*','/'};
+const std::vector<char> LOW_TIER_OPERATORS  = {'+','-'};
 
 class Helpers {
 public:
@@ -26,7 +26,7 @@ public:
 
     static std::string getTokenTypeStr(TokenType type);
     static bool isLowOperator(char character);
-    static boool isHighOperator(char character);
+    static bool isHighOperator(char character);
 
     static bool isDot(char character);
 

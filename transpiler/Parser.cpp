@@ -43,10 +43,12 @@ std::vector<std::shared_ptr<AstNodeBase>> buildAstTree(std::vector<Token> tokens
             bool isNextHigher = Helpers::isHighOperator(nextOperatorPosition->getValue()[0])&& Helpers::isLowOperator(it->getValue()[0]);
             if(nextOperatorPresent && nextIsNotParenthesis && isNextHigher){
                 // insert () to insure the operator precedent
-
-
+                tokens.insert(nextArgumentPosition,Token(TokenType::PARENTHESIS,0,"("));
+                it = tokens.begin() + i;
+                auto closingPosition = it + 5;
+                tokens.insert(closingPosition,Token(TokenType::PARENTHESIS,0,")"));
+                it = tokens.begin() + i + 4;
             }
-
         }
 
         ++i;
