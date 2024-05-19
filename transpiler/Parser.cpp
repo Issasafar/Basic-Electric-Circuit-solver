@@ -15,38 +15,33 @@
 #include "Helpers.h"
 
 std::vector<std::shared_ptr<AstNodeBase>> buildAstTree(std::vector<Token> tokens) {
+    int i = 0;
     for (auto it = tokens.begin(); it != tokens.end(); ++it) {
+        // convert the var.call(args) into call(var args)
         if (it->getType() == TokenType::NAME) {
-            auto next = std::next(it);
-            if ((next != tokens.end())&&((next)->getType() == TokenType::DOTACCESS)) {
-                int tokensToRemove = 1;
-                next = std::next(next);
-                std::vector<Token> arguments;
-                if (std::next(next)->getType() == TokenType::PARENTHESIS) {
-                    while ((std::next(next) != tokens.end()) && (!Helpers::isClosingParenthesis(std::next(next)->getValue()[0]))) {
-                        // collect the arguments
-                        arguments.push_back(*next);
-                        ++tokensToRemove;
-                        next;
-                    }
-                    tokensToRemove += 2;
-                }
-                Token nameTk = *it;
-                tokens.erase(it, it + tokensToRemove);
-                tokens.insert(it, Token(TokenType::PARENTHESIS, 0, ")"));
-                for (Token tk: arguments) {
-                    tokens.insert(it,tk);
-                }
-                tokens.insert(it, nameTk);
-                tokens.insert(it, Token(TokenType::PARENTHESIS, 0, "("));
-                tokens.insert(it, Token(TokenType::NAME, 0, next->getValue()));
+            auto dotPosition = it + 1;
+            auto namePosition = it + 2;
+            auto openParenthesisPosition = it + 3;
+            bool isNextDot =
+                    (dotPosition != tokens.end() ) && (dotPosition->getType() == TokenType::DOTACCESS);
+            bool namePresent = (namePosition != tokens.end() ) && (namePosition->getType() == TokenType::NAME);
+            bool openParenthesisPresent =
+                    (openParenthesisPosition != tokens.end() ) && (openParenthesisPosition->getValue() == "(");
+            if (isNextDot && namePresent && openParenthesisPresent) {
+                Token variable = *it;
+                tokens.insert(openParenthesisPosition + 1, variable);
+                it = tokens.begin() + i;
+                tokens.erase(it, it+2);
+                it = tokens.begin() + i;
             }
         }
+        ++i;
     }
     std::vector<std::shared_ptr<AstNodeBase>> result;
     result.push_back(parenthesize(tokens));
     return result;
 }
+
 
 std::shared_ptr<AstNodeBase> parenthesize(std::vector<Token> tokens) {
     Token token = tokens.at(0);
