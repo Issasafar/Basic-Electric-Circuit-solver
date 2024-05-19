@@ -38,15 +38,19 @@ std::vector<std::shared_ptr<AstNodeBase>> buildAstTree(std::vector<Token> tokens
         if (it->getType() == TokenType::OPERATOR) {
             auto nextArgumentPosition = it + 1;
             auto nextOperatorPosition = it + 2;
-            bool nextIsNotParenthesis = nextArgumentPosition->getType() != TokenType::PARENTHESIS;
-            bool nextOperatorPresent = nextOperatorPosition->getType() == TokenType::OPERATOR;
-            bool isNextHigher = Helpers::isHighOperator(nextOperatorPosition->getValue()[0])&& Helpers::isLowOperator(it->getValue()[0]);
-            if(nextOperatorPresent && nextIsNotParenthesis && isNextHigher){
+            bool nextIsNotParenthesis =
+                    (nextArgumentPosition != tokens.end()) && nextArgumentPosition->getType() != TokenType::PARENTHESIS;
+            bool nextOperatorPresent =
+                    (nextOperatorPosition != tokens.end()) && nextOperatorPosition->getType() == TokenType::OPERATOR;
+            bool isNextHigher = (nextOperatorPosition != tokens.end()) &&
+                                Helpers::isHighOperator(nextOperatorPosition->getValue()[0]) &&
+                                Helpers::isLowOperator(it->getValue()[0]);
+            if (nextOperatorPresent && nextIsNotParenthesis && isNextHigher) {
                 // insert () to insure the operator precedent
-                tokens.insert(nextArgumentPosition,Token(TokenType::PARENTHESIS,0,"("));
+                tokens.insert(nextArgumentPosition, Token(TokenType::PARENTHESIS, 0, "("));
                 it = tokens.begin() + i;
                 auto closingPosition = it + 5;
-                tokens.insert(closingPosition,Token(TokenType::PARENTHESIS,0,")"));
+                tokens.insert(closingPosition, Token(TokenType::PARENTHESIS, 0, ")"));
                 it = tokens.begin() + i + 4;
                 i += 4;
             }
@@ -67,7 +71,6 @@ std::shared_ptr<AstNodeBase> parenthesize(std::vector<Token> tokens) {
         std::shared_ptr<AstNodeBase> expression;
         std::vector<Token> args;
         while (!Helpers::isClosingParenthesis(tokens.at(0).getValue()[0])) {
-            // here is the logic
             // collect the arguments
             args.push_back(tokens.at(0));
             tokens.erase(tokens.begin());

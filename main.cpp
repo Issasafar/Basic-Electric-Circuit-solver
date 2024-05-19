@@ -11,9 +11,9 @@ void example();
 void console();
 
 int main() {
-    console();
-//    auto tkns = tokenize("x + y * z - 3 * 5");
-//   auto thing=  buildAstTree(tkns);
+//    console();
+    auto tkns = tokenize("a + b - c");
+   auto thing=  buildAstTree(tkns);
 //    std::string str = " fun(x y 9)";
 //    std::vector<Token> tokens  = tokenize(str);
 //    for(auto token :tokens){
