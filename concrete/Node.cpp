@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <iostream>
 #include "Node.h"
+#include "Component.h"
 #include <sstream>
 
 // Default constructor for Node class.
@@ -36,8 +37,10 @@ void Node::set_voltage(double val) {
     volt.set_value(val);
     volt.set_known(true);
     // Notify observers about the voltage change.
-    for (auto &observer: observers) {
+    for (auto &observer: this->observers) {
+        if(observer != nullptr){
         observer->on_voltage_changed(val);
+        }
     }
 }
 

@@ -140,17 +140,43 @@ std::string Interpreter::findCaller(std::string caller) {
 VisitResult Interpreter::visitCallExpression(std::shared_ptr<AstNodeBase> node) {
     std::string caller = findCaller(node->getText());
     if (caller == "print") {
+        std::stringstream ss;
         for (auto arg: node->getArguments()) {
             VisitResult result = visit(arg);
-            std::cout << result.to_string();
+            ss << result.to_string();
         }
+        std::cout << ss.str();
+        return {0, NUMERIC_};
     }
-    if(caller == "solve"){
+    if (caller == "erase") {
+        variables.erase(variables.begin(), variables.end());
+        return {0, NUMERIC_};
+    }
+    if (caller == "variables") {
+        std::vector<std::string> strVector;
+        std::stringstream ss;
+        ss<<"Variables: ";
+        for (auto &variable: variables) {
+            strVector.push_back(variable.first);
+        }
+        for (auto it = strVector.begin(); it != strVector.end(); ++it) {
+            ss<<*it;
+            if(it+1 != strVector.end()){
+                ss<<", ";
+            }
+        }
+        ss << std::endl;
+        std::cout << ss.str();
+        return {0, NUMERIC_};
+    }
+    if (caller == "solve") {
         std::string circuitName = node->getArguments().at(0)->getText();
-       VisitResult circuitNameVariable = findVariable(circuitName);
-       Circuit circuit = boost::get<Circuit>(circuitNameVariable.getValue());
-       circuit.solve();
-       auto it = std::find_if(variables.begin(), variables.end(),[](auto item){item});
+        VisitResult circuitNameVariable = findVariable(circuitName);
+        Circuit circuit = boost::get<Circuit>(circuitNameVariable.getValue());
+        circuit.solve();
+        std::cout << circuit.get_matrix_string() << std::endl;
+        variables.at(circuitName) = VisitResult(circuit, COMPONENT);
+        return variables.at(circuitName);
     }
     if (caller == "Node") {
         return {cf.get_node(), NODE_};
@@ -158,11 +184,15 @@ VisitResult Interpreter::visitCallExpression(std::shared_ptr<AstNodeBase> node) 
     if (caller == "Ground") {
         return {cf.get_ground(), NODE_};
     }
-    if(caller == "Branch"){
-
-    }
-    if(caller == "Circuit"){
-
+    if (caller == "Circuit") {
+        std::vector<VisitResult> visitedArgs = getVisitedArgs(node);
+        std::vector<Branch> branches;
+        for (VisitResult branchVariable: visitedArgs) {
+            branches.push_back(boost::get<Branch>(branchVariable.getValue()));
+        }
+        Circuit circuit = Circuit(branches);
+        circuit.solve();
+        return {circuit, CIRCUIT};
     }
     if (caller == "Resistance" || caller == "VoltageSource" || caller == "CurrentSource" || caller == "Component") {
         std::vector<VisitResult> visitedArguments = getVisitedArgs(node);
@@ -191,6 +221,28 @@ VisitResult Interpreter::visitCallExpression(std::shared_ptr<AstNodeBase> node) 
             throw TranspilerException("Invalid arguments for calling: '" + caller + "'");
         }
     }
+    if (caller == "Branch") {
+        std::vector<VisitResult> visitedArgs = getVisitedArgs(node);
+        std::vector<boost::any> components;
+        for (VisitResult componentVariable: visitedArgs) {
+            if (componentVariable.getType() == RESISTANCE) {
+                Resistance r = boost::get<Resistance>(componentVariable.getValue());
+                components.emplace_back(r);
+            }
+            if (componentVariable.getType() == VOLTAGESOURCE) {
+                VoltageSource vs = boost::get<VoltageSource>(componentVariable.getValue());
+                components.emplace_back(vs);
+            }
+            if (componentVariable.getType() == CURRENTSOURCE) {
+                CurrentSource cs = boost::get<CurrentSource>(componentVariable.getValue());
+                components.emplace_back(cs);
+            }
+        }
+        Branch branch = cf.get_branch(components);
+        return {branch, BRANCH};
+    }
+    throw TranspilerException("Unknown caller: '" + caller + "'");
+
 }
 
 std::vector<VisitResult> Interpreter::getVisitedArgs(const std::shared_ptr<AstNodeBase> &node) {

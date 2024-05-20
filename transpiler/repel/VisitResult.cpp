@@ -6,10 +6,10 @@
 
 std::string VisitResult::to_string() {
     if(value_.type() == typeid(std::string)){
-        return boost::get<std::string>(value_);
+        return boost::get<std::string>(value_)+"\n";
     }
     if(value_.type() == typeid(double)){
-        return std::to_string(boost::get<double>(value_));
+        return std::to_string(boost::get<double>(value_))+"\n";
     }
     if(value_.type() == typeid(std::shared_ptr<Node>)){
         return boost::get<std::shared_ptr<Node>>(value_)->to_string();

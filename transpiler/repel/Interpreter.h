@@ -8,7 +8,7 @@
 
 #include "AstNodeVisitor.h"
 #include "../../concrete/ComponentsFactory.h"
-const std::vector<std::string> callers {"print","solve","Node","Ground","Component","Resistance","Branch","Circuit","VoltageSource","CurrentSource"};
+const std::vector<std::string> callers {"print","variables","erase","solve","Node","Ground","Component","Resistance","Branch","Circuit","VoltageSource","CurrentSource"};
 class Interpreter: public AstNodeVisitor {
 public:
     VisitResult visit(std::shared_ptr<AstNodeBase> node)override;

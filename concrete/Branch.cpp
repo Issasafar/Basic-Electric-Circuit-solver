@@ -78,10 +78,10 @@ double Branch::current() const {
 }
 
 std::string Branch::to_string() {
-   std::stringstream temp;
-    temp<<"Branch with components: "<<std::endl;
-   for(auto component : components()){
-       temp<<component->to_string()<<std::endl;
-   }
+    std::stringstream temp;
+    temp << "Branch with components: " << std::endl;
+    for (auto component: components()) {
+        temp << component->to_string() << std::endl;
+    }
     return temp.str();
 }

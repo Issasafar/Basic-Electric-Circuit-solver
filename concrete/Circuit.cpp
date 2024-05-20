@@ -107,8 +107,8 @@ VectorXd Circuit::solve() {
     // Update the circuit'setOfNodes state with the solution.
     is_solved = true;
     solution = result;
-    update_node_voltages(result);
     update_branches_current(result);
+    update_node_voltages(result);
 
     return result;
 }
