@@ -8,11 +8,12 @@
 #include "Resistance.h"
 #include "VoltageSource.h"
 #include "CurrentSource.h"
+#include "sstream"
 
-// Branch class constructor initializing branch number.
+// Branch class constructor initializing branch get_number.
 Branch::Branch(int number) : Component(), branchNumber{number} {}
 
-// Branch class constructor initializing branch number and components.
+// Branch class constructor initializing branch get_number and components.
 Branch::Branch(int number, std::vector<boost::any> components) : Branch::Branch(number) {
     Branch::components(std::move(components));
 }
@@ -66,7 +67,7 @@ std::unordered_map<com_ptr, std::string> Branch::types_map() {
     return map;
 }
 
-// Returns the branch number.
+// Returns the branch get_number.
 int Branch::number() {
     return branchNumber;
 }
@@ -74,4 +75,13 @@ int Branch::number() {
 // Returns the current of the branch.
 double Branch::current() const {
     return c->get_value(); // Assuming 'c' is a pointer to a current-related object.
+}
+
+std::string Branch::to_string() {
+   std::stringstream temp;
+    temp<<"Branch with components: "<<std::endl;
+   for(auto component : components()){
+       temp<<component->to_string()<<std::endl;
+   }
+    return temp.str();
 }

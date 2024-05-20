@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <iostream>
 #include "Node.h"
+#include <sstream>
 
 // Default constructor for Node class.
 Node::Node() : n{-1}, volt{Voltage(0, false)} {
@@ -40,15 +41,15 @@ void Node::set_voltage(double val) {
     }
 }
 
-// Set the node number.
+// Set the node get_number.
 void Node::number(int val) { n = val; }
 
-// Get the node number.
-int Node::number() const {
+// Get the node get_number.
+int Node::get_number() const {
     return n;
 }
 
-// Get the number of connections to the node.
+// Get the get_number of connections to the node.
 int Node::connections_count() const {
     return c;
 }
@@ -66,4 +67,16 @@ void Node::remove_connection() {
 // Get the Voltage object associated with the node.
 Voltage Node::voltage_object() {
     return volt;
+}
+
+std::string Node::to_string() {
+   std::stringstream temp;
+   temp<<"Node Number= "<<this->get_number()<<", Voltage= ";
+   if(this->volt.get_known()){
+       temp<<this->get_voltage();
+   }else{
+       temp<<"Unknown";
+   }
+   temp<<std::endl;
+    return temp.str();
 }

@@ -18,7 +18,7 @@ enum TokenType {
     EQUAL,
     DOTACCESS,
     KEYWORD,
-    CHECK
+    PUNCTUATOR,
 };
 
 class Token {

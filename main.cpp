@@ -13,12 +13,18 @@ void example();
 void console();
 
 int main() {
+//    example();
 //    console();
-    auto tkns = tokenize("a + b - c");
+    auto tkns = tokenize("print(x,y +z)");
     auto thing = buildAstTree(tkns);
     Interpreter i;
-    i.visit(thing);
-
+    auto interpreted = i.visit(thing);
+    if (interpreted.getValue().type() == typeid(double)) {
+        double value = boost::get<double>(interpreted.getValue());
+        std::cout << "Value: " << value << std::endl;
+    }else if(interpreted.getValue().type() == typeid(std::string)){
+        std::cout<<boost::get<std::string>(interpreted.getValue())<<std::endl;
+    }
 //    std::string str = " fun(x y 9)";
 //    std::vector<Token> tokens  = tokenize(str);
 //    for(auto token :tokens){

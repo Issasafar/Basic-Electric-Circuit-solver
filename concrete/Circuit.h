@@ -51,6 +51,7 @@ private:
     void update_node_voltages(VectorXd data);
 
 public:
+    std::string to_string();
     Circuit();
 
     Circuit(std::vector<Branch> branches);
@@ -66,7 +67,11 @@ public:
      * @brief prints the equation Ax=branchesVector matrix
      */
     void print_matrix();
-
+    /**
+     *
+     * @return matrix string representation
+     */
+    std::string get_matrix_string();
     /**
      * @brief adds a branch to circuit branches vector
      * @param branch

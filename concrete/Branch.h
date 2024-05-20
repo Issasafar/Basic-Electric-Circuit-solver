@@ -21,7 +21,7 @@ private:
     std::vector<com_ptr> vec;
     /**@var map @brief holds the type_ for each component in the branch*/
     std::unordered_map<com_ptr, std::string> map;
-    /**@var branchNumber @brief the branch number*/
+    /**@var branchNumber @brief the branch get_number*/
     int branchNumber;
 public:
     void current(double current) override;
@@ -35,6 +35,7 @@ public:
     int number();
 
     std::vector<com_ptr> components();
+    std::string to_string() override;
 
     void components(std::vector<boost::any> components);
     std::unordered_map<com_ptr, std::string> types_map();

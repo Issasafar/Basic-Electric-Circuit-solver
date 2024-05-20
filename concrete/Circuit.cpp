@@ -11,13 +11,22 @@
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
+std::string Circuit::to_string() {
+    std::stringstream ss;
+    ss<<"Circuit with: "<<std::endl;
+    for(auto branch : branches()){
+        ss<<branch.to_string();
+    }
+    return ss.str();
+
+}
 // Default constructor for the Circuit class.
 Circuit::Circuit() = default;
 
 // Constructor for the Circuit class initializing with a vector of Branches.
 Circuit::Circuit(std::vector<Branch> branches) {
     branchesVector = std::move(branches);
-    // Calculate the total number of equations required based on the number of components in all branches.
+    // Calculate the total number of equations required based on the get_number of components in all branches.
     for (Branch branch: branchesVector) {
         equationsCount += branch.components().size();
     }
@@ -52,11 +61,11 @@ VectorXd Circuit::solve() {
 
             // Handle VoltageSource components.
             if (branch.types_map().at(component) == "VoltageSource") {
-                if (component->startNode()->number() != Node::ground().number()) {
-                    matrix(row, component->startNode()->number()) = -1;
+                if (component->startNode()->get_number() != Node::ground().get_number()) {
+                    matrix(row, component->startNode()->get_number()) = -1;
                 }
-                if (component->endNode()->number() != Node::ground().number()) {
-                    matrix(row, component->endNode()->number()) = 1;
+                if (component->endNode()->get_number() != Node::ground().get_number()) {
+                    matrix(row, component->endNode()->get_number()) = 1;
                 }
                 vector(row) = component->voltage();
             }
@@ -69,11 +78,11 @@ VectorXd Circuit::solve() {
 
             // Handle Resistance components.
             if (branch.types_map().at(component) == "Resistance") {
-                if (component->startNode()->number() != Node::ground().number()) {
-                    matrix(row, component->startNode()->number()) = 1;
+                if (component->startNode()->get_number() != Node::ground().get_number()) {
+                    matrix(row, component->startNode()->get_number()) = 1;
                 }
-                if (component->endNode()->number() != Node::ground().number()) {
-                    matrix(row, component->endNode()->number()) = -1;
+                if (component->endNode()->get_number() != Node::ground().get_number()) {
+                    matrix(row, component->endNode()->get_number()) = -1;
                 }
                 matrix(row, equationsCount - 1 - branch.number()) = -component->resistance();
                 insert_branch(std::make_shared<Branch>(branch));
@@ -84,7 +93,8 @@ VectorXd Circuit::solve() {
         }
     }
     // search in the setOfNodes for the ground
-    auto it = std::find_if(setOfNodes.begin(), setOfNodes.end(), [](std::shared_ptr<Node> node){return node->number() == -1;});
+    auto it = std::find_if(setOfNodes.begin(), setOfNodes.end(), [](std::shared_ptr<Node> node){return
+            node->get_number() == -1;});
     bool ground_found = it != setOfNodes.end();
     // if there is no ground node the circuit cannot be solved
     if (!ground_found) {
@@ -118,8 +128,8 @@ void Circuit::update_branches_current(Eigen::VectorXd data) {
 // Updates the voltages at all nodes based on the solution vector.
 void Circuit::update_node_voltages(Eigen::VectorXd data) {
     for (auto node: setOfNodes) {
-        if (node->number() != -1) {
-            node->set_voltage(data(node->number()));
+        if (node->get_number() != -1) {
+            node->set_voltage(data(node->get_number()));
         }
     }
 }
@@ -129,6 +139,9 @@ void Circuit::print_matrix() {
     if (!is_solved) {
         throw CircuitException("The circuit is not solved");
     }
+    std::cout<<get_matrix_string();
+}
+std::string Circuit::get_matrix_string() {
 
     std::stringstream ss;
     unsigned long maxMatrixLength = 0;
@@ -161,32 +174,33 @@ void Circuit::print_matrix() {
     }
 
     maxMatrixLength *= 3;
-
+    std::stringstream headers;
     // Print formatted matrix, vector, and solution headers.
     for (int i = 0; i <= maxMatrixLength; ++i) {
         if (i == maxMatrixLength / 2) {
-            std::cout << " MATRIX ";
+            headers << " MATRIX ";
         } else {
-            std::cout << "-";
+            headers << "-";
         }
     }
 
     for (int i = 0; i <= maxVectorLength; ++i) {
         if (i == maxVectorLength / 2) {
-            std::cout << " VECTOR ";
+            headers << " VECTOR ";
         } else {
-            std::cout << "-";
+            headers << "-";
         }
     }
 
     for (int i = 0; i <= maxSolutionLength; ++i) {
         if (i == maxSolutionLength / 2) {
-            std::cout << " SOLUTION ";
+            headers << " SOLUTION ";
         } else {
-            std::cout << "-";
+            headers << "-";
         }
     }
 
-    std::cout << std::endl;
-    std::cout << ss.str() << std::endl;
+    headers<< std::endl;
+    headers<<ss.str();
+    return headers.str();
 }

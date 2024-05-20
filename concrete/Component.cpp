@@ -156,7 +156,7 @@ std::string Component::to_string() {
     if (this_component->c->get_known()) {
         message += ", C= " + std::to_string(this_component->c->get_value());
     }
-    return message; // Return message;
+    return message + "\n"; // Return message;
 }
 
 // Get the start node of the component.

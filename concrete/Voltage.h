@@ -22,7 +22,7 @@ public:
     Voltage();
     /**
      * @brief constructor
-     * @param value the voltage number
+     * @param value the voltage get_number
      * @param known is the voltage known or not
      */
     Voltage(const double value, bool known);

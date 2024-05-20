@@ -85,7 +85,7 @@ protected:
 public:
     /**
      * @brief called whenever the voltage changed in the nodes
-     * @param value the new voltage number for either start or end node
+     * @param value the new voltage get_number for either start or end node
      */
     void on_voltage_changed(double value) override;
     /**

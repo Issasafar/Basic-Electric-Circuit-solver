@@ -14,11 +14,8 @@ public:
     virtual ~AstNodeVisitor() = default;
     virtual VisitResult visit(std::shared_ptr<AstNodeBase> node) = 0;
     virtual VisitResult visitBinaryExpression(std::shared_ptr<AstNodeBase> node) = 0;
-//    virtual void visitCallExpression(std::shared_ptr<AstNodeBase> node) = 0;
-//    virtual void visitVarDeclaration(std::shared_ptr<AstNodeBase> node) = 0;
-//    virtual void visitStringLiteral(std::shared_ptr<AstNodeBase> node) = 0;
-//    virtual void visitNumericLiteral(std::shared_ptr<AstNodeBase> node) = 0;
-//    virtual void visitIdentifier(std::shared_ptr<AstNodeBase> node) = 0;
+//    virtual VisitResult visitVarDeclaration(std::shared_ptr<AstNodeBase> node) = 0;
+    virtual VisitResult visitCallExpression(std::shared_ptr<AstNodeBase> node) = 0;
 };
 
 

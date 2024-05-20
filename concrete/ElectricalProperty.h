@@ -18,7 +18,7 @@ class ElectricalProperty {
 protected:
     /**@var observers @brief vector containing references to ElectricalPropertyObservers */
     std::vector<ElectricalPropertyObserver *> observers;
-    /**@var value_ @brief the property number*/
+    /**@var value_ @brief the property get_number*/
     double value_;
     /**@var is_known @brief is the property known or not*/
     bool is_known;
@@ -33,7 +33,7 @@ public:
     ElectricalProperty();
     /**
      *
-     * @param value property number
+     * @param value property get_number
      * @param known property known or not
      */
     ElectricalProperty(const double value, bool known);
@@ -48,13 +48,13 @@ public:
      */
     void remove_observer(ElectricalPropertyObserver *observer);
     /**
-     * @brief set property number
-     * @param value new number
+     * @brief set property get_number
+     * @param value new get_number
      */
     void set_value(double value);
     /**
      *
-     * @return property number
+     * @return property get_number
      */
     double get_value() const;
     /**

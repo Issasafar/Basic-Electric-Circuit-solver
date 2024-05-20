@@ -26,6 +26,10 @@ std::vector<Token> tokenize(const std::string &input) {
         text.str(std::string());
         const char character = input[cursor];
         if(Helpers::isComma(character)){
+            text<<character;
+            tokens.emplace_back(TokenType::PUNCTUATOR,
+                                cursor,
+                                text.str());
             cursor++;
             continue;
         }

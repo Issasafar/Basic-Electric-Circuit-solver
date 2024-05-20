@@ -117,8 +117,16 @@ std::shared_ptr<AstNodeBase> parse(std::vector<Token> tokens) {
         if (Helpers::isOpeneningParenthesis(tokens.at(0).getValue()[0])) {
             tokens.erase(tokens.begin());
             while (!Helpers::isClosingParenthesis(tokens.at(0).getValue()[0])) {
-                args.push_back(parse({tokens.at(0)}));
-                tokens.erase(tokens.begin());
+                std::vector<Token> arg;
+                while (!Helpers::isComma(tokens.at(0).getValue()[0]) && !Helpers::isClosingParenthesis(tokens.at(0).getValue()[0])) {
+                    arg.push_back(tokens.at(0));
+                    tokens.erase(tokens.begin());
+                }
+                args.push_back(parse(arg));
+                // erase the comma
+                if(tokens.at(0).getType() == TokenType::PUNCTUATOR){
+                    tokens.erase(tokens.begin());
+                }
             }
             tokens.erase(tokens.begin());
         }
@@ -131,7 +139,6 @@ std::shared_ptr<AstNodeBase> parse(std::vector<Token> tokens) {
         return std::make_shared<AstNodeBase>(StringLiteral(first.getValue()));
     }
     if (first.getType() == TokenType::NAME) {
-        std::cout << "Parsing Name" << first << std::endl;
         return std::make_shared<AstNodeBase>(Identifier(first.getValue()));
     }
     std::stringstream ss;

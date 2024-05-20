@@ -19,7 +19,7 @@ private:
     using ElectricalProperty::get_known;
     using ElectricalProperty::get_value;
     using ElectricalProperty::set_value;
-    /**@var n @brief node number*/
+    /**@var n @brief node get_number*/
     int n;
     /**@var c @brief connections count of the node*/
     int c = 0;
@@ -39,6 +39,7 @@ public:
     Node(int val, const Voltage &voltage);
 
     explicit Node(int val);
+    std::string to_string();
 
     void add_connection();
 
@@ -54,7 +55,7 @@ public:
 
     int connections_count() const;
 
-    int number() const;
+    int get_number() const;
 };
 
 

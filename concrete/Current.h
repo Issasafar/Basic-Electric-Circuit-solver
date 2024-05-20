@@ -23,7 +23,7 @@ public:
     Current();
     /**
      * @brief constructor
-     * @param value current number
+     * @param value current get_number
      * @param known is the current known or not
      */
     Current(const double value, bool known);
