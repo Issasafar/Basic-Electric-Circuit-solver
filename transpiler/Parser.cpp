@@ -14,7 +14,7 @@
 #include <iostream>
 #include "Helpers.h"
 
-std::vector<std::shared_ptr<AstNodeBase>> buildAstTree(std::vector<Token> tokens) {
+std::shared_ptr<AstNodeBase> buildAstTree(std::vector<Token> tokens) {
     int i = 0;
     for (auto it = tokens.begin(); it != tokens.end(); ++it) {
         // convert the var.call(args) into call(var args)
@@ -58,9 +58,7 @@ std::vector<std::shared_ptr<AstNodeBase>> buildAstTree(std::vector<Token> tokens
 
         ++i;
     }
-    std::vector<std::shared_ptr<AstNodeBase>> result;
-    result.push_back(parenthesize(tokens));
-    return result;
+    return parenthesize(tokens);
 }
 
 

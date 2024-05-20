@@ -14,7 +14,7 @@ TokenType Token::getType() const {
 
 
 std::ostream &operator<<(std::ostream &os, const Token &token) {
-    os << "(TOKEN) type: " << Helpers::getTokenTypeStr(token.type_) << ", value: " << token.getValue();
+    os << "(TOKEN) type_: " << Helpers::getTokenTypeStr(token.type_) << ", value_: " << token.getValue();
     return os;
 }
 

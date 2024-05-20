@@ -53,4 +53,8 @@ AstNodeBase::AstNodeBase() {
     number_ = 0;
 }
 
+void AstNodeBase::accept(const std::shared_ptr<AstNodeVisitor>& visitor) {
+    visitor->visit(std::make_shared<AstNodeBase>(*this));
+}
+
 

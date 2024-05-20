@@ -10,7 +10,7 @@
 #include "boost/any.hpp"
 std::shared_ptr<AstNodeBase> parse(std::vector<Token> tokens);
 std::shared_ptr<AstNodeBase> parenthesize(std::vector<Token> tokens);
-std::vector<std::shared_ptr<AstNodeBase>> buildAstTree(std::vector<Token> tokens);
+std::shared_ptr<AstNodeBase> buildAstTree(std::vector<Token> tokens);
 
 
 #endif //DEMOPROJECT_PARSER_H

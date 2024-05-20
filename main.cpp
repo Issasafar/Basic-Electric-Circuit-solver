@@ -6,14 +6,19 @@
 #include "transpiler/ast-nodes/Identifier.h"
 #include "transpiler/ast-nodes/AstNodeBase.h"
 #include "transpiler/Parser.h"
-
+#include "transpiler/TranspilerException.h"
+#include "transpiler/repel/Interpreter.h"
 void example();
+
 void console();
 
 int main() {
 //    console();
     auto tkns = tokenize("a + b - c");
-   auto thing=  buildAstTree(tkns);
+    auto thing = buildAstTree(tkns);
+    Interpreter i;
+    i.visit(thing);
+
 //    std::string str = " fun(x y 9)";
 //    std::vector<Token> tokens  = tokenize(str);
 //    for(auto token :tokens){
@@ -40,9 +45,13 @@ void console() {
             system("clear");
             continue;
         }
-        std::vector<Token> tokens = tokenize(line);
-        for (auto token: tokens) {
-            std::cout << token << std::endl;
+        try {
+            std::vector<Token> tokens = tokenize(line);
+            for (auto token: tokens) {
+                std::cout << token << std::endl;
+            }
+        } catch (TranspilerException &exception) {
+            std::cout << exception.what() << std::endl;
         }
     }
 }

@@ -6,8 +6,10 @@
 #define DEMOPROJECT_ASTNODEBASE_H
 
 #include "boost/any.hpp"
+#include "../repel/AstNodeVisitor.h"
 #include <memory>
 #include <vector>
+class AstNodeVisitor;
 enum NodeType{
     STRINGLITERAL,
     NUMERICALLITERAL,
@@ -28,6 +30,7 @@ protected:
     std::shared_ptr<AstNodeBase> right_{nullptr};
     std::vector<std::shared_ptr<AstNodeBase>> arguments_;
 public:
+    void accept(const std::shared_ptr<AstNodeVisitor>& visitor);
     std::string get_class_name();
     AstNodeBase();
     static std::string get_class_name(boost::any obj);
