@@ -5,11 +5,10 @@
 #ifndef CIRCUITSOLVER_ELECTRICALPROPERTY_H
 #define CIRCUITSOLVER_ELECTRICALPROPERTY_H
 
-
-#include "ElectricatPropertyObserver.h"
+#include "ElectricalPropertyObserver.h"
 #include <vector>
 #include <string>
-
+#include <memory>
 /**
  * @file ElectricalProperty
  * @brief represent the base for electrical property
@@ -17,7 +16,7 @@
 class ElectricalProperty {
 protected:
     /**@var observers @brief vector containing references to ElectricalPropertyObservers */
-    std::vector<ElectricalPropertyObserver *> observers;
+    std::vector<std::shared_ptr<ElectricalPropertyObserver>> observers;
     /**@var value_ @brief the property get_number*/
     double value_;
     /**@var is_known @brief is the property known or not*/
@@ -30,6 +29,7 @@ protected:
     virtual std::string get_type() const;
 
 public:
+    virtual ~ElectricalProperty() = default;
     ElectricalProperty();
     /**
      *
@@ -41,12 +41,12 @@ public:
      * @brief register observer for property change
      * @param observer
      */
-    void add_observer(ElectricalPropertyObserver *observer);
+    void add_observer( std::shared_ptr<ElectricalPropertyObserver>observer);
     /**
      * @brief remove observer from the observers vector
      * @param observer
      */
-    void remove_observer(ElectricalPropertyObserver *observer);
+    void remove_observer(std::shared_ptr<ElectricalPropertyObserver>observer);
     /**
      * @brief set property get_number
      * @param value new get_number

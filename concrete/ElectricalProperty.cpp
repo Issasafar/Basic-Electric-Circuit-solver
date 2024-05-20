@@ -4,22 +4,23 @@
 
 #include "ElectricalProperty.h"
 #include "CircuitException.h"
-#include "Component.h"
+#include "ElectricalPropertyObserver.h"
 #include <algorithm>
 
 // Parameterized constructor for ElectricalProperty class.
-ElectricalProperty::ElectricalProperty(const double value, bool known) : value_{value}, is_known{known} {}
+ElectricalProperty::ElectricalProperty(const double value, bool known) : value_{value}, is_known{known} {
+}
 
 // Default constructor for ElectricalProperty class.
 ElectricalProperty::ElectricalProperty() : value_{0}, is_known{false} {}
 
 // Add an observer to the electrical property.
-void ElectricalProperty::add_observer(ElectricalPropertyObserver *observer) {
+void ElectricalProperty::add_observer( std::shared_ptr<ElectricalPropertyObserver>observer) {
     observers.push_back(observer);
 }
 
 // Remove an observer from the electrical property.
-void ElectricalProperty::remove_observer(ElectricalPropertyObserver *observer) {
+void ElectricalProperty::remove_observer(std::shared_ptr<ElectricalPropertyObserver>observer) {
     auto it = std::find(observers.begin(), observers.end(), observer);
     if (it != observers.end()) {
         observers.erase(it);

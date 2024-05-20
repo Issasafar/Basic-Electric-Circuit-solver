@@ -36,9 +36,9 @@ Component::Component(double resistance, std::shared_ptr<Node> start, std::shared
                                                                                                   r{resistance} {
     // Add connections to the start and end nodes.
     startNd->add_connection();
-    startNd->add_observer(this);
+    startNd->add_observer(std::make_shared<Component>(*this));
     endNd->add_connection();
-    endNd->add_observer(this);
+    endNd->add_observer(std::make_shared<Component>(*this));
 }
 
 // Parameterized constructor for Component class with resistance, voltage, current, and node connections.
@@ -124,9 +124,9 @@ Component Component::divide(Component *thisObj, Component *other) {
 void Component::handle_node(std::shared_ptr<Node> member, std::shared_ptr<Node> other) {
     // Remove connections and observers from the current node, add them to the new node.
     member->remove_connection();
-    member->remove_observer(this);
+    member->remove_observer(std::make_shared<Component>(*this));
     other->add_connection();
-    other->add_observer(this);
+    other->add_observer(std::make_shared<Component>(*this));
     // Update the component'setOfNodes node reference.
     member = other;
 }

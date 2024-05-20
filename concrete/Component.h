@@ -5,13 +5,14 @@
 #ifndef CIRCUITSOLVER_COMPONENT_H
 #define CIRCUITSOLVER_COMPONENT_H
 
-
 #include <type_traits>
 #include <iostream>
 #include "Node.h"
 #include "Current.h"
 #include <memory>
 #include <boost/any.hpp>
+#include "ElectricalProperty.h"
+class ElectricalProperty;
 /**
  * @file Component.h
  * @brief Electrical Component Base

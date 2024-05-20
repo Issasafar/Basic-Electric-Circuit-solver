@@ -3,11 +3,12 @@
 //
 #ifndef CIRCUITSOLVER_NODE_H
 #define CIRCUITSOLVER_NODE_H
-
 #include "Voltage.h"
+#include "ElectricalProperty.h"
 #include <memory>
 #include <boost/any.hpp>
 #include <vector>
+
 /**
  * @file Node.h
  * @brief electrical node

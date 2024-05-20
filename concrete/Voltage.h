@@ -19,6 +19,7 @@ protected:
     std::string get_type() const override;
 
 public:
+    ~Voltage() override = default;
     Voltage();
     /**
      * @brief constructor
