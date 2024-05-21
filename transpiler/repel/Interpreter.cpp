@@ -165,6 +165,19 @@ VisitResult Interpreter::visitCallExpression(std::shared_ptr<AstNodeBase> node) 
         std::cout << ss.str();
         return {0, NUMERIC_};
     }
+    if(caller == "describe"){
+        std::stringstream ss;
+        for(auto arg : node->getArguments()){
+            if(arg->getType() == IDENTIFIER){
+                ss << "("<<arg->getText()<<") ";
+            }
+            VisitResult var = visit(arg);
+            ss << var.describeVariable();
+        }
+        std::cout<<ss.str();
+        return {ss.str(), STRING_};
+    }
+
     if (caller == "erase") {
         variables.erase(variables.begin(), variables.end());
         return {0, NUMERIC_};

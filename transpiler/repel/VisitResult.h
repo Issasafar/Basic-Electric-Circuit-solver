@@ -31,6 +31,9 @@ public:
 
     ResultType getType() const;
     std::string to_string();
+
+    std::string describeVariable();
+
 private:
     boost::variant<double, std::string, std::shared_ptr<Node>, Branch, Circuit, Component, Resistance, VoltageSource, CurrentSource> value_;
     ResultType type_;
