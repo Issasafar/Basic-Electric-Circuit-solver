@@ -18,6 +18,11 @@ VisitResult Interpreter::visit(std::shared_ptr<AstNodeBase> node) {
     }
     if (node->getType() == VARDECLARATION) {
         std::string newVariable = node->getLeft()->getText();
+        auto exist = variables.find(newVariable);
+        if (exist != variables.end()) {
+            exist->second = visit(node->getRight());
+            return exist->second;
+        }
         auto it = variables.insert({(newVariable), visit(node->getRight())});
         if (it.second) {
             auto inserted = *it.first;
@@ -92,6 +97,9 @@ VisitResult Interpreter::multiply(VisitResult left, VisitResult right) {
         std::vector<double> values = getDoubleValues(left, right);
         return {values[0] * values[1], NUMERIC_};
     }
+    if (left.getType() == VOLTAGESOURCE || left.getType() == CURRENTSOURCE || left.getType() == COMPONENT || left.getType() == RESISTANCE) {
+        return {handleComponents(left, right, "*"), COMPONENT};
+    }
     throw TranspilerException(operatorErrorMessage + "*");
 }
 
@@ -99,6 +107,9 @@ VisitResult Interpreter::divide(VisitResult left, VisitResult right) {
     if (left.getType() == NUMERIC_) {
         std::vector<double> values = getDoubleValues(left, right);
         return {values[0] / values[1], NUMERIC_};
+    }
+    if (left.getType() == VOLTAGESOURCE || left.getType() == CURRENTSOURCE || left.getType() == COMPONENT || left.getType() == RESISTANCE) {
+        return {handleComponents(left, right, "/"), COMPONENT};
     }
     throw TranspilerException(operatorErrorMessage + "/");
 }
@@ -113,6 +124,9 @@ VisitResult Interpreter::add(VisitResult left, VisitResult right) {
         std::string rightStr = boost::get<std::string>(right.getValue());
         return {leftStr + rightStr, STRING_};
     }
+    if (left.getType() == VOLTAGESOURCE || left.getType() == CURRENTSOURCE || left.getType() == COMPONENT || left.getType() == RESISTANCE) {
+        return {handleComponents(left, right, "+"), COMPONENT};
+    }
     throw TranspilerException(operatorErrorMessage + "+");
 }
 
@@ -120,6 +134,9 @@ VisitResult Interpreter::subtract(VisitResult left, VisitResult right) {
     if (left.getType() == NUMERIC_) {
         std::vector<double> values = getDoubleValues(left, right);
         return {values[0] - values[1], NUMERIC_};
+    }
+    if (left.getType() == VOLTAGESOURCE || left.getType() == CURRENTSOURCE || left.getType() == COMPONENT || left.getType() == RESISTANCE) {
+        return {handleComponents(left, right, "-"), COMPONENT};
     }
     throw TranspilerException(operatorErrorMessage + "-");
 }
@@ -155,19 +172,23 @@ VisitResult Interpreter::visitCallExpression(std::shared_ptr<AstNodeBase> node) 
     if (caller == "variables") {
         std::vector<std::string> strVector;
         std::stringstream ss;
-        ss<<"Variables: ";
         for (auto &variable: variables) {
             strVector.push_back(variable.first);
         }
         for (auto it = strVector.begin(); it != strVector.end(); ++it) {
-            ss<<*it;
-            if(it+1 != strVector.end()){
-                ss<<", ";
+            ss << *it;
+            if (it + 1 != strVector.end()) {
+                ss << ", ";
             }
         }
+        if (ss.str().empty()) {
+            ss << "\"empty\"";
+        }
+        std::stringstream temp;
+        temp << ss.str();
         ss << std::endl;
         std::cout << ss.str();
-        return {0, NUMERIC_};
+        return {temp.str(), STRING_};
     }
     if (caller == "solve") {
         std::string circuitName = node->getArguments().at(0)->getText();
@@ -251,4 +272,39 @@ std::vector<VisitResult> Interpreter::getVisitedArgs(const std::shared_ptr<AstNo
         visitedArguments.push_back(visit(it));
     }
     return visitedArguments;
+}
+
+Component Interpreter::getComponent(VisitResult temp) {
+    if (temp.getType() == RESISTANCE) {
+        return boost::get<Resistance>(temp.getValue());
+    }
+    if (temp.getType() == VOLTAGESOURCE) {
+        return boost::get<VoltageSource>(temp.getValue());
+    }
+    if (temp.getType() == CURRENTSOURCE) {
+        return boost::get<CurrentSource>(temp.getValue());
+    }
+    if (temp.getType() == COMPONENT) {
+        return boost::get<Component>(temp.getValue());
+    }
+    throw TranspilerException("Invalid operands to binary expression");
+}
+
+Component Interpreter::handleComponents(VisitResult left, VisitResult right, std::string op) {
+    Component leftComponent = getComponent(left);
+    Component rightComponent = getComponent(right);
+    Component result;
+    if(op == "*"){
+       result = leftComponent * rightComponent;
+    }
+    if(op == "/"){
+        result = leftComponent / rightComponent;
+    }
+    if(op == "+"){
+        result = leftComponent + rightComponent;
+    }
+    if(op == "-"){
+        result = leftComponent - rightComponent;
+    }
+    return result;
 }

@@ -68,10 +68,16 @@ Component &Component::add_equal(Component *thisObj, Component *other) {
     if (!is_valid_operation(this, other)) {
         throw CircuitException("invalid operation add: " + this->to_string() + ", " + other->to_string());
     }
-    // Add resistance, voltage, and current values.
+    // Add resistance values.
     thisObj->r += other->r;
-    thisObj->v->set_value(thisObj->v->get_value() + other->v->get_value());
-    thisObj->c->set_value(thisObj->c->get_value() + other->c->get_value());
+    // Add voltage values if known.
+    if (thisObj->v->get_known() && other->v->get_known()) {
+        thisObj->v->set_value(thisObj->v->get_value() + other->v->get_value());
+    }
+    // Add current values if known.
+    if (thisObj->c->get_known() && other->c->get_known()) {
+        thisObj->c->set_value(thisObj->c->get_value() + other->c->get_value());
+    }
     return *thisObj;
 }
 
@@ -81,10 +87,16 @@ Component &Component::subtract_equal(Component *thisObj, Component *other) {
     if (!is_valid_operation(this, other)) {
         throw CircuitException("invalid operation subtract: " + this->to_string() + ", " + other->to_string());
     }
-    // Subtract resistance, voltage, and current values.
+    // Subtract resistance values.
     thisObj->r -= other->r;
-    thisObj->v->set_value(thisObj->v->get_value() - other->v->get_value());
-    thisObj->c->set_value(thisObj->c->get_value() - other->c->get_value());
+    // Subtract voltage values if known.
+    if (thisObj->v->get_known() && other->v->get_known()) {
+        thisObj->v->set_value(thisObj->v->get_value() - other->v->get_value());
+    }
+    // Subtract current values if known.
+    if (thisObj->c->get_known() && other->c->get_known()) {
+        thisObj->c->set_value(thisObj->c->get_value() - other->c->get_value());
+    }
     return *thisObj;
 }
 
@@ -100,10 +112,16 @@ Component Component::multiply(Component *thisObj, Component *other) {
     if (!is_valid_operation(this, other)) {
         throw CircuitException("invalid operation multiply: " + this->to_string() + ", " + other->to_string());
     }
-    // Multiply resistance, voltage, and current values.
+    // Multiply resistance values.
     thisObj->r *= other->r;
-    thisObj->v->set_value(thisObj->v->get_value() * other->v->get_value());
-    thisObj->c->set_value(thisObj->c->get_value() * other->c->get_value());
+    // Multiply voltage values if known.
+    if (thisObj->v->get_known() && other->v->get_known()) {
+        thisObj->v->set_value(thisObj->v->get_value() * other->v->get_value());
+    }
+    // Multiply current values if known.
+    if (thisObj->c->get_known() && other->c->get_known()) {
+        thisObj->c->set_value(thisObj->c->get_value() * other->c->get_value());
+    }
     return *thisObj;
 }
 
@@ -113,10 +131,26 @@ Component Component::divide(Component *thisObj, Component *other) {
     if (!is_valid_operation(this, other)) {
         throw CircuitException("invalid operation divide: " + this->to_string() + ", " + other->to_string());
     }
-    // Divide resistance, voltage, and current values.
+    // Check for division by zero.
+    if (other->r == 0) {
+        throw CircuitException("division by zero: resistance of " + other->to_string());
+    }
+    // Divide resistance values.
     thisObj->r /= other->r;
-    thisObj->v->set_value(thisObj->v->get_value() / other->v->get_value());
-    thisObj->c->set_value(thisObj->c->get_value() / other->c->get_value());
+    // Divide voltage values if known.
+    if (thisObj->v->get_known() && other->v->get_known()) {
+        if (other->v->get_value() == 0) {
+            throw CircuitException("division by zero: voltage of " + other->to_string());
+        }
+        thisObj->v->set_value(thisObj->v->get_value() / other->v->get_value());
+    }
+    // Divide current values if known.
+    if (thisObj->c->get_known() && other->c->get_known()) {
+        if (other->c->get_value() == 0) {
+            throw CircuitException("division by zero: current of " + other->to_string());
+        }
+        thisObj->c->set_value(thisObj->c->get_value() / other->c->get_value());
+    }
     return *thisObj;
 }
 
@@ -146,16 +180,27 @@ std::string Component::to_string() {
     // Get a pointer to the current object as Component (for dynamic casting).
     Component *this_component{dynamic_cast<Component *>(this)};
     std::string message = this->get_class_name() + ":";
-    // Append resistance, voltage, and current information if available.
+
+    // Append resistance, voltage, and current information with trailing zero removal
     if (this_component->r != 0) {
-        message += " R= " + std::to_string(this_component->r);
+        std::string str = std::to_string(this_component->r);
+        str.erase(str.find_last_not_of('0') + 1, std::string::npos);
+        str.erase(str.find_last_not_of('.') + 1, std::string::npos);
+        message += " R= " + str;
     }
     if (this_component->v->get_known()) {
-        message += ", V= " + std::to_string(this_component->v->get_value());
+        std::string str = std::to_string(this_component->v->get_value());
+        str.erase(str.find_last_not_of('0') + 1, std::string::npos);
+        str.erase(str.find_last_not_of('.') + 1, std::string::npos);
+        message += ", V= " + str;
     }
     if (this_component->c->get_known()) {
-        message += ", C= " + std::to_string(this_component->c->get_value());
+        std::string str = std::to_string(this_component->c->get_value());
+        str.erase(str.find_last_not_of('0') + 1, std::string::npos);
+        str.erase(str.find_last_not_of('.') + 1, std::string::npos);
+        message += ", C= " + str;
     }
+
     return message + "\n"; // Return message;
 }
 

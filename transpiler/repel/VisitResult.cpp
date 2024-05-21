@@ -9,7 +9,10 @@ std::string VisitResult::to_string() {
         return boost::get<std::string>(value_)+"\n";
     }
     if(value_.type() == typeid(double)){
-        return std::to_string(boost::get<double>(value_))+"\n";
+        std::string str = std::to_string(boost::get<double>(value_));
+        str.erase ( str.find_last_not_of('0') + 1, std::string::npos );
+        str.erase ( str.find_last_not_of('.') + 1, std::string::npos );
+        return str+"\n";
     }
     if(value_.type() == typeid(std::shared_ptr<Node>)){
         return boost::get<std::shared_ptr<Node>>(value_)->to_string();

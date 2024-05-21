@@ -81,7 +81,7 @@ std::string Branch::to_string() {
     std::stringstream temp;
     temp << "Branch with components: " << std::endl;
     for (auto component: components()) {
-        temp << component->to_string() << std::endl;
+        temp << component->to_string();
     }
     return temp.str();
 }

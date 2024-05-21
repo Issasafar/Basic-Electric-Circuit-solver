@@ -33,6 +33,10 @@ private:
     VisitResult findVariable(const std::string &variableName);
 
     std::vector<VisitResult> getVisitedArgs(const std::shared_ptr<AstNodeBase> &node);
+
+    Component getComponent(VisitResult temp);
+
+    Component handleComponents(VisitResult left, VisitResult right, std::string op);
 };
 
 

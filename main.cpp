@@ -23,15 +23,16 @@ int main() {
     "let r2 = Resistance(100, n2, g)",
     "let b1 = Branch(v1, r1, r2)",
     "let circuit = Circuit(b1)",
-    "solve(circuit)"
+    "solve(circuit)",
+    "print(circuit)"
    };
 //   example();
-   Interpreter interpreter = Interpreter();
-   for(std::string line: lines){
-       auto tokens = tokenize(line);
-       interpreter.visit(parse(tokens));
-   }
-//    console();
+//   Interpreter interpreter = Interpreter();
+//   for(std::string line: lines){
+//       auto tokens = tokenize(line);
+//       interpreter.visit(parse(tokens));
+//   }
+    console();
 //    auto tkns = tokenize("print(x,y +z)");
 //    auto thing = buildAstTree(tkns);
 //    Interpreter i;
