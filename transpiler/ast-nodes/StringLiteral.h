@@ -1,6 +1,8 @@
-//
-// Created by issa on 17/05/24.
-//
+/**
+ * @file StringLiteral.h
+ * @brief Declaration of the StringLiteral class.
+ * @date 17/05/24
+ */
 
 #ifndef DEMOPROJECT_STRINGLITERAL_H
 #define DEMOPROJECT_STRINGLITERAL_H
@@ -8,16 +10,19 @@
 #include <memory>
 #include <vector>
 #include "AstNodeBase.h"
-class StringLiteral :public AstNodeBase{
-public:
-StringLiteral(std::string text);
-private:
-    using AstNodeBase::getNumber;
-    using AstNodeBase::getOp;
-    using AstNodeBase::getLeft;
-    using AstNodeBase::getRight;
-    using AstNodeBase::getArguments;
-};
 
+/**
+ * @class StringLiteral
+ * @brief Represents a string literal AST node.
+ */
+class StringLiteral : public AstNodeBase {
+public:
+    /**
+     * @brief Constructor for StringLiteral.
+     *
+     * @param text The string text.
+     */
+    StringLiteral(std::string text);
+};
 
 #endif //DEMOPROJECT_STRINGLITERAL_H

@@ -1,10 +1,17 @@
-//
-// Created by issa on 17/05/24.
-//
+/**
+ * @file Identifier.cpp
+ * @brief Implementation of the Identifier class.
+ * @date 17/05/24
+ */
 
 #include "Identifier.h"
 
-Identifier::Identifier(std::string name) : AstNodeBase(){
+/**
+ * @brief Constructor for Identifier.
+ *
+ * @param name The identifier name.
+ */
+Identifier::Identifier(std::string name) : AstNodeBase() {
     text_ = name;
     type_ = NodeType::IDENTIFIER;
 }

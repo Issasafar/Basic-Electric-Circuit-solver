@@ -4,76 +4,102 @@
 
 #include "VisitResult.h"
 
+/**
+ * Convert the visit result to a string representation.
+ *
+ * @return A string representation of the visit result.
+ */
 std::string VisitResult::to_string() {
-    if(value_.type() == typeid(std::string)){
-        return boost::get<std::string>(value_)+"\n";
+    if (value_.type() == typeid(std::string)) {
+        return boost::get<std::string>(value_) + "\n";
     }
-    if(value_.type() == typeid(double)){
+    if (value_.type() == typeid(double)) {
         std::string str = std::to_string(boost::get<double>(value_));
-        str.erase ( str.find_last_not_of('0') + 1, std::string::npos );
-        str.erase ( str.find_last_not_of('.') + 1, std::string::npos );
-        return str+"\n";
+        str.erase(str.find_last_not_of('0') + 1, std::string::npos);
+        str.erase(str.find_last_not_of('.') + 1, std::string::npos);
+        return str + "\n";
     }
-    if(value_.type() == typeid(std::shared_ptr<Node>)){
+    if (value_.type() == typeid(std::shared_ptr<Node>)) {
         return boost::get<std::shared_ptr<Node>>(value_)->to_string();
     }
-    if(value_.type() == typeid(Branch)){
+    if (value_.type() == typeid(Branch)) {
         return boost::get<Branch>(value_).to_string();
     }
-    if(value_.type() == typeid(Circuit)){
+    if (value_.type() == typeid(Circuit)) {
         return boost::get<Circuit>(value_).to_string();
     }
-    if(value_.type() == typeid(Resistance)){
+    if (value_.type() == typeid(Resistance)) {
         return boost::get<Resistance>(value_).to_string();
     }
-    if(value_.type() == typeid(VoltageSource)){
+    if (value_.type() == typeid(VoltageSource)) {
         return boost::get<VoltageSource>(value_).to_string();
     }
-    if(value_.type() == typeid(Component)){
+    if (value_.type() == typeid(Component)) {
         return boost::get<Component>(value_).to_string();
     }
-    if(value_.type() == typeid(CurrentSource)){
+    if (value_.type() == typeid(CurrentSource)) {
         return boost::get<CurrentSource>(value_).to_string();
     }
-
 }
+
+/**
+ * Getter method for retrieving the value of the result.
+ *
+ * @return The value of the result.
+ */
 const boost::variant<double, std::string, std::shared_ptr<Node>, Branch, Circuit, Component, Resistance, VoltageSource, CurrentSource> &VisitResult::getValue() const {
     return value_;
 }
 
+/**
+ * Getter method for retrieving the type of the result.
+ *
+ * @return The type of the result.
+ */
 ResultType VisitResult::getType() const {
     return type_;
 }
 
-VisitResult::VisitResult(const boost::variant<double, std::string, std::shared_ptr<Node>, Branch, Circuit, Component, Resistance, VoltageSource, CurrentSource> &value, ResultType type) : value_(value),
-                                                                                              type_(type) {}
+/**
+ * Constructor to initialize a visit result.
+ *
+ * @param value The value of the result, which can be of various types.
+ * @param type The type of the result.
+ */
+VisitResult::VisitResult(const boost::variant<double, std::string, std::shared_ptr<Node>, Branch, Circuit, Component, Resistance, VoltageSource, CurrentSource> &value, ResultType type)
+        : value_(value), type_(type) {}
 
+/**
+ * Describe the variable represented by the visit result.
+ *
+ * @return A description of the variable.
+ */
 std::string VisitResult::describeVariable() {
-    if(value_.type() == typeid(std::string)){
+    if (value_.type() == typeid(std::string)) {
         return "Type: std::string, Size: " + std::to_string(sizeof(std::string)) + " bytes\n";
     }
-    if(value_.type() == typeid(double)){
+    if (value_.type() == typeid(double)) {
         return "Type: double, Size: " + std::to_string(sizeof(double)) + " bytes\n";
     }
-    if(value_.type() == typeid(std::shared_ptr<Node>)){
+    if (value_.type() == typeid(std::shared_ptr<Node>)) {
         return "Type: std::shared_ptr<Node>, Size: " + std::to_string(sizeof(std::shared_ptr<Node>)) + " bytes\n";
     }
-    if(value_.type() == typeid(Branch)){
+    if (value_.type() == typeid(Branch)) {
         return "Type: Branch, Size: " + std::to_string(sizeof(Branch)) + " bytes\n";
     }
-    if(value_.type() == typeid(Circuit)){
+    if (value_.type() == typeid(Circuit)) {
         return "Type: Circuit, Size: " + std::to_string(sizeof(Circuit)) + " bytes\n";
     }
-    if(value_.type() == typeid(Resistance)){
+    if (value_.type() == typeid(Resistance)) {
         return "Type: Resistance, Size: " + std::to_string(sizeof(Resistance)) + " bytes\n";
     }
-    if(value_.type() == typeid(VoltageSource)){
+    if (value_.type() == typeid(VoltageSource)) {
         return "Type: VoltageSource, Size: " + std::to_string(sizeof(VoltageSource)) + " bytes\n";
     }
-    if(value_.type() == typeid(Component)){
+    if (value_.type() == typeid(Component)) {
         return "Type: Component, Size: " + std::to_string(sizeof(Component)) + " bytes\n";
     }
-    if(value_.type() == typeid(CurrentSource)){
+    if (value_.type() == typeid(CurrentSource)) {
         return "Type: CurrentSource, Size: " + std::to_string(sizeof(CurrentSource)) + " bytes\n";
     }
     return "Unknown type\n";

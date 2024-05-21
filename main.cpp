@@ -27,12 +27,12 @@ int main() {
     "print(circuit)"
    };
 //   example();
-//   Interpreter interpreter = Interpreter();
-//   for(std::string line: lines){
-//       auto tokens = tokenize(line);
-//       interpreter.visit(parse(tokens));
-//   }
-    console();
+   Interpreter interpreter = Interpreter();
+   for(std::string line: lines){
+       auto tokens = tokenize(line);
+       interpreter.visit(parse(tokens));
+   }
+//    console();
 //    auto tkns = tokenize("print(x,y +z)");
 //    auto thing = buildAstTree(tkns);
 //    Interpreter i;

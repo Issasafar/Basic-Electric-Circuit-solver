@@ -1,11 +1,16 @@
-//
-// Created by issa on 17/05/24.
-//
+/**
+ * @file StringLiteral.cpp
+ * @brief Implementation of the StringLiteral class.
+ * @date 17/05/24
+ */
 
 #include "StringLiteral.h"
 
-#include <utility>
-
+/**
+ * @brief Constructor for StringLiteral.
+ *
+ * @param text The string text.
+ */
 StringLiteral::StringLiteral(std::string text) : AstNodeBase() {
     text_ = std::move(text);
     type_ = NodeType::STRINGLITERAL;

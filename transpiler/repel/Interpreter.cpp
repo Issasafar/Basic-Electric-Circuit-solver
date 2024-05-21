@@ -89,7 +89,7 @@ VisitResult Interpreter::visitBinaryExpression(std::shared_ptr<AstNodeBase> node
         }
 
     }
-    throw std::runtime_error("BinaryExpressionError");
+    throw std::runtime_error("Binary Expression Error");
 }
 
 VisitResult Interpreter::multiply(VisitResult left, VisitResult right) {
@@ -97,7 +97,8 @@ VisitResult Interpreter::multiply(VisitResult left, VisitResult right) {
         std::vector<double> values = getDoubleValues(left, right);
         return {values[0] * values[1], NUMERIC_};
     }
-    if (left.getType() == VOLTAGESOURCE || left.getType() == CURRENTSOURCE || left.getType() == COMPONENT || left.getType() == RESISTANCE) {
+    if (left.getType() == VOLTAGESOURCE || left.getType() == CURRENTSOURCE || left.getType() == COMPONENT ||
+        left.getType() == RESISTANCE) {
         return {handleComponents(left, right, "*"), COMPONENT};
     }
     throw TranspilerException(operatorErrorMessage + "*");
@@ -108,7 +109,8 @@ VisitResult Interpreter::divide(VisitResult left, VisitResult right) {
         std::vector<double> values = getDoubleValues(left, right);
         return {values[0] / values[1], NUMERIC_};
     }
-    if (left.getType() == VOLTAGESOURCE || left.getType() == CURRENTSOURCE || left.getType() == COMPONENT || left.getType() == RESISTANCE) {
+    if (left.getType() == VOLTAGESOURCE || left.getType() == CURRENTSOURCE || left.getType() == COMPONENT ||
+        left.getType() == RESISTANCE) {
         return {handleComponents(left, right, "/"), COMPONENT};
     }
     throw TranspilerException(operatorErrorMessage + "/");
@@ -124,7 +126,8 @@ VisitResult Interpreter::add(VisitResult left, VisitResult right) {
         std::string rightStr = boost::get<std::string>(right.getValue());
         return {leftStr + rightStr, STRING_};
     }
-    if (left.getType() == VOLTAGESOURCE || left.getType() == CURRENTSOURCE || left.getType() == COMPONENT || left.getType() == RESISTANCE) {
+    if (left.getType() == VOLTAGESOURCE || left.getType() == CURRENTSOURCE || left.getType() == COMPONENT ||
+        left.getType() == RESISTANCE) {
         return {handleComponents(left, right, "+"), COMPONENT};
     }
     throw TranspilerException(operatorErrorMessage + "+");
@@ -135,7 +138,8 @@ VisitResult Interpreter::subtract(VisitResult left, VisitResult right) {
         std::vector<double> values = getDoubleValues(left, right);
         return {values[0] - values[1], NUMERIC_};
     }
-    if (left.getType() == VOLTAGESOURCE || left.getType() == CURRENTSOURCE || left.getType() == COMPONENT || left.getType() == RESISTANCE) {
+    if (left.getType() == VOLTAGESOURCE || left.getType() == CURRENTSOURCE || left.getType() == COMPONENT ||
+        left.getType() == RESISTANCE) {
         return {handleComponents(left, right, "-"), COMPONENT};
     }
     throw TranspilerException(operatorErrorMessage + "-");
@@ -165,16 +169,16 @@ VisitResult Interpreter::visitCallExpression(std::shared_ptr<AstNodeBase> node) 
         std::cout << ss.str();
         return {0, NUMERIC_};
     }
-    if(caller == "describe"){
+    if (caller == "describe") {
         std::stringstream ss;
-        for(auto arg : node->getArguments()){
-            if(arg->getType() == IDENTIFIER){
-                ss << "("<<arg->getText()<<") ";
+        for (auto arg: node->getArguments()) {
+            if (arg->getType() == IDENTIFIER) {
+                ss << "(" << arg->getText() << ") ";
             }
             VisitResult var = visit(arg);
             ss << var.describeVariable();
         }
-        std::cout<<ss.str();
+        std::cout << ss.str();
         return {ss.str(), STRING_};
     }
 
@@ -307,16 +311,16 @@ Component Interpreter::handleComponents(VisitResult left, VisitResult right, std
     Component leftComponent = getComponent(left);
     Component rightComponent = getComponent(right);
     Component result;
-    if(op == "*"){
-       result = leftComponent * rightComponent;
+    if (op == "*") {
+        result = leftComponent * rightComponent;
     }
-    if(op == "/"){
+    if (op == "/") {
         result = leftComponent / rightComponent;
     }
-    if(op == "+"){
+    if (op == "+") {
         result = leftComponent + rightComponent;
     }
-    if(op == "-"){
+    if (op == "-") {
         result = leftComponent - rightComponent;
     }
     return result;
